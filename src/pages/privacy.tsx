@@ -338,13 +338,10 @@ export default function Privacy() {
               </div>
             </div>
             <div className="flex gap-8 text-xs tracking-[0.15em] text-[#fcf9f3]/35 uppercase">
-              <a href="#" className="transition-colors hover:text-[#fcf9f3]/70">
-                Termos
-              </a>
               <Link href="/privacidade" className="transition-colors hover:text-[#fcf9f3]/70">
                 Privacidade
               </Link>
-              <a href={HOME_ACESSO} className="transition-colors hover:text-[#fcf9f3]/70">
+              <a href="#acesso" className="transition-colors hover:text-[#fcf9f3]/70">
                 Contato
               </a>
             </div>
@@ -352,9 +349,6 @@ export default function Privacy() {
           <div className="flex items-center justify-between pt-6">
             <div className="text-[10px] tracking-[0.2em] text-[#fcf9f3]/50 uppercase">
               © {YEAR} Chreos. Todos os direitos reservados.
-            </div>
-            <div className="hidden font-mono text-[10px] tracking-widest text-[#fcf9f3]/40 uppercase md:block">
-              Diário Registral · Alienação Fiduciária · LGPD
             </div>
           </div>
         </div>
