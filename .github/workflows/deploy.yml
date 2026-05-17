@@ -38,6 +38,7 @@ jobs:
           BASE_PATH: /
           SITE_URL: https://chreos.com.br
           ALLOW_INDEXING: "true"
+          VITE_CONTACT_FORM_WHATSAPP_NUMBER: ${{ vars.VITE_CONTACT_FORM_WHATSAPP_NUMBER }}
         run: pnpm build
 
       - name: SPA fallback
