@@ -10,15 +10,21 @@
       content="A Chreos monitora diariamente cartórios de todo o Brasil e entrega ao seu escritório o nome, WhatsApp e contato de pessoas prestes a perder um imóvel — antes que qualquer concorrente saiba."
     />
     <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="leads alienação fiduciária, leads jurídicos, advogado imobiliário, prospecção advocacia, retomada de imóvel, leilão extrajudicial, leads para escritório de advocacia" />
+    <meta name="author" content="Chreos" />
+    <link rel="canonical" href="https://chreos.com.br/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Chreos" />
+    <meta property="og:url" content="https://chreos.com.br/" />
     <meta property="og:title" content="Chreos — Leads Jurídicos de Alienação Fiduciária" />
     <meta
       property="og:description"
       content="Leads quentes para advogados imobiliários. Identificamos quem vai perder o imóvel e entregamos o contato direto para o seu escritório."
     />
-    <meta property="og:image" content="/opengraph.jpg" />
+    <meta property="og:image" content="https://chreos.com.br/opengraph.jpg" />
+    <meta property="og:image:alt" content="Chreos — Leads jurídicos de alienação fiduciária" />
     <meta property="og:locale" content="pt_BR" />
 
     <!-- Twitter Card -->
@@ -28,9 +34,42 @@
       name="twitter:description"
       content="Leads quentes para advogados imobiliários. Identificamos quem vai perder o imóvel e entregamos o contato direto para o seu escritório."
     />
-    <meta name="twitter:image" content="/opengraph.jpg" />
+    <meta name="twitter:image" content="https://chreos.com.br/opengraph.jpg" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Structured Data: Organization + Service -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://chreos.com.br/#organization",
+            "name": "Chreos",
+            "url": "https://chreos.com.br/",
+            "logo": "https://chreos.com.br/opengraph.jpg",
+            "description": "A Chreos monitora diariamente cartórios de todo o Brasil e entrega leads jurídicos de alienação fiduciária para escritórios de advocacia imobiliária."
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://chreos.com.br/#website",
+            "url": "https://chreos.com.br/",
+            "name": "Chreos",
+            "inLanguage": "pt-BR",
+            "publisher": { "@id": "https://chreos.com.br/#organization" }
+          },
+          {
+            "@type": "Service",
+            "name": "Leads Jurídicos de Alienação Fiduciária",
+            "provider": { "@id": "https://chreos.com.br/#organization" },
+            "areaServed": { "@type": "Country", "name": "Brasil" },
+            "serviceType": "Geração de leads para advocacia imobiliária",
+            "description": "Identificação diária de pessoas em processo de retomada de imóvel por alienação fiduciária, com nome, WhatsApp e contato entregues a escritórios de advocacia."
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
