@@ -1,27 +1,9 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { Link } from "wouter";
 import { CTAForm } from "@/components/CTAForm";
+import { Footer } from "@/components/Footer";
 import { STEPS, LEAD_FEATURES, FILTERS, TIMELINE, CTA_BULLETS } from "@/data/landing";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.9,
-      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
-    },
-  },
-};
-
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
-};
-
-const YEAR = new Date().getFullYear();
+import { fadeUp, stagger } from "@/lib/animations";
 
 export default function HomeSections() {
   return (
@@ -50,15 +32,15 @@ export default function HomeSections() {
                     fontSize: "clamp(2rem, 4.5vw, 3.8rem)",
                   }}
                 >
-                  Seu funil de clientes
+                  Monitoramento processual
                   <br />
-                  funcionando <em>sozinho.</em>
+                  contínuo, sem <em>esforço manual.</em>
                 </h2>
               </div>
               <div className="hidden max-w-xs text-right md:block">
                 <p className="text-sm leading-relaxed text-[#0f1c2c]/50">
-                  Enquanto seu escritório atende os casos de hoje, já estamos montando a fila de
-                  clientes de amanhã — com nome, contato e urgência documentada.
+                  Enquanto seu escritório atua nos casos de hoje, a Chreos já está indexando os
+                  procedimentos de amanhã — com fase, prazos e dados objetivos documentados.
                 </p>
               </div>
             </motion.div>
@@ -115,7 +97,7 @@ export default function HomeSections() {
           >
             <motion.div variants={fadeUp} className="mb-14">
               <div className="mb-3 text-[10px] font-bold tracking-[0.3em] text-[#fcf9f3]/55 uppercase">
-                02 — Seus Leads
+                02 — Ficha do Procedimento
               </div>
               <h2
                 className="leading-tight text-[#fcf9f3]"
@@ -124,9 +106,9 @@ export default function HomeSections() {
                   fontSize: "clamp(2rem, 4.5vw, 3.8rem)",
                 }}
               >
-                Tudo o que você precisa
+                Tudo o que importa
                 <br />
-                para <em>fechar o caso.</em>
+                para <em>atuar no caso.</em>
               </h2>
             </motion.div>
 
@@ -147,22 +129,18 @@ export default function HomeSections() {
                         className="mb-3 inline-block bg-[#0f1c2c] px-2.5 py-1 text-[9px] font-bold tracking-[0.25em] text-[#fcf9f3] uppercase"
                         style={{ borderRadius: "9999px" }}
                       >
-                        Alta Urgência · 3ª Notificação
+                        Prazo Crítico · 3ª Intimação
                       </span>
                       <h3
                         className="text-xl font-semibold text-[#0f1c2c]"
                         style={{ fontFamily: "'Newsreader Variable', serif" }}
                       >
-                        Carlos Eduardo Mendes
+                        Procedimento de Execução Extrajudicial
                       </h3>
                       <div className="mt-0.5 text-xs tracking-widest text-[#0f1c2c]/50 uppercase">
-                        Potencial Cliente
+                        Lei 9.514/1997 · Art. 26
                       </div>
                     </div>
-                    {/* <div className="text-right">
-                      <div className="text-[9px] uppercase tracking-widest text-[#0f1c2c]/60 font-bold mb-1">Prazo restante</div>
-                      <div className="font-mono text-red-600 font-bold text-lg">15 DIAS</div>
-                    </div> */}
                   </div>
                 </div>
 
@@ -176,7 +154,7 @@ export default function HomeSections() {
                     </div>
                     <div>
                       <div className="mb-1 text-[9px] font-bold tracking-[0.2em] text-[#0f1c2c]/60 uppercase">
-                        Valor da Dívida
+                        Valor da Operação
                       </div>
                       <div className="font-mono text-sm font-bold text-[#0f1c2c]">
                         R$ 142.850,00
@@ -184,13 +162,13 @@ export default function HomeSections() {
                     </div>
                     <div>
                       <div className="mb-1 text-[9px] font-bold tracking-[0.2em] text-[#0f1c2c]/60 uppercase">
-                        Inadimplência desde
+                        Início da inadimplência
                       </div>
                       <div className="font-mono text-sm text-[#0f1c2c]">14/03/2024</div>
                     </div>
                     <div>
                       <div className="mb-1 text-[9px] font-bold tracking-[0.2em] text-[#0f1c2c]/60 uppercase">
-                        Reincidências
+                        Intimações Realizadas
                       </div>
                       <div className="mt-0.5 flex gap-1">
                         {[1, 2, 3].map((n) => (
@@ -215,9 +193,9 @@ export default function HomeSections() {
                     Imóvel e Registro
                   </div>
                   <div className="text-sm text-[#0f1c2c]">
-                    Rua das Acácias, 145 — Apto 802, Pinheiros
+                    Imóvel residencial — Bairro Pinheiros
                   </div>
-                  <div className="text-sm text-[#0f1c2c]/70">São Paulo — SP · CEP 05435-020</div>
+                  <div className="text-sm text-[#0f1c2c]/70">São Paulo — SP</div>
                   <div className="mt-1 font-mono text-xs text-[#0f1c2c]/50">
                     Matrícula 84.992 · 4º CRI de São Paulo · CNS 1.077
                   </div>
@@ -225,27 +203,15 @@ export default function HomeSections() {
 
                 <div className="mx-6 mb-6 bg-[#ebe8e2] p-4">
                   <div className="mb-3 text-[9px] font-bold tracking-[0.2em] text-[#0f1c2c]/60 uppercase">
-                    Contatos Enriquecidos
+                    Contato com o Devedor Fiduciante
                   </div>
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] tracking-widest text-[#0f1c2c]/50 uppercase">
-                        WhatsApp
-                      </span>
-                      <span className="font-mono text-sm text-[#0f1c2c]">+55 11 98844-3322</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] tracking-widest text-[#0f1c2c]/50 uppercase">
-                        Telefone
-                      </span>
-                      <span className="font-mono text-sm text-[#0f1c2c]">+55 11 3341-8810</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] tracking-widest text-[#0f1c2c]/50 uppercase">
-                        E-mail
-                      </span>
-                      <span className="font-mono text-sm text-[#0f1c2c]">c.mendes@gmail.com</span>
-                    </div>
+                  <div className="mb-2 text-xs leading-relaxed text-[#0f1c2c]/70">
+                    Informações de contato disponíveis ao escritório contratante sob política de uso
+                    restrito, exclusivamente para fins de oferta de assistência jurídica.
+                  </div>
+                  <div className="flex items-center gap-2 font-mono text-[10px] tracking-widest text-[#0f1c2c]/50 uppercase">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#C9A84C]" />
+                    Acesso liberado mediante contrato
                   </div>
                 </div>
 
@@ -255,9 +221,9 @@ export default function HomeSections() {
                     style={{
                       background: "linear-gradient(135deg, #C9A84C 0%, #e6c364 100%)",
                     }}
-                    data-testid="button-dossie-abordar"
+                    data-testid="button-dossie-abrir"
                   >
-                    Iniciar Abordagem
+                    Abrir Procedimento
                   </button>
                 </div>
               </div>
@@ -265,8 +231,9 @@ export default function HomeSections() {
               {/* Right column — info */}
               <div className="flex flex-col justify-between gap-6 lg:col-span-2">
                 <div className="text-base leading-relaxed text-[#fcf9f3]/60">
-                  Cada lead que entregamos já tem tudo o que o seu escritório precisa para dar o
-                  primeiro passo. Sem pesquisa extra. Sem tempo perdido. Só chegar e conversar.
+                  Cada ficha consolida os dados objetivos do procedimento — fase, prazos, credor e
+                  imóvel — para que o escritório contratante avalie o caso e decida pela oferta de
+                  assistência jurídica com base técnica.
                 </div>
                 <div className="space-y-0">
                   {LEAD_FEATURES.map((item, i) => (
@@ -319,14 +286,14 @@ export default function HomeSections() {
                     fontSize: "clamp(2rem, 4.5vw, 3.8rem)",
                   }}
                 >
-                  Só o que
+                  Só os casos do
                   <br />
-                  <em>interessa a você.</em>
+                  seu <em>perfil de atuação.</em>
                 </h2>
               </div>
               <p className="hidden max-w-xs text-right text-sm leading-relaxed text-[#0f1c2c]/50 md:block">
-                Não existe lead genérico aqui. Você define exatamente o perfil de cliente que quer
-                receber — e a gente entrega só isso.
+                Você define o recorte técnico dos procedimentos que quer acompanhar. Apenas casos
+                dentro desse escopo chegam até o seu escritório.
               </p>
             </motion.div>
 
@@ -362,7 +329,7 @@ export default function HomeSections() {
           >
             <motion.div variants={fadeUp} className="mb-14">
               <div className="mb-3 text-[10px] font-bold tracking-[0.3em] text-[#fcf9f3]/55 uppercase">
-                04 — Diferencial
+                04 — Urgência Processual
               </div>
               <h2
                 className="max-w-2xl leading-tight text-[#fcf9f3]"
@@ -371,34 +338,35 @@ export default function HomeSections() {
                   fontSize: "clamp(2rem, 4.5vw, 3.8rem)",
                 }}
               >
-                Os leads mais quentes
+                A defesa técnica é mais
                 <br />
-                são os que <em>voltam.</em>
+                necessária nas <em>intimações finais.</em>
               </h2>
             </motion.div>
 
             <div className="grid items-start gap-12 lg:grid-cols-2">
               <motion.div variants={fadeUp}>
                 <p className="mb-6 text-base leading-relaxed text-[#fcf9f3]/65 md:text-lg">
-                  A primeira notificação que uma pessoa recebe sobre seu imóvel em risco costuma ser
-                  um susto — e ela ainda acredita que vai resolver sozinha. Na segunda ou na
-                  terceira, a realidade já bateu. O prazo está acabando, as opções se esgotaram e
-                  ela está pronta para contratar um advogado.
+                  A 1ª intimação concede prazo amplo para regularização administrativa do débito
+                  diretamente com o credor. Já na 2ª e 3ª intimações, o prazo de purgação da mora
+                  previsto no art. 26 da Lei 9.514/1997 se encurta, e a defesa técnica do devedor
+                  fiduciante passa a ser determinante para evitar a consolidação da propriedade.
                 </p>
                 <p className="mb-10 text-base leading-relaxed text-[#fcf9f3]/65 md:text-lg">
-                  Rastreamos quantas vezes uma pessoa já foi notificada sobre o mesmo imóvel. Com
-                  isso, seu escritório pode focar exatamente nos leads com maior urgência — quem já
-                  tentou resolver e não conseguiu, e agora precisa de ajuda de verdade.
+                  Rastreamos a sequência de intimações sobre o mesmo imóvel para que seu escritório
+                  identifique os procedimentos em que a janela para purgação ainda existe — mas está
+                  estreitando — e onde a presença de um advogado especializado faz mais diferença.
                 </p>
                 <div className="bg-[#16263b] p-6">
                   <div className="mb-4 text-[9px] font-bold tracking-[0.25em] text-[#fcf9f3]/55 uppercase">
-                    Por que isso importa para o seu funil
+                    Por que isso importa para a atuação técnica
                   </div>
                   <div className="text-sm leading-relaxed text-[#fcf9f3]/75">
-                    Leads notificados pela{" "}
-                    <span className="font-semibold text-[#e6c364]">2ª ou 3ª vez</span> têm taxa de
-                    conversão significativamente maior — a urgência é real, documentada e o cliente
-                    já entendeu que precisa agir.
+                    Procedimentos com{" "}
+                    <span className="font-semibold text-[#e6c364]">2ª ou 3ª intimação</span>{" "}
+                    concentram maior urgência jurídica documentada — o prazo de purgação está
+                    reduzido, a complexidade técnica é maior e a assistência jurídica é
+                    objetivamente mais necessária.
                   </div>
                 </div>
               </motion.div>
@@ -439,11 +407,11 @@ export default function HomeSections() {
                 ))}
                 <div className="mt-2 border-l-2 border-[#C9A84C] bg-[#C9A84C]/10 p-4">
                   <div className="mb-1 text-[9px] font-bold tracking-widest text-[#C9A84C] uppercase">
-                    Alerta Gerado
+                    Alerta de Prazo Crítico
                   </div>
                   <div className="text-sm text-[#fcf9f3]/80">
-                    Devedor identificado. Probabilidade de acordo{" "}
-                    <span className="font-mono font-bold text-[#e6c364]">MÁXIMA</span>.
+                    Procedimento na fase final. Janela para purgação da mora{" "}
+                    <span className="font-mono font-bold text-[#e6c364]">15 DIAS</span>.
                   </div>
                 </div>
               </motion.div>
@@ -564,13 +532,14 @@ export default function HomeSections() {
                 fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
               }}
             >
-              Encha sua agenda
+              Defesa técnica no
               <br />
-              com quem <em>precisa de você.</em>
+              momento <em>em que importa.</em>
             </h2>
             <p className="mb-10 max-w-md text-base leading-relaxed text-[#fcf9f3]/55">
-              Preencha o formulário ao lado e agende uma conversa conosco. Vamos mostrar leads reais
-              da sua região e explicar como podemos trabalhar com o seu escritório.
+              Preencha o formulário ao lado e agende uma conversa. Vamos apresentar casos reais
+              publicados na sua comarca e detalhar como a Chreos se integra ao fluxo de trabalho do
+              seu escritório.
             </p>
             <div className="space-y-5">
               {CTA_BULLETS.map((item, i) => (
@@ -600,37 +569,7 @@ export default function HomeSections() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="bg-[#0a1520] px-6 py-12 md:px-10">
-        <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col items-start justify-between gap-8 border-b border-[#fcf9f3]/10 pb-10 md:flex-row md:items-end">
-            <div>
-              <div
-                className="mb-1 text-xl font-semibold tracking-tight text-[#fcf9f3]"
-                style={{ fontFamily: "'Newsreader Variable', serif" }}
-              >
-                Chreos
-              </div>
-              <div className="text-xs tracking-widest text-[#fcf9f3]/35 uppercase">
-                Leads quentes para advogados
-              </div>
-            </div>
-            <div className="flex gap-8 text-xs tracking-[0.15em] text-[#fcf9f3]/35 uppercase">
-              <Link href="/privacidade" className="transition-colors hover:text-[#fcf9f3]/70">
-                Privacidade
-              </Link>
-              <a href="#acesso" className="transition-colors hover:text-[#fcf9f3]/70">
-                Contato
-              </a>
-            </div>
-          </div>
-          <div className="flex items-center justify-between pt-6">
-            <div className="text-[10px] tracking-[0.2em] text-[#fcf9f3]/50 uppercase">
-              © {YEAR} Chreos. Todos os direitos reservados.
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

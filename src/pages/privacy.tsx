@@ -1,7 +1,8 @@
 import { Link } from "wouter";
 import { ArrowLeft } from "lucide-react";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
-const YEAR = new Date().getFullYear();
 const LAST_UPDATE = "17 de maio de 2026";
 const HOME_ACESSO = `${import.meta.env.BASE_URL}#acesso`;
 
@@ -11,33 +12,15 @@ export default function Privacy() {
       className="min-h-screen bg-[#fcf9f3] text-[#0f1c2c]"
       style={{ fontFamily: "'Inter Variable', sans-serif" }}
     >
-      {/* NAV */}
-      <nav
-        className="fixed top-0 right-0 left-0 z-50"
-        style={{
-          background: "rgba(15,28,44,0.92)",
-          backdropFilter: "blur(16px)",
-        }}
-      >
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:h-24 md:px-10">
-          <Link
-            href="/"
-            onClick={() => window.scrollTo({ top: 0, behavior: "auto" })}
-            style={{ fontFamily: "'Newsreader Variable', serif" }}
-            className="text-4xl font-semibold tracking-tight text-[#fcf9f3] md:text-5xl"
-          >
-            Chreos
-          </Link>
-          <Link
-            href="/"
-            onClick={() => window.scrollTo({ top: 0, behavior: "auto" })}
-            className="inline-flex items-center gap-2 text-xs tracking-[0.15em] text-[#fcf9f3]/60 uppercase transition-colors hover:text-[#fcf9f3]"
-          >
-            <ArrowLeft size={14} />
-            Voltar
-          </Link>
-        </div>
-      </nav>
+      <Navbar>
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-xs tracking-[0.15em] text-[#fcf9f3]/60 uppercase transition-colors hover:text-[#fcf9f3]"
+        >
+          <ArrowLeft size={14} />
+          Voltar
+        </Link>
+      </Navbar>
 
       {/* HEADER */}
       <section className="bg-[#0f1c2c] px-6 pt-40 pb-20 md:px-10">
@@ -322,37 +305,7 @@ export default function Privacy() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="bg-[#0a1520] px-6 py-12 md:px-10">
-        <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col items-start justify-between gap-8 border-b border-[#fcf9f3]/10 pb-10 md:flex-row md:items-end">
-            <div>
-              <div
-                className="mb-1 text-xl font-semibold tracking-tight text-[#fcf9f3]"
-                style={{ fontFamily: "'Newsreader Variable', serif" }}
-              >
-                Chreos
-              </div>
-              <div className="text-xs tracking-widest text-[#fcf9f3]/35 uppercase">
-                Leads quentes para advogados
-              </div>
-            </div>
-            <div className="flex gap-8 text-xs tracking-[0.15em] text-[#fcf9f3]/35 uppercase">
-              <Link href="/privacidade" className="transition-colors hover:text-[#fcf9f3]/70">
-                Privacidade
-              </Link>
-              <a href="#acesso" className="transition-colors hover:text-[#fcf9f3]/70">
-                Contato
-              </a>
-            </div>
-          </div>
-          <div className="flex items-center justify-between pt-6">
-            <div className="text-[10px] tracking-[0.2em] text-[#fcf9f3]/50 uppercase">
-              © {YEAR} Chreos. Todos os direitos reservados.
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

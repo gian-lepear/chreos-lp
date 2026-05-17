@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { TICKER_ITEMS, STATS } from "@/data/landing";
+import { fadeUp, stagger } from "@/lib/animations";
+import { Navbar } from "@/components/Navbar";
 import HomeSections from "./home-sections";
 
 function LiveTicker() {
@@ -25,10 +27,10 @@ function LiveTicker() {
         <span className="inline-flex items-center gap-1.5">
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#C9A84C]" />
           <span className="text-[10px] font-bold tracking-widest text-[#C9A84C] uppercase">
-            Edital Capturado
+            Publicação Indexada
           </span>
         </span>
-        <span className="text-[10px] text-white/20">DIÁRIO REGISTRAL — AO VIVO</span>
+        <span className="text-[10px] text-white/20">DIÁRIO REGISTRAL — TEMPO REAL</span>
       </div>
       <div style={{ height: 80, overflow: "hidden", position: "relative" }}>
         <AnimatePresence mode="wait">
@@ -43,7 +45,7 @@ function LiveTicker() {
           >
             <div className="min-w-0">
               <div className="mb-0.5 text-[9px] tracking-widest text-white/30 uppercase">
-                Devedor
+                Fiduciante
               </div>
               <div className="truncate text-white/90">{item.devedor}</div>
             </div>
@@ -110,79 +112,44 @@ function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
   );
 }
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.9,
-      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
-    },
-  },
-};
-
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
-};
-
 export default function Home() {
   return (
     <div
       className="min-h-screen bg-[#fcf9f3] text-[#0f1c2c] selection:bg-[#0f1c2c] selection:text-[#fcf9f3]"
       style={{ fontFamily: "'Inter Variable', sans-serif" }}
     >
-      {/* NAV */}
-      <nav
-        className="fixed top-0 right-0 left-0 z-50"
-        style={{
-          background: "rgba(15,28,44,0.92)",
-          backdropFilter: "blur(16px)",
-          willChange: "transform",
-        }}
-      >
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:h-24 md:px-10">
-          <button
-            type="button"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            style={{ fontFamily: "'Newsreader Variable', serif" }}
-            className="cursor-pointer text-4xl font-semibold tracking-tight text-[#fcf9f3] md:text-5xl"
+      <Navbar>
+        <div className="hidden items-center gap-8 md:flex">
+          <a
+            href="#mecanismo"
+            className="text-xs tracking-[0.15em] text-[#fcf9f3]/60 uppercase transition-colors hover:text-[#fcf9f3]"
           >
-            Chreos
-          </button>
-          <div className="hidden items-center gap-8 md:flex">
-            <a
-              href="#mecanismo"
-              className="text-xs tracking-[0.15em] text-[#fcf9f3]/60 uppercase transition-colors hover:text-[#fcf9f3]"
-            >
-              Como Funciona
-            </a>
-            <a
-              href="#inteligencia"
-              className="text-xs tracking-[0.15em] text-[#fcf9f3]/60 uppercase transition-colors hover:text-[#fcf9f3]"
-            >
-              Seus Leads
-            </a>
-            <a
-              href="#filtros"
-              className="text-xs tracking-[0.15em] text-[#fcf9f3]/60 uppercase transition-colors hover:text-[#fcf9f3]"
-            >
-              Personalização
-            </a>
-            <a
-              href="#acesso"
-              className="px-5 py-2.5 text-xs font-bold tracking-[0.15em] text-[#0f1c2c] uppercase transition-opacity hover:opacity-90"
-              style={{
-                background: "linear-gradient(135deg, #C9A84C 0%, #e6c364 100%)",
-              }}
-              data-testid="link-nav-acesso"
-            >
-              Solicitar Acesso
-            </a>
-          </div>
+            Como Funciona
+          </a>
+          <a
+            href="#inteligencia"
+            className="text-xs tracking-[0.15em] text-[#fcf9f3]/60 uppercase transition-colors hover:text-[#fcf9f3]"
+          >
+            Seus Leads
+          </a>
+          <a
+            href="#filtros"
+            className="text-xs tracking-[0.15em] text-[#fcf9f3]/60 uppercase transition-colors hover:text-[#fcf9f3]"
+          >
+            Personalização
+          </a>
+          <a
+            href="#acesso"
+            className="px-5 py-2.5 text-xs font-bold tracking-[0.15em] text-[#0f1c2c] uppercase transition-opacity hover:opacity-90"
+            style={{
+              background: "linear-gradient(135deg, #C9A84C 0%, #e6c364 100%)",
+            }}
+            data-testid="link-nav-acesso"
+          >
+            Solicitar Acesso
+          </a>
         </div>
-      </nav>
+      </Navbar>
 
       {/* HERO — full bleed dark navy */}
       <section className="relative flex min-h-screen flex-col justify-end overflow-hidden bg-[#0f1c2c]">
@@ -207,11 +174,6 @@ export default function Home() {
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-36 pb-16 md:px-10">
           <motion.div initial="hidden" animate="visible" variants={stagger}>
-            {/* <motion.div variants={fadeUp} className="flex items-center gap-4 mb-10">
-              <span className="w-1.5 h-1.5 bg-[#C9A84C] rounded-full animate-pulse" />
-              <span className="text-[#C9A84C] text-[10px] uppercase tracking-[0.3em] font-bold">Sistema Ativo — Monitoramento Contínuo</span>
-            </motion.div> */}
-
             <motion.h1
               variants={fadeUp}
               className="mb-10 leading-[0.95] tracking-[-0.02em] text-[#fcf9f3]"
@@ -220,20 +182,20 @@ export default function Home() {
                 fontSize: "clamp(3.2rem, 8vw, 7.5rem)",
               }}
             >
-              Pare de esperar
+              Cada procedimento
               <br />
-              por clientes.
+              de alienação
               <br />
-              Alcance-os no
+              fiduciária tem um
               <br />
-              momento <em style={{ fontStyle: "italic", color: "#e6c364" }}>exato.</em>
+              momento <em style={{ fontStyle: "italic", color: "#e6c364" }}>certo.</em>
             </motion.h1>
 
             <motion.div variants={fadeUp} className="mb-10 grid max-w-3xl gap-6 md:grid-cols-2">
               <p className="text-base leading-relaxed text-[#fcf9f3]/60">
-                Identificamos automaticamente pessoas que estão prestes a perder um imóvel e
-                entregamos ao seu escritório o nome, telefone e WhatsApp delas — antes que qualquer
-                concorrente saiba que esse cliente existe.
+                Monitoramos diariamente as publicações oficiais dos cartórios brasileiros para que
+                seu escritório identifique procedimentos de execução extrajudicial enquanto a defesa
+                do devedor fiduciante ainda é viável — não depois que os prazos legais se esgotam.
               </p>
               <LiveTicker />
             </motion.div>
