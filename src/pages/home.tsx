@@ -143,12 +143,14 @@ export default function Home() {
         }}
       >
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:h-24 md:px-10">
-          <div
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             style={{ fontFamily: "'Newsreader Variable', serif" }}
-            className="text-4xl font-semibold tracking-tight text-[#fcf9f3] md:text-5xl"
+            className="cursor-pointer text-4xl font-semibold tracking-tight text-[#fcf9f3] md:text-5xl"
           >
             Chreos
-          </div>
+          </button>
           <div className="hidden items-center gap-8 md:flex">
             <a
               href="#mecanismo"
@@ -245,7 +247,7 @@ export default function Home() {
                 }}
                 data-testid="button-hero-cta"
               >
-                Solicitar Acesso Restrito <ArrowRight size={14} />
+                Solicitar Demonstração <ArrowRight size={14} />
               </a>
               <a
                 href="#mecanismo"
