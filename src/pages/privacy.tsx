@@ -55,9 +55,9 @@ export default function Privacy() {
             Política de <em>Privacidade</em>
           </h1>
           <p className="max-w-2xl text-base leading-relaxed text-[#fcf9f3]/55">
-            Como a Chreos coleta, utiliza e protege os dados pessoais dos visitantes e
-            advogados que solicitam acesso à plataforma, em conformidade com a Lei Geral
-            de Proteção de Dados (Lei nº 13.709/2018).
+            Como a Chreos coleta, utiliza e protege os dados pessoais dos visitantes e advogados que
+            solicitam acesso à plataforma, em conformidade com a Lei Geral de Proteção de Dados (Lei
+            nº 13.709/2018).
           </p>
           <div className="mt-10 font-mono text-[10px] tracking-[0.2em] text-[#fcf9f3]/40 uppercase">
             Última atualização: {LAST_UPDATE}
@@ -70,22 +70,21 @@ export default function Privacy() {
         <div className="mx-auto max-w-4xl space-y-16">
           <Block number="01" title="Quem somos">
             <p>
-              A Chreos é uma plataforma de inteligência jurídica que monitora publicações
-              oficiais (como o Diário Registral) para identificar editais de alienação
-              fiduciária e entregar a escritórios de advocacia leads qualificados de
-              pessoas que estão na iminência de perder um imóvel.
+              A Chreos é uma plataforma de inteligência jurídica que monitora publicações oficiais
+              (como o Diário Registral) para identificar editais de alienação fiduciária e entregar
+              a escritórios de advocacia leads qualificados de pessoas que estão na iminência de
+              perder um imóvel.
             </p>
             <p>
-              Esta Política de Privacidade descreve como tratamos os dados pessoais
-              coletados por meio do site institucional e do formulário de solicitação de
-              acesso à plataforma.
+              Esta Política de Privacidade descreve como tratamos os dados pessoais coletados por
+              meio do site institucional e do formulário de solicitação de acesso à plataforma.
             </p>
           </Block>
 
           <Block number="02" title="Dados que coletamos">
             <p>
-              Quando você preenche o formulário de <em>Solicitar Acesso</em>, coletamos
-              as seguintes informações fornecidas voluntariamente:
+              Quando você preenche o formulário de <em>Solicitar Acesso</em>, coletamos as seguintes
+              informações fornecidas voluntariamente:
             </p>
             <ul>
               <li>Nome completo;</li>
@@ -95,10 +94,9 @@ export default function Privacy() {
               <li>Estado de atuação (UF).</li>
             </ul>
             <p>
-              Adicionalmente, podemos coletar dados técnicos de navegação de forma
-              automática, como endereço IP, tipo de dispositivo, navegador, sistema
-              operacional e páginas visitadas, com a finalidade de melhorar a experiência
-              e a segurança da plataforma.
+              Adicionalmente, podemos coletar dados técnicos de navegação de forma automática, como
+              endereço IP, tipo de dispositivo, navegador, sistema operacional e páginas visitadas,
+              com a finalidade de melhorar a experiência e a segurança da plataforma.
             </p>
           </Block>
 
@@ -106,213 +104,196 @@ export default function Privacy() {
             <p>Os dados coletados são utilizados para:</p>
             <ul>
               <li>
-                Entrar em contato com você para apresentar a plataforma, agendar uma
-                demonstração e responder à sua solicitação de acesso;
+                Entrar em contato com você para apresentar a plataforma, agendar uma demonstração e
+                responder à sua solicitação de acesso;
               </li>
               <li>
-                Enviar a mensagem inicial via WhatsApp por meio do redirecionamento
-                automático após o envio do formulário;
+                Enviar a mensagem inicial via WhatsApp por meio do redirecionamento automático após
+                o envio do formulário;
               </li>
               <li>
-                Avaliar a aderência do seu perfil profissional aos serviços oferecidos
-                pela Chreos;
+                Avaliar a aderência do seu perfil profissional aos serviços oferecidos pela Chreos;
               </li>
+              <li>Cumprir obrigações legais, regulatórias e contratuais aplicáveis;</li>
               <li>
-                Cumprir obrigações legais, regulatórias e contratuais aplicáveis;
-              </li>
-              <li>
-                Aprimorar o site, os conteúdos, as funcionalidades e a comunicação com
-                advogados e escritórios.
+                Aprimorar o site, os conteúdos, as funcionalidades e a comunicação com advogados e
+                escritórios.
               </li>
             </ul>
           </Block>
 
           <Block number="04" title="Base legal (LGPD)">
             <p>
-              O tratamento dos seus dados pessoais é realizado com fundamento nas
-              seguintes bases legais previstas na Lei nº 13.709/2018:
+              O tratamento dos seus dados pessoais é realizado com fundamento nas seguintes bases
+              legais previstas na Lei nº 13.709/2018:
             </p>
             <ul>
               <li>
-                <strong>Consentimento</strong> do titular ao submeter voluntariamente o
-                formulário de contato;
+                <strong>Consentimento</strong> do titular ao submeter voluntariamente o formulário
+                de contato;
               </li>
               <li>
-                <strong>Execução de procedimentos preliminares relacionados a contrato</strong>{" "}
-                a pedido do titular;
+                <strong>Execução de procedimentos preliminares relacionados a contrato</strong> a
+                pedido do titular;
               </li>
               <li>
-                <strong>Legítimo interesse</strong> da Chreos para apresentar serviços de
-                interesse profissional do destinatário, sempre respeitando seus direitos
-                e liberdades fundamentais.
+                <strong>Legítimo interesse</strong> da Chreos para apresentar serviços de interesse
+                profissional do destinatário, sempre respeitando seus direitos e liberdades
+                fundamentais.
               </li>
             </ul>
           </Block>
 
           <Block number="05" title="Compartilhamento de dados">
             <p>
-              A Chreos não vende e não cede seus dados pessoais a terceiros para fins de
-              marketing. Os dados podem ser compartilhados, de forma estritamente
-              necessária, com:
+              A Chreos não vende e não cede seus dados pessoais a terceiros para fins de marketing.
+              Os dados podem ser compartilhados, de forma estritamente necessária, com:
             </p>
             <ul>
               <li>
-                Provedores de infraestrutura e hospedagem que processam dados em nosso
-                nome (operadores), sob obrigações de confidencialidade;
+                Provedores de infraestrutura e hospedagem que processam dados em nosso nome
+                (operadores), sob obrigações de confidencialidade;
               </li>
               <li>
-                Plataformas de comunicação utilizadas no contato comercial (como
-                WhatsApp), conforme escolha do titular ao enviar o formulário;
+                Plataformas de comunicação utilizadas no contato comercial (como WhatsApp), conforme
+                escolha do titular ao enviar o formulário;
               </li>
               <li>
-                Autoridades públicas, quando exigido por lei, ordem judicial ou
-                requisição regulatória.
+                Autoridades públicas, quando exigido por lei, ordem judicial ou requisição
+                regulatória.
               </li>
             </ul>
           </Block>
 
           <Block number="06" title="Dados de terceiros tratados pela plataforma">
             <p>
-              Além dos dados coletados diretamente dos visitantes deste site, a
-              plataforma Chreos processa informações pessoais referentes a devedores
-              identificados em procedimentos de alienação fiduciária. Esses dados são
-              obtidos exclusivamente a partir de <strong>fontes públicas oficiais</strong>,
-              em especial publicações do Diário Registral e atos de registro praticados
-              por cartórios de registro de imóveis, tornados públicos por força de lei.
+              Além dos dados coletados diretamente dos visitantes deste site, a plataforma Chreos
+              processa informações pessoais referentes a devedores identificados em procedimentos de
+              alienação fiduciária. Esses dados são obtidos exclusivamente a partir de{" "}
+              <strong>fontes públicas oficiais</strong>, em especial publicações do Diário Registral
+              e atos de registro praticados por cartórios de registro de imóveis, tornados públicos
+              por força de lei.
             </p>
 
             <p>
-              <strong>Base legal aplicável.</strong> O tratamento desses dados está
-              fundamentado, conforme o caso, nas seguintes hipóteses do art. 7º da
-              LGPD:
+              <strong>Base legal aplicável.</strong> O tratamento desses dados está fundamentado,
+              conforme o caso, nas seguintes hipóteses do art. 7º da LGPD:
             </p>
             <ul>
               <li>
-                <strong>Art. 7º, IX — legítimo interesse</strong> da Chreos e dos
-                escritórios contratantes na identificação, organização e oferta de
-                assistência jurídica qualificada a pessoas envolvidas em procedimentos
-                de execução extrajudicial de garantia imobiliária, mediante balanceamento
-                permanente com os direitos e liberdades fundamentais dos titulares;
+                <strong>Art. 7º, IX — legítimo interesse</strong> da Chreos e dos escritórios
+                contratantes na identificação, organização e oferta de assistência jurídica
+                qualificada a pessoas envolvidas em procedimentos de execução extrajudicial de
+                garantia imobiliária, mediante balanceamento permanente com os direitos e liberdades
+                fundamentais dos titulares;
               </li>
               <li>
-                <strong>Art. 7º, II — cumprimento de obrigação legal ou regulatória</strong>{" "}
-                pelo escritório contratante, no exercício regular da advocacia
-                disciplinado pela Lei nº 8.906/1994 (Estatuto da OAB) e pelo Código de
-                Ética e Disciplina da OAB;
+                <strong>Art. 7º, II — cumprimento de obrigação legal ou regulatória</strong> pelo
+                escritório contratante, no exercício regular da advocacia disciplinado pela Lei nº
+                8.906/1994 (Estatuto da OAB) e pelo Código de Ética e Disciplina da OAB;
               </li>
               <li>
-                <strong>Art. 7º, VI — exercício regular de direitos</strong> em
-                procedimentos contratuais e administrativos relativos à alienação
-                fiduciária regulada pela Lei nº 9.514/1997.
+                <strong>Art. 7º, VI — exercício regular de direitos</strong> em procedimentos
+                contratuais e administrativos relativos à alienação fiduciária regulada pela Lei nº
+                9.514/1997.
               </li>
             </ul>
             <p>
-              A circunstância de o dado constar de fonte pública não dispensa, por si
-              só, a observância dos princípios da LGPD (art. 7º, §§ 3º e 4º): o
-              tratamento se mantém limitado às finalidades acima, com preservação dos
-              direitos do titular e respeito aos seus interesses legítimos.
+              A circunstância de o dado constar de fonte pública não dispensa, por si só, a
+              observância dos princípios da LGPD (art. 7º, §§ 3º e 4º): o tratamento se mantém
+              limitado às finalidades acima, com preservação dos direitos do titular e respeito aos
+              seus interesses legítimos.
             </p>
 
             <p>
               <strong>Papéis e responsabilidades.</strong> A Chreos atua como{" "}
-              <strong>controladora</strong> em relação à coleta, organização, enriquecimento
-              e disponibilização dos dados de devedores aos escritórios contratantes.
-              A partir do momento em que esses dados são acessados pelo escritório para
-              fins de prospecção, abordagem ou prestação de serviços jurídicos, o
-              escritório passa a atuar como{" "}
-              <strong>controlador independente</strong> daquele tratamento, assumindo,
-              de forma autônoma, todas as obrigações decorrentes da LGPD perante os
-              titulares — incluindo, sem limitação:
+              <strong>controladora</strong> em relação à coleta, organização, enriquecimento e
+              disponibilização dos dados de devedores aos escritórios contratantes. A partir do
+              momento em que esses dados são acessados pelo escritório para fins de prospecção,
+              abordagem ou prestação de serviços jurídicos, o escritório passa a atuar como{" "}
+              <strong>controlador independente</strong> daquele tratamento, assumindo, de forma
+              autônoma, todas as obrigações decorrentes da LGPD perante os titulares — incluindo,
+              sem limitação:
             </p>
             <ul>
+              <li>Fornecimento de informações claras e adequadas sobre o tratamento (art. 9º);</li>
               <li>
-                Fornecimento de informações claras e adequadas sobre o tratamento
-                (art. 9º);
+                Atendimento aos direitos do titular (arts. 17 a 22), inclusive oposição, eliminação
+                e revisão de decisões automatizadas;
               </li>
               <li>
-                Atendimento aos direitos do titular (arts. 17 a 22), inclusive
-                oposição, eliminação e revisão de decisões automatizadas;
+                Adoção de medidas de segurança, sigilo profissional e governança compatíveis com a
+                sensibilidade do contexto (art. 46);
               </li>
               <li>
-                Adoção de medidas de segurança, sigilo profissional e governança
-                compatíveis com a sensibilidade do contexto (art. 46);
-              </li>
-              <li>
-                Comunicação de incidentes de segurança à ANPD e aos titulares, quando
-                aplicável (art. 48).
+                Comunicação de incidentes de segurança à ANPD e aos titulares, quando aplicável
+                (art. 48).
               </li>
             </ul>
             <p>
-              As condições, limites e salvaguardas para o uso dos dados pelos
-              escritórios contratantes — incluindo proibição de revenda,
-              reaproveitamento fora da finalidade contratada e prazos de retenção —
-              estão previstos em <strong>contrato específico</strong> firmado entre a
-              Chreos e cada escritório, com cláusulas expressas de proteção de dados.
+              As condições, limites e salvaguardas para o uso dos dados pelos escritórios
+              contratantes — incluindo proibição de revenda, reaproveitamento fora da finalidade
+              contratada e prazos de retenção — estão previstos em{" "}
+              <strong>contrato específico</strong> firmado entre a Chreos e cada escritório, com
+              cláusulas expressas de proteção de dados.
             </p>
 
             <p>
-              <strong>Direitos dos titulares devedores.</strong> Pessoas cujos dados
-              sejam tratados nesta condição podem, a qualquer momento, exercer perante
-              a Chreos os direitos previstos no art. 18 da LGPD, em especial:
-              confirmação, acesso, correção, anonimização, oposição ao tratamento
-              fundado em legítimo interesse e solicitação de eliminação. Os pedidos
-              podem ser encaminhados pelos canais indicados na seção 10 desta Política
-              e serão respondidos no prazo legal.
+              <strong>Direitos dos titulares devedores.</strong> Pessoas cujos dados sejam tratados
+              nesta condição podem, a qualquer momento, exercer perante a Chreos os direitos
+              previstos no art. 18 da LGPD, em especial: confirmação, acesso, correção,
+              anonimização, oposição ao tratamento fundado em legítimo interesse e solicitação de
+              eliminação. Os pedidos podem ser encaminhados pelos canais indicados na seção 10 desta
+              Política e serão respondidos no prazo legal.
             </p>
-
           </Block>
 
           <Block number="07" title="Armazenamento e segurança">
             <p>
-              Adotamos medidas técnicas e administrativas para proteger seus dados contra
-              acessos não autorizados, perda, destruição ou alteração indevida,
-              incluindo: controle de acesso, criptografia em trânsito, monitoramento de
-              ambientes e políticas internas de tratamento de informações.
+              Adotamos medidas técnicas e administrativas para proteger seus dados contra acessos
+              não autorizados, perda, destruição ou alteração indevida, incluindo: controle de
+              acesso, criptografia em trânsito, monitoramento de ambientes e políticas internas de
+              tratamento de informações.
             </p>
             <p>
-              Os dados serão mantidos pelo tempo necessário ao cumprimento das
-              finalidades para as quais foram coletados ou por prazo superior, se exigido
-              por obrigação legal ou regulatória.
+              Os dados serão mantidos pelo tempo necessário ao cumprimento das finalidades para as
+              quais foram coletados ou por prazo superior, se exigido por obrigação legal ou
+              regulatória.
             </p>
           </Block>
 
           <Block number="08" title="Cookies">
             <p>
-              O site da Chreos pode utilizar cookies e tecnologias similares para
-              funcionamento básico, medição de audiência e melhoria contínua da
-              experiência de navegação. Você pode, a qualquer momento, configurar o seu
-              navegador para bloquear ou alertar sobre o uso de cookies, ciente de que
-              algumas funcionalidades podem deixar de operar corretamente.
+              O site da Chreos pode utilizar cookies e tecnologias similares para funcionamento
+              básico, medição de audiência e melhoria contínua da experiência de navegação. Você
+              pode, a qualquer momento, configurar o seu navegador para bloquear ou alertar sobre o
+              uso de cookies, ciente de que algumas funcionalidades podem deixar de operar
+              corretamente.
             </p>
           </Block>
 
           <Block number="09" title="Direitos do titular">
             <p>
-              Nos termos da LGPD, você pode, a qualquer momento, exercer os seguintes
-              direitos em relação aos seus dados pessoais:
+              Nos termos da LGPD, você pode, a qualquer momento, exercer os seguintes direitos em
+              relação aos seus dados pessoais:
             </p>
             <ul>
               <li>Confirmar a existência de tratamento;</li>
               <li>Acessar os dados;</li>
               <li>Corrigir dados incompletos, inexatos ou desatualizados;</li>
               <li>
-                Solicitar a anonimização, bloqueio ou eliminação de dados desnecessários,
-                excessivos ou tratados em desconformidade com a lei;
+                Solicitar a anonimização, bloqueio ou eliminação de dados desnecessários, excessivos
+                ou tratados em desconformidade com a lei;
+              </li>
+              <li>Solicitar a portabilidade dos dados a outro fornecedor de serviço ou produto;</li>
+              <li>Solicitar a eliminação dos dados tratados com base no seu consentimento;</li>
+              <li>
+                Obter informação sobre as entidades públicas e privadas com as quais houve uso
+                compartilhado de dados;
               </li>
               <li>
-                Solicitar a portabilidade dos dados a outro fornecedor de serviço ou
-                produto;
-              </li>
-              <li>
-                Solicitar a eliminação dos dados tratados com base no seu consentimento;
-              </li>
-              <li>
-                Obter informação sobre as entidades públicas e privadas com as quais
-                houve uso compartilhado de dados;
-              </li>
-              <li>
-                Ser informado sobre a possibilidade de não fornecer consentimento e sobre
-                as consequências da negativa;
+                Ser informado sobre a possibilidade de não fornecer consentimento e sobre as
+                consequências da negativa;
               </li>
               <li>Revogar o consentimento.</li>
             </ul>
@@ -320,9 +301,9 @@ export default function Privacy() {
 
           <Block number="10" title="Contato do encarregado">
             <p>
-              Para exercer os direitos descritos acima, esclarecer dúvidas ou apresentar
-              reclamações sobre o tratamento dos seus dados pessoais, entre em contato
-              conosco por meio do formulário disponível na página inicial, na seção{" "}
+              Para exercer os direitos descritos acima, esclarecer dúvidas ou apresentar reclamações
+              sobre o tratamento dos seus dados pessoais, entre em contato conosco por meio do
+              formulário disponível na página inicial, na seção{" "}
               <a href={HOME_ACESSO} className="font-semibold underline">
                 Acesso
               </a>
@@ -332,10 +313,10 @@ export default function Privacy() {
 
           <Block number="11" title="Alterações desta política">
             <p>
-              Esta Política de Privacidade poderá ser atualizada a qualquer tempo para
-              refletir mudanças regulatórias, técnicas ou de negócio. A versão vigente
-              estará sempre disponível nesta página, com indicação da data da última
-              atualização no topo do documento.
+              Esta Política de Privacidade poderá ser atualizada a qualquer tempo para refletir
+              mudanças regulatórias, técnicas ou de negócio. A versão vigente estará sempre
+              disponível nesta página, com indicação da data da última atualização no topo do
+              documento.
             </p>
           </Block>
         </div>

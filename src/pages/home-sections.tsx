@@ -57,8 +57,8 @@ export default function HomeSections() {
               </div>
               <div className="hidden max-w-xs text-right md:block">
                 <p className="text-sm leading-relaxed text-[#0f1c2c]/50">
-                  Enquanto seu escritório atende os casos de hoje, já estamos montando a fila
-                  de clientes de amanhã — com nome, contato e urgência documentada.
+                  Enquanto seu escritório atende os casos de hoje, já estamos montando a fila de
+                  clientes de amanhã — com nome, contato e urgência documentada.
                 </p>
               </div>
             </motion.div>
@@ -265,8 +265,8 @@ export default function HomeSections() {
               {/* Right column — info */}
               <div className="flex flex-col justify-between gap-6 lg:col-span-2">
                 <div className="text-base leading-relaxed text-[#fcf9f3]/60">
-                  Cada lead que entregamos já tem tudo o que o seu escritório precisa para dar
-                  o primeiro passo. Sem pesquisa extra. Sem tempo perdido. Só chegar e conversar.
+                  Cada lead que entregamos já tem tudo o que o seu escritório precisa para dar o
+                  primeiro passo. Sem pesquisa extra. Sem tempo perdido. Só chegar e conversar.
                 </div>
                 <div className="space-y-0">
                   {LEAD_FEATURES.map((item, i) => (
@@ -386,9 +386,9 @@ export default function HomeSections() {
                   ela está pronta para contratar um advogado.
                 </p>
                 <p className="mb-10 text-base leading-relaxed text-[#fcf9f3]/65 md:text-lg">
-                  Rastreamos quantas vezes uma pessoa já foi notificada sobre o mesmo imóvel.
-                  Com isso, seu escritório pode focar exatamente nos leads com maior urgência — quem
-                  já tentou resolver e não conseguiu, e agora precisa de ajuda de verdade.
+                  Rastreamos quantas vezes uma pessoa já foi notificada sobre o mesmo imóvel. Com
+                  isso, seu escritório pode focar exatamente nos leads com maior urgência — quem já
+                  tentou resolver e não conseguiu, e agora precisa de ajuda de verdade.
                 </p>
                 <div className="bg-[#16263b] p-6">
                   <div className="mb-4 text-[9px] font-bold tracking-[0.25em] text-[#fcf9f3]/55 uppercase">
@@ -569,9 +569,8 @@ export default function HomeSections() {
               com quem <em>precisa de você.</em>
             </h2>
             <p className="mb-10 max-w-md text-base leading-relaxed text-[#fcf9f3]/55">
-              Preencha o formulário ao lado e agende uma conversa conosco. Vamos mostrar
-              leads reais da sua região e explicar como podemos trabalhar com o seu
-              escritório.
+              Preencha o formulário ao lado e agende uma conversa conosco. Vamos mostrar leads reais
+              da sua região e explicar como podemos trabalhar com o seu escritório.
             </p>
             <div className="space-y-5">
               {CTA_BULLETS.map((item, i) => (
@@ -617,17 +616,10 @@ export default function HomeSections() {
               </div>
             </div>
             <div className="flex gap-8 text-xs tracking-[0.15em] text-[#fcf9f3]/35 uppercase">
-              
-              <Link
-                href="/privacidade"
-                className="transition-colors hover:text-[#fcf9f3]/70"
-              >
+              <Link href="/privacidade" className="transition-colors hover:text-[#fcf9f3]/70">
                 Privacidade
               </Link>
-              <a
-                href="#acesso"
-                className="transition-colors hover:text-[#fcf9f3]/70"
-              >
+              <a href="#acesso" className="transition-colors hover:text-[#fcf9f3]/70">
                 Contato
               </a>
             </div>
