@@ -9,7 +9,7 @@ function LiveTicker() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex(i => (i + 1) % TICKER_ITEMS.length);
+      setIndex((i) => (i + 1) % TICKER_ITEMS.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
@@ -17,13 +17,18 @@ function LiveTicker() {
   const item = TICKER_ITEMS[index];
 
   return (
-    <div className="bg-[#0a1520] border-l-4 border-[#C9A84C] p-5 font-mono text-xs" style={{ borderRadius: 0 }}>
-      <div className="flex items-center gap-3 mb-3 flex-shrink-0">
+    <div
+      className="border-l-4 border-[#C9A84C] bg-[#0a1520] p-5 font-mono text-xs"
+      style={{ borderRadius: 0 }}
+    >
+      <div className="mb-3 flex flex-shrink-0 items-center gap-3">
         <span className="inline-flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 bg-[#C9A84C] rounded-full animate-pulse" />
-          <span className="text-[#C9A84C] uppercase tracking-widest text-[10px] font-bold">Edital Capturado</span>
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#C9A84C]" />
+          <span className="text-[10px] font-bold tracking-widest text-[#C9A84C] uppercase">
+            Edital Capturado
+          </span>
         </span>
-        <span className="text-white/20 text-[10px]">DIÁRIO REGISTRAL — AO VIVO</span>
+        <span className="text-[10px] text-white/20">DIÁRIO REGISTRAL — AO VIVO</span>
       </div>
       <div style={{ height: 80, overflow: "hidden", position: "relative" }}>
         <AnimatePresence mode="wait">
@@ -37,28 +42,36 @@ function LiveTicker() {
             style={{ position: "absolute", inset: 0 }}
           >
             <div className="min-w-0">
-              <div className="text-white/30 text-[9px] uppercase tracking-widest mb-0.5">Devedor</div>
-              <div className="text-white/90 truncate">{item.devedor}</div>
+              <div className="mb-0.5 text-[9px] tracking-widest text-white/30 uppercase">
+                Devedor
+              </div>
+              <div className="truncate text-white/90">{item.devedor}</div>
             </div>
             <div className="min-w-0">
-              <div className="text-white/30 text-[9px] uppercase tracking-widest mb-0.5">Valor</div>
-              <div className="text-[#e6c364] truncate">{item.valor}</div>
+              <div className="mb-0.5 text-[9px] tracking-widest text-white/30 uppercase">Valor</div>
+              <div className="truncate text-[#e6c364]">{item.valor}</div>
             </div>
             <div className="min-w-0">
-              <div className="text-white/30 text-[9px] uppercase tracking-widest mb-0.5">Credor</div>
-              <div className="text-white/90 truncate">{item.credor}</div>
+              <div className="mb-0.5 text-[9px] tracking-widest text-white/30 uppercase">
+                Credor
+              </div>
+              <div className="truncate text-white/90">{item.credor}</div>
             </div>
             <div className="min-w-0">
-              <div className="text-white/30 text-[9px] uppercase tracking-widest mb-0.5">Matrícula</div>
-              <div className="text-white/70 truncate">{item.matricula}</div>
+              <div className="mb-0.5 text-[9px] tracking-widest text-white/30 uppercase">
+                Matrícula
+              </div>
+              <div className="truncate text-white/70">{item.matricula}</div>
             </div>
             <div className="min-w-0">
-              <div className="text-white/30 text-[9px] uppercase tracking-widest mb-0.5">Cartório</div>
-              <div className="text-white/70 truncate">{item.cartorio}</div>
+              <div className="mb-0.5 text-[9px] tracking-widest text-white/30 uppercase">
+                Cartório
+              </div>
+              <div className="truncate text-white/70">{item.cartorio}</div>
             </div>
             <div className="min-w-0">
-              <div className="text-white/30 text-[9px] uppercase tracking-widest mb-0.5">UF</div>
-              <div className="text-white/70 truncate">{item.estado}</div>
+              <div className="mb-0.5 text-[9px] tracking-widest text-white/30 uppercase">UF</div>
+              <div className="truncate text-white/70">{item.estado}</div>
             </div>
           </motion.div>
         </AnimatePresence>
@@ -89,37 +102,78 @@ function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
     return () => cancelAnimationFrame(rafId);
   }, [inView, to]);
 
-  return <span ref={ref}>{count.toLocaleString("pt-BR")}{suffix}</span>;
+  return (
+    <span ref={ref}>
+      {count.toLocaleString("pt-BR")}
+      {suffix}
+    </span>
+  );
 }
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } }
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.9,
+      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+    },
+  },
 };
 
 const stagger = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } }
+  visible: { transition: { staggerChildren: 0.12 } },
 };
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#fcf9f3] text-[#0f1c2c] selection:bg-[#0f1c2c] selection:text-[#fcf9f3]" style={{ fontFamily: "'Inter Variable', sans-serif" }}>
-
+    <div
+      className="min-h-screen bg-[#fcf9f3] text-[#0f1c2c] selection:bg-[#0f1c2c] selection:text-[#fcf9f3]"
+      style={{ fontFamily: "'Inter Variable', sans-serif" }}
+    >
       {/* NAV */}
-      <nav className="fixed top-0 left-0 right-0 z-50" style={{ background: "rgba(15,28,44,0.92)", backdropFilter: "blur(16px)", willChange: "transform" }}>
-        <div className="max-w-7xl mx-auto px-6 md:px-10 h-20 md:h-24 flex items-center justify-between">
-          <div style={{ fontFamily: "'Newsreader Variable', serif" }} className="text-[#fcf9f3] font-semibold text-4xl md:text-5xl tracking-tight">
+      <nav
+        className="fixed top-0 right-0 left-0 z-50"
+        style={{
+          background: "rgba(15,28,44,0.92)",
+          backdropFilter: "blur(16px)",
+          willChange: "transform",
+        }}
+      >
+        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:h-24 md:px-10">
+          <div
+            style={{ fontFamily: "'Newsreader Variable', serif" }}
+            className="text-4xl font-semibold tracking-tight text-[#fcf9f3] md:text-5xl"
+          >
             Chreos
           </div>
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#mecanismo" className="text-[#fcf9f3]/60 text-xs uppercase tracking-[0.15em] hover:text-[#fcf9f3] transition-colors">Como Funciona</a>
-            <a href="#inteligencia" className="text-[#fcf9f3]/60 text-xs uppercase tracking-[0.15em] hover:text-[#fcf9f3] transition-colors">Seus Leads</a>
-            <a href="#filtros" className="text-[#fcf9f3]/60 text-xs uppercase tracking-[0.15em] hover:text-[#fcf9f3] transition-colors">Personalização</a>
+          <div className="hidden items-center gap-8 md:flex">
+            <a
+              href="#mecanismo"
+              className="text-xs tracking-[0.15em] text-[#fcf9f3]/60 uppercase transition-colors hover:text-[#fcf9f3]"
+            >
+              Como Funciona
+            </a>
+            <a
+              href="#inteligencia"
+              className="text-xs tracking-[0.15em] text-[#fcf9f3]/60 uppercase transition-colors hover:text-[#fcf9f3]"
+            >
+              Seus Leads
+            </a>
+            <a
+              href="#filtros"
+              className="text-xs tracking-[0.15em] text-[#fcf9f3]/60 uppercase transition-colors hover:text-[#fcf9f3]"
+            >
+              Personalização
+            </a>
             <a
               href="#acesso"
-              className="text-[#0f1c2c] text-xs uppercase tracking-[0.15em] font-bold px-5 py-2.5 hover:opacity-90 transition-opacity"
-              style={{ background: "linear-gradient(135deg, #C9A84C 0%, #e6c364 100%)" }}
+              className="px-5 py-2.5 text-xs font-bold tracking-[0.15em] text-[#0f1c2c] uppercase transition-opacity hover:opacity-90"
+              style={{
+                background: "linear-gradient(135deg, #C9A84C 0%, #e6c364 100%)",
+              }}
               data-testid="link-nav-acesso"
             >
               Solicitar Acesso
@@ -129,20 +183,27 @@ export default function Home() {
       </nav>
 
       {/* HERO — full bleed dark navy */}
-      <section className="relative min-h-screen bg-[#0f1c2c] overflow-hidden flex flex-col justify-end">
+      <section className="relative flex min-h-screen flex-col justify-end overflow-hidden bg-[#0f1c2c]">
         {/* Background grid texture */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: "repeating-linear-gradient(0deg, #fcf9f3 0px, #fcf9f3 1px, transparent 1px, transparent 60px), repeating-linear-gradient(90deg, #fcf9f3 0px, #fcf9f3 1px, transparent 1px, transparent 60px)"
-        }} />
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(0deg, #fcf9f3 0px, #fcf9f3 1px, transparent 1px, transparent 60px), repeating-linear-gradient(90deg, #fcf9f3 0px, #fcf9f3 1px, transparent 1px, transparent 60px)",
+          }}
+        />
 
         {/* Large background text */}
-        <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 overflow-hidden select-none pointer-events-none">
-          <div className="text-[#fcf9f3]/[0.025] font-serif text-[18vw] leading-none font-bold whitespace-nowrap pl-4" style={{ fontFamily: "'Newsreader Variable', serif" }}>
+        <div className="pointer-events-none absolute top-1/2 right-0 left-0 -translate-y-1/2 overflow-hidden select-none">
+          <div
+            className="pl-4 font-serif text-[18vw] leading-none font-bold whitespace-nowrap text-[#fcf9f3]/[0.025]"
+            style={{ fontFamily: "'Newsreader Variable', serif" }}
+          >
             CHREOS
           </div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pb-16 pt-36 w-full">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-36 pb-16 md:px-10">
           <motion.div initial="hidden" animate="visible" variants={stagger}>
             {/* <motion.div variants={fadeUp} className="flex items-center gap-4 mb-10">
               <span className="w-1.5 h-1.5 bg-[#C9A84C] rounded-full animate-pulse" />
@@ -151,34 +212,44 @@ export default function Home() {
 
             <motion.h1
               variants={fadeUp}
-              className="text-[#fcf9f3] leading-[0.95] tracking-[-0.02em] mb-10"
-              style={{ fontFamily: "'Newsreader Variable', serif", fontSize: "clamp(3.2rem, 8vw, 7.5rem)" }}
+              className="mb-10 leading-[0.95] tracking-[-0.02em] text-[#fcf9f3]"
+              style={{
+                fontFamily: "'Newsreader Variable', serif",
+                fontSize: "clamp(3.2rem, 8vw, 7.5rem)",
+              }}
             >
-              Pare de esperar<br />
-              por clientes.<br />
-              Alcance-os no<br />
+              Pare de esperar
+              <br />
+              por clientes.
+              <br />
+              Alcance-os no
+              <br />
               momento <em style={{ fontStyle: "italic", color: "#e6c364" }}>exato.</em>
             </motion.h1>
 
-            <motion.div variants={fadeUp} className="grid md:grid-cols-2 gap-6 mb-10 max-w-3xl">
-              <p className="text-[#fcf9f3]/60 text-base leading-relaxed">
-                A Chreos identifica automaticamente pessoas que estão prestes a perder um imóvel e entrega para o seu escritório o nome, telefone e WhatsApp delas — antes que qualquer concorrente saiba que esse cliente existe.
+            <motion.div variants={fadeUp} className="mb-10 grid max-w-3xl gap-6 md:grid-cols-2">
+              <p className="text-base leading-relaxed text-[#fcf9f3]/60">
+                Identificamos automaticamente pessoas que estão prestes a perder um imóvel e
+                entregamos ao seu escritório o nome, telefone e WhatsApp delas — antes que qualquer
+                concorrente saiba que esse cliente existe.
               </p>
               <LiveTicker />
             </motion.div>
 
-            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3">
+            <motion.div variants={fadeUp} className="flex flex-col gap-3 sm:flex-row">
               <a
                 href="#acesso"
-                className="inline-flex items-center gap-2 text-[#0f1c2c] text-xs uppercase tracking-[0.2em] font-bold px-7 py-4 hover:opacity-90 transition-opacity"
-                style={{ background: "linear-gradient(135deg, #C9A84C 0%, #e6c364 100%)" }}
+                className="inline-flex items-center gap-2 px-7 py-4 text-xs font-bold tracking-[0.2em] text-[#0f1c2c] uppercase transition-opacity hover:opacity-90"
+                style={{
+                  background: "linear-gradient(135deg, #C9A84C 0%, #e6c364 100%)",
+                }}
                 data-testid="button-hero-cta"
               >
                 Solicitar Acesso Restrito <ArrowRight size={14} />
               </a>
               <a
                 href="#mecanismo"
-                className="inline-flex items-center gap-2 text-[#fcf9f3]/70 text-xs uppercase tracking-[0.2em] font-bold px-7 py-4 border border-[#fcf9f3]/10 hover:border-[#fcf9f3]/30 transition-colors"
+                className="inline-flex items-center gap-2 border border-[#fcf9f3]/10 px-7 py-4 text-xs font-bold tracking-[0.2em] text-[#fcf9f3]/70 uppercase transition-colors hover:border-[#fcf9f3]/30"
                 data-testid="button-hero-secondary"
               >
                 Ver Metodologia
@@ -189,13 +260,18 @@ export default function Home() {
 
         {/* Stats strip */}
         <div className="relative z-10 border-t border-[#fcf9f3]/10 bg-[#0a1520]">
-          <div className="max-w-7xl mx-auto px-6 md:px-10 py-6 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x md:divide-[#fcf9f3]/10">
+          <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 py-6 md:grid-cols-4 md:gap-0 md:divide-x md:divide-[#fcf9f3]/10 md:px-10">
             {STATS.map((s, i) => (
-              <div key={i} className="md:px-8 first:pl-0">
-                <div className="text-[#e6c364] font-mono font-bold" style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)" }}>
+              <div key={i} className="first:pl-0 md:px-8">
+                <div
+                  className="font-mono font-bold text-[#e6c364]"
+                  style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)" }}
+                >
                   <CountUp to={s.n} suffix={s.suf} />
                 </div>
-                <div className="text-[#fcf9f3]/40 text-[10px] uppercase tracking-[0.15em] mt-1">{s.label}</div>
+                <div className="mt-1 text-[10px] tracking-[0.15em] text-[#fcf9f3]/40 uppercase">
+                  {s.label}
+                </div>
               </div>
             ))}
           </div>

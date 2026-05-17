@@ -1,17 +1,59 @@
 export const TICKER_ITEMS = [
-  { matricula: "84.992", cartorio: "4º CRI São Paulo",       devedor: "C. E. Mendes",    valor: "R$ 142.850", credor: "Itaú S.A.",      estado: "SP" },
-  { matricula: "31.774", cartorio: "2º CRI Curitiba",        devedor: "M. R. Carvalho",  valor: "R$ 298.000", credor: "Bradesco",       estado: "PR" },
-  { matricula: "56.120", cartorio: "1º CRI Belo Horizonte",  devedor: "F. L. Assis",     valor: "R$ 187.440", credor: "Caixa Econômica",estado: "MG" },
-  { matricula: "12.331", cartorio: "3º CRI Porto Alegre",    devedor: "G. S. Motta",     valor: "R$ 412.900", credor: "Santander",      estado: "RS" },
-  { matricula: "79.882", cartorio: "5º CRI Rio de Janeiro",  devedor: "A. T. Ferreira",  valor: "R$ 533.700", credor: "Itaú S.A.",      estado: "RJ" },
-  { matricula: "22.045", cartorio: "1º CRI Fortaleza",       devedor: "P. B. Nogueira",  valor: "R$ 95.200",  credor: "Bradesco",       estado: "CE" },
+  {
+    matricula: "84.992",
+    cartorio: "4º CRI São Paulo",
+    devedor: "C. E. Mendes",
+    valor: "R$ 142.850",
+    credor: "Itaú S.A.",
+    estado: "SP",
+  },
+  {
+    matricula: "31.774",
+    cartorio: "2º CRI Curitiba",
+    devedor: "M. R. Carvalho",
+    valor: "R$ 298.000",
+    credor: "Bradesco",
+    estado: "PR",
+  },
+  {
+    matricula: "56.120",
+    cartorio: "1º CRI Belo Horizonte",
+    devedor: "F. L. Assis",
+    valor: "R$ 187.440",
+    credor: "Caixa Econômica",
+    estado: "MG",
+  },
+  {
+    matricula: "12.331",
+    cartorio: "3º CRI Porto Alegre",
+    devedor: "G. S. Motta",
+    valor: "R$ 412.900",
+    credor: "Santander",
+    estado: "RS",
+  },
+  {
+    matricula: "79.882",
+    cartorio: "5º CRI Rio de Janeiro",
+    devedor: "A. T. Ferreira",
+    valor: "R$ 533.700",
+    credor: "Itaú S.A.",
+    estado: "RJ",
+  },
+  {
+    matricula: "22.045",
+    cartorio: "1º CRI Fortaleza",
+    devedor: "P. B. Nogueira",
+    valor: "R$ 95.200",
+    credor: "Bradesco",
+    estado: "CE",
+  },
 ];
 
 export const STATS = [
-  { n: 3847, suf: "",  label: "Editais processados por semana" },
-  { n: 214,  suf: "+", label: "Escritórios atendidos" },
-  { n: 27,   suf: "",  label: "Estados monitorados" },
-  { n: 92,   suf: "%", label: "Leads com contato enriquecido" },
+  { n: 3847, suf: "", label: "Editais processados por semana" },
+  { n: 214, suf: "+", label: "Escritórios atendidos" },
+  { n: 27, suf: "", label: "Estados monitorados" },
+  { n: 92, suf: "%", label: "Leads com contato enriquecido" },
 ];
 
 export const STEPS = [
@@ -20,7 +62,7 @@ export const STEPS = [
     tag: "DETECÇÃO",
     title: "Identificamos quem vai perder o imóvel",
     sub: "Monitoramento automático",
-    body: "A Chreos monitora diariamente as publicações oficiais do registro de imóveis e detecta automaticamente as pessoas que estão inadimplentes e com risco real de perder sua propriedade.",
+    body: "Monitoramos diariamente as publicações oficiais do registro de imóveis e detectamos automaticamente as pessoas que estão inadimplentes e com risco real de perder sua propriedade.",
   },
   {
     n: "II",
@@ -82,9 +124,27 @@ export const FILTERS = [
 ];
 
 export const TIMELINE = [
-  { n: "01", date: "14 Mar 2024", label: "1ª Intimação", note: "Devedor notificado pela primeira vez.", cold: true },
-  { n: "02", date: "02 Ago 2024", label: "2ª Intimação", note: "Segunda notificação sobre o mesmo imóvel.",    cold: true },
-  { n: "03", date: "18 Jan 2025", label: "3ª Intimação", note: "Situação crítica, prazo de 15 dias para purgar a mora. Lead classificado como Alta Urgência.",  cold: false },
+  {
+    n: "01",
+    date: "14 Mar 2024",
+    label: "1ª Intimação",
+    note: "Devedor notificado pela primeira vez.",
+    cold: true,
+  },
+  {
+    n: "02",
+    date: "02 Ago 2024",
+    label: "2ª Intimação",
+    note: "Segunda notificação sobre o mesmo imóvel.",
+    cold: true,
+  },
+  {
+    n: "03",
+    date: "18 Jan 2025",
+    label: "3ª Intimação",
+    note: "Situação crítica, prazo de 15 dias para purgar a mora. Lead classificado como Alta Urgência.",
+    cold: false,
+  },
 ];
 
 export const TESTIMONIALS = [
@@ -96,7 +156,8 @@ export const TESTIMONIALS = [
   //   stat: "−74% CAC",
   // },
   {
-    quote: "A funcionalidade de reincidência mudou completamente nossa tese comercial. Hoje abordamos o devedor quando ele já esgotou todas as opções administrativas.",
+    quote:
+      "A funcionalidade de reincidência mudou completamente nossa tese comercial. Hoje abordamos o devedor quando ele já esgotou todas as opções administrativas.",
     author: "Dra. Helena Valente",
     firm: "Valente Imobiliário",
     location: "Curitiba, PR",
@@ -110,7 +171,8 @@ export const TESTIMONIALS = [
   //   stat: "2× faturamento",
   // },
   {
-    quote: "O filtro por faixa de dívida nos permitiu focar em imóveis de alto padrão. Triplicamos o ticket médio dos nossos casos em 4 meses.",
+    quote:
+      "O filtro por faixa de dívida nos permitiu focar em imóveis de alto padrão. Triplicamos o ticket médio dos nossos casos em 4 meses.",
     author: "Dra. Camila Reys",
     firm: "Reys & Figueiredo",
     location: "Rio de Janeiro, RJ",

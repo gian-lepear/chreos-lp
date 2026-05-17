@@ -50,17 +50,17 @@
 }
 
 :root {
-  --button-outline: rgba(15,28,44, .10);
-  --badge-outline: rgba(15,28,44, .05);
+  --button-outline: rgba(15, 28, 44, 0.1);
+  --badge-outline: rgba(15, 28, 44, 0.05);
 
   --opaque-button-border-intensity: -8;
 
-  --elevate-1: rgba(15,28,44, .03);
-  --elevate-2: rgba(15,28,44, .08);
+  --elevate-1: rgba(15, 28, 44, 0.03);
+  --elevate-2: rgba(15, 28, 44, 0.08);
 
   --background: 40 43% 97%; /* #fcf9f3 */
   --foreground: 213 49% 12%; /* #0f1c2c */
-  
+
   --border: 40 33% 95%; /* #f6f3ed */
 
   --card: 40 33% 95%; /* #f6f3ed */
@@ -89,20 +89,20 @@
   --input: 40 23% 90%;
   --ring: 213 49% 12%;
 
-  --app-font-sans: 'Inter Variable', sans-serif;
-  --app-font-serif: 'Newsreader Variable', serif;
+  --app-font-sans: "Inter Variable", sans-serif;
+  --app-font-serif: "Newsreader Variable", serif;
   --app-font-mono: Menlo, monospace;
-  
-  --radius: 0px; 
+
+  --radius: 0px;
 }
 
 .dark {
   /* Using same values for dark mode since design requested a specific sober aesthetic primarily on off-white */
   --background: 213 49% 12%; /* Navy */
   --foreground: 40 43% 97%;
-  
+
   --border: 213 40% 20%;
-  
+
   --card: 213 45% 15%;
   --card-foreground: 40 43% 97%;
   --card-border: 213 45% 15%;
@@ -136,15 +136,15 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
   }
 }
 
 .gold-gradient {
-  background: linear-gradient(135deg, #C9A84C 0%, #e6c364 100%);
+  background: linear-gradient(135deg, #c9a84c 0%, #e6c364 100%);
 }
 .text-gold-gradient {
-  background: linear-gradient(135deg, #C9A84C 0%, #e6c364 100%);
+  background: linear-gradient(135deg, #c9a84c 0%, #e6c364 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

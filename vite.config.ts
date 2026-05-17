@@ -18,7 +18,11 @@ const criticalCssPlugin = {
     const outDir = path.resolve(import.meta.dirname, "dist/public");
     const indexPath = path.join(outDir, "index.html");
     const html = await fs.readFile(indexPath, "utf-8");
-    const beasties = new Beasties({ path: outDir, publicPath: basePath, pruneSource: false });
+    const beasties = new Beasties({
+      path: outDir,
+      publicPath: basePath,
+      pruneSource: false,
+    });
     const processed = await beasties.process(html);
     await fs.writeFile(indexPath, processed);
   },
@@ -62,12 +66,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     base: basePath,
-    plugins: [
-      react(),
-      tailwindcss(),
-      seoPlugin(env),
-      criticalCssPlugin,
-    ],
+    plugins: [react(), tailwindcss(), seoPlugin(env), criticalCssPlugin],
     resolve: {
       alias: {
         "@": path.resolve(import.meta.dirname, "src"),
