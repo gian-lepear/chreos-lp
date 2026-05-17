@@ -1,16 +1,4 @@
-<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-	<rect width="180" height="180" rx="36" fill="#0F1C2C"/>
-	<text
-		x="50%"
-		y="54%"
-		text-anchor="middle"
-		dominant-baseline="middle"
-		font-family="Inter, Arial, sans-serif"
-		font-size="32"
-		font-weight="700"
-		letter-spacing="0.5"
-		fill="#E6C364"
-	>
-		Chreos
-	</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <rect width="48" height="48" rx="7.68" fill="#0f1c2c"/>
+  <path d="M706 20 532 -320H651V-426H25V-320H140L541 460L401 832Q361 939 341 954Q299 985 283 985Q223 985 195 956Q166 926 160 858H66V1061Q116 1076 165 1084Q215 1092 262 1092Q322 1092 393 1046Q456 1005 504 877L610 595L795 955H692V1062H1302V955H1187L775 154L907 -195Q948 -303 967 -317Q1009 -348 1025 -348Q1085 -348 1113 -319Q1142 -289 1148 -221H1242V-424Q1192 -439 1143 -447Q1093 -455 1046 -455Q986 -455 915 -409Q852 -368 804 -240Z" fill="#C9A84C" transform="translate(9.589 30.918) scale(0.02172 -0.02172)"/>
 </svg>
