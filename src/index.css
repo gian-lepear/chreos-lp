@@ -4,6 +4,19 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  /* Brand palette — single source of truth (see CLAUDE.md design system) */
+  --color-navy: #0f1c2c;
+  --color-navy-deep: #0a1520;
+  --color-navy-raised: #16263b;
+  --color-navy-hover: #1d3248;
+  --color-cream: #fcf9f3;
+  --color-cream-dim: #f6f3ed;
+  --color-cream-shade: #ebe8e2;
+  --color-gold: #c9a84c;
+  --color-gold-light: #e6c364;
+}
+
 @theme inline {
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -50,6 +63,10 @@
 }
 
 :root {
+  --gold-gradient: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
+  --gold-gradient-v: linear-gradient(180deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
+  --gold-gradient-h: linear-gradient(90deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
+
   --button-outline: rgba(15, 28, 44, 0.1);
   --badge-outline: rgba(15, 28, 44, 0.05);
 
@@ -145,10 +162,16 @@
 }
 
 .gold-gradient {
-  background: linear-gradient(135deg, #c9a84c 0%, #e6c364 100%);
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
+}
+.gold-gradient-v {
+  background: linear-gradient(180deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
+}
+.gold-gradient-h {
+  background: linear-gradient(90deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
 }
 .text-gold-gradient {
-  background: linear-gradient(135deg, #c9a84c 0%, #e6c364 100%);
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

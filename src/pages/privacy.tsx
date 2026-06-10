@@ -8,7 +8,7 @@ const HOME_ACESSO = `${import.meta.env.BASE_URL}#acesso`;
 export default function Privacy() {
   return (
     <div
-      className="min-h-screen bg-[#fcf9f3] text-[#0f1c2c]"
+      className="min-h-screen bg-cream text-navy"
       style={{ fontFamily: "'Inter Variable', sans-serif" }}
     >
       {/* NAV */}
@@ -24,14 +24,14 @@ export default function Privacy() {
             href="/"
             onClick={() => window.scrollTo({ top: 0, behavior: "auto" })}
             style={{ fontFamily: "'Newsreader Variable', serif" }}
-            className="text-4xl font-semibold tracking-tight text-[#fcf9f3] md:text-5xl"
+            className="text-4xl font-semibold tracking-tight text-cream md:text-5xl"
           >
             Chreos
           </Link>
           <Link
             href="/"
             onClick={() => window.scrollTo({ top: 0, behavior: "auto" })}
-            className="inline-flex items-center gap-2 text-xs tracking-[0.15em] text-[#fcf9f3]/60 uppercase transition-colors hover:text-[#fcf9f3]"
+            className="inline-flex items-center gap-2 text-xs tracking-[0.15em] text-cream/60 uppercase transition-colors hover:text-cream"
           >
             <ArrowLeft size={14} />
             Voltar
@@ -40,13 +40,13 @@ export default function Privacy() {
       </nav>
 
       {/* HEADER */}
-      <section className="bg-[#0f1c2c] px-6 pt-40 pb-20 md:px-10">
+      <section className="bg-navy px-6 pt-40 pb-20 md:px-10">
         <div className="mx-auto max-w-4xl">
-          <div className="mb-8 text-[10px] font-bold tracking-[0.3em] text-[#fcf9f3]/55 uppercase">
+          <div className="mb-8 text-[10px] font-bold tracking-[0.3em] text-cream/55 uppercase">
             Documento Legal
           </div>
           <h1
-            className="mb-6 leading-tight text-[#fcf9f3]"
+            className="mb-6 leading-tight text-cream"
             style={{
               fontFamily: "'Newsreader Variable', serif",
               fontSize: "clamp(2.4rem, 5vw, 4.5rem)",
@@ -54,12 +54,12 @@ export default function Privacy() {
           >
             Política de <em>Privacidade</em>
           </h1>
-          <p className="max-w-2xl text-base leading-relaxed text-[#fcf9f3]/55">
+          <p className="max-w-2xl text-base leading-relaxed text-cream/55">
             Como a Chreos coleta, utiliza e protege os dados pessoais dos visitantes e advogados que
             solicitam acesso à plataforma, em conformidade com a Lei Geral de Proteção de Dados (Lei
             nº 13.709/2018).
           </p>
-          <div className="mt-10 font-mono text-[10px] tracking-[0.2em] text-[#fcf9f3]/40 uppercase">
+          <div className="mt-10 font-mono text-[10px] tracking-[0.2em] text-cream/40 uppercase">
             Última atualização: {LAST_UPDATE}
           </div>
         </div>
@@ -323,31 +323,31 @@ export default function Privacy() {
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-[#0a1520] px-6 py-12 md:px-10">
+      <footer className="bg-navy-deep px-6 py-12 md:px-10">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col items-start justify-between gap-8 border-b border-[#fcf9f3]/10 pb-10 md:flex-row md:items-end">
+          <div className="flex flex-col items-start justify-between gap-8 border-b border-cream/10 pb-10 md:flex-row md:items-end">
             <div>
               <div
-                className="mb-1 text-xl font-semibold tracking-tight text-[#fcf9f3]"
+                className="mb-1 text-xl font-semibold tracking-tight text-cream"
                 style={{ fontFamily: "'Newsreader Variable', serif" }}
               >
                 Chreos
               </div>
-              <div className="text-xs tracking-widest text-[#fcf9f3]/35 uppercase">
+              <div className="text-xs tracking-widest text-cream/35 uppercase">
                 Leads quentes para advogados
               </div>
             </div>
-            <div className="flex gap-8 text-xs tracking-[0.15em] text-[#fcf9f3]/35 uppercase">
-              <Link href="/privacidade" className="transition-colors hover:text-[#fcf9f3]/70">
+            <div className="flex gap-8 text-xs tracking-[0.15em] text-cream/35 uppercase">
+              <Link href="/privacidade" className="transition-colors hover:text-cream/70">
                 Privacidade
               </Link>
-              <a href="#acesso" className="transition-colors hover:text-[#fcf9f3]/70">
+              <a href="#acesso" className="transition-colors hover:text-cream/70">
                 Contato
               </a>
             </div>
           </div>
           <div className="flex items-center justify-between pt-6">
-            <div className="text-[10px] tracking-[0.2em] text-[#fcf9f3]/50 uppercase">
+            <div className="text-[10px] tracking-[0.2em] text-cream/50 uppercase">
               © {YEAR} Chreos. Todos os direitos reservados.
             </div>
           </div>
@@ -367,12 +367,12 @@ function Block({
   children: React.ReactNode;
 }) {
   return (
-    <div className="border-l-2 border-[#C9A84C] pl-6 md:pl-10">
-      <div className="mb-3 text-[10px] font-bold tracking-[0.3em] text-[#0f1c2c]/55 uppercase">
+    <div className="border-l-2 border-gold pl-6 md:pl-10">
+      <div className="mb-3 text-[10px] font-bold tracking-[0.3em] text-navy/55 uppercase">
         {number} — Seção
       </div>
       <h2
-        className="mb-6 leading-tight text-[#0f1c2c]"
+        className="mb-6 leading-tight text-navy"
         style={{
           fontFamily: "'Newsreader Variable', serif",
           fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
@@ -380,7 +380,7 @@ function Block({
       >
         {title}
       </h2>
-      <div className="space-y-4 text-base leading-relaxed text-[#0f1c2c]/75 [&_li]:ml-6 [&_li]:list-disc [&_strong]:text-[#0f1c2c] [&_ul]:space-y-2">
+      <div className="space-y-4 text-base leading-relaxed text-navy/75 [&_li]:ml-6 [&_li]:list-disc [&_strong]:text-navy [&_ul]:space-y-2">
         {children}
       </div>
     </div>
