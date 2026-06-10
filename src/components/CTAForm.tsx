@@ -124,8 +124,12 @@ export function CTAForm() {
       );
       return;
     }
-    // Google Ads conversion — refine send_to with the conversion label (AW-18227481490/<label>)
-    window.gtag?.("event", "conversion", { send_to: "AW-18227481490" });
+    // Google Ads conversion — "Enviar formulário de lead"
+    window.gtag?.("event", "conversion", {
+      send_to: "AW-18227481490/cRXACOi__7scEJKXxfND",
+      value: 1.0,
+      currency: "BRL",
+    });
 
     const message = buildWhatsAppMessage(data);
     const encoded = encodeURIComponent(message);
