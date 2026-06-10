@@ -70,10 +70,18 @@ const ESTADOS = [
 
 const WHATSAPP_NUMBER = import.meta.env.VITE_CONTACT_FORM_WHATSAPP_NUMBER;
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 function formatPhone(value: string): string {
   const digits = value.replace(/\D/g, "").slice(0, 11);
   if (digits.length <= 2) return digits.length ? `(${digits}` : "";
-  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  if (digits.length <= 10)
+    return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
   return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
 }
 
@@ -110,6 +118,15 @@ export function CTAForm() {
   });
 
   function onSubmit(data: FormValues) {
+    if (!WHATSAPP_NUMBER) {
+      console.error(
+        "VITE_CONTACT_FORM_WHATSAPP_NUMBER is not set; cannot open WhatsApp redirect.",
+      );
+      return;
+    }
+    // Google Ads conversion — refine send_to with the conversion label (AW-18227481490/<label>)
+    window.gtag?.("event", "conversion", { send_to: "AW-18227481490" });
+
     const message = buildWhatsAppMessage(data);
     const encoded = encodeURIComponent(message);
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, "_blank");

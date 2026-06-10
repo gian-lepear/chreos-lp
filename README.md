@@ -105,7 +105,7 @@ Ao submeter o formulário, o visitante é redirecionado para o WhatsApp com uma 
 
 ## Design System
 
-O projeto segue o sistema visual **"The Sovereign Ledger"**:
+O projeto segue o seguinte sistema visual:
 
 - **Paleta:** Navy `#0f1c2c` · Off-white `#fcf9f3` · Dourado `#C9A84C → #e6c364`
 - **Tipografia:** Newsreader (serif, titulos) + Inter (sans-serif, corpo)

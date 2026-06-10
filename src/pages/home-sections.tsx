@@ -198,10 +198,7 @@ export default function HomeSections() {
                             key={n}
                             className="h-2 w-2 rounded-full"
                             style={{
-                              background:
-                                n <= 3
-                                  ? "linear-gradient(135deg, #C9A84C 0%, #e6c364 100%)"
-                                  : "#ebe8e2",
+                              background: "linear-gradient(135deg, #C9A84C 0%, #e6c364 100%)",
                             }}
                           />
                         ))}
