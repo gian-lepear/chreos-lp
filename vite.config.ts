@@ -53,6 +53,12 @@ function seoPlugin(env: Record<string, string>) {
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>${siteUrl}/privacidade</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>
 `;
         await fs.writeFile(path.join(outDir, "sitemap.xml"), sitemap);
