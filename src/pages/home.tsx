@@ -194,7 +194,7 @@ export default function Home() {
               <m.div variants={fadeUp} className="mb-6 flex items-center gap-3">
                 <span className="bg-gold h-1.5 w-1.5 flex-shrink-0 rounded-full" />
                 <span className="text-gold text-[10px] font-bold tracking-[0.3em] uppercase">
-                  Leads quentes de alienação fiduciária para advogados
+                  Leads de imóveis em leilão e execução extrajudicial
                 </span>
               </m.div>
 
@@ -280,9 +280,9 @@ export default function Home() {
               className="text-cream/80 text-lg leading-relaxed md:text-2xl"
               style={{ fontFamily: "'Newsreader Variable', serif" }}
             >
-              Hoje, quem está prestes a perder o imóvel encontra{" "}
-              <em className="text-gold-light">outro advogado primeiro</em> — ou ninguém. Você nunca
-              soube que esse cliente existia.
+              Quando o imóvel vai a leilão, já é tarde — e o cliente já é de outro advogado. A
+              Chreos te coloca <em className="text-gold-light">um passo à frente</em>: você fala com
+              ele ainda na fase de intimação, quando ainda há prazo para agir.
             </p>
           </div>
         </section>
