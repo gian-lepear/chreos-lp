@@ -178,7 +178,7 @@ export default function HomeSections() {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="text-navy/60 mb-1 text-[9px] font-bold tracking-[0.2em] uppercase">
-                        Credor Fiduciário
+                        Banco Credor
                       </div>
                       <div className="text-navy text-sm font-medium">Banco Itaú S.A.</div>
                     </div>
