@@ -29,5 +29,19 @@ subset "$NR/newsreader-latin-wght-normal.woff2" "$UNI_FULL" "$OUT/newsreader-lat
 subset "$NR/newsreader-latin-wght-italic.woff2" "$UNI_FULL" "$OUT/newsreader-italic-subset.woff2"
 subset "$IN/inter-latin-wght-normal.woff2"      "$UNI_LAT"  "$OUT/inter-latin-subset.woff2"
 
+# Greek for the χρέος brand word — Newsreader has no Greek, so pull a matching
+# literary serif from Google Fonts and subset it to just those glyphs.
+UA="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
+fetch_greek() { # <css-url> <outname>
+  local url
+  url="$(curl -s -H "User-Agent: $UA" "$1" | awk '/\/\* greek \*\//{f=1} f&&/woff2/{print; exit}' | grep -oE 'https://[^)]*\.woff2')"
+  [ -z "$url" ] && { echo "WARN: no greek url for $2"; return 0; }
+  curl -s "$url" -o "/tmp/$2-greek-src.woff2"
+  python3 -m fontTools.subset "/tmp/$2-greek-src.woff2" --text='χρέος' --layout-features='*' \
+    --flavor=woff2 --output-file="$OUT/$2-greek-subset.woff2"
+}
+fetch_greek "https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400..700&display=swap" literata
+fetch_greek "https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400..700&display=swap" ebgaramond
+
 echo "Done. Subset fonts written to $OUT/"
 ls -la "$OUT"/*.woff2
