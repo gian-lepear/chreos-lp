@@ -180,7 +180,7 @@ export const FAQ = [
   },
   {
     q: "Os leads são exclusivos?",
-    a: "Você escolhe. A exclusividade é uma opção do seu perfil: leads exclusivos não são entregues a nenhum outro escritório e, por isso, têm valor maior por lead. Definimos juntos o que faz mais sentido para a sua estratégia.",
+    a: "Sim — e isso é o padrão da Chreos. Cada lead é entregue a um único escritório: o mesmo contato nunca vai para um concorrente da sua região. Além de proteger o seu trabalho, a exclusividade é a forma mais alinhada às normas da OAB, que vedam oferecer o mesmo cliente a vários advogados.",
   },
   {
     q: "Como funciona o pagamento?",
@@ -203,6 +203,6 @@ export const FAQ = [
 export const CTA_BULLETS = [
   "Demonstração do que o seu perfil pode gerar na sua região",
   "Configuração do seu perfil de cliente ideal",
-  "Exclusividade por região e nicho — leads que não vão para o concorrente",
+  "Cada lead vendido uma única vez, só para o seu escritório",
   "Sem mensalidade, sem fidelidade — comece quando quiser",
 ];
