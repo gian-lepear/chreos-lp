@@ -36,7 +36,7 @@ const criticalCssPlugin = {
     const assetsDir = path.join(outDir, "assets");
     const assetFiles = await fs.readdir(assetsDir);
     const criticalFonts = assetFiles.filter((f) =>
-      /^(newsreader-latin-wght-normal|inter-latin-wght-normal)-.*\.woff2$/.test(f),
+      /^(newsreader-latin-subset|inter-latin-subset)-.*\.woff2$/.test(f),
     );
     const preloadTags = criticalFonts
       .map(
