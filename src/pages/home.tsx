@@ -6,13 +6,17 @@ import HomeSections from "./home-sections";
 
 function LiveTicker() {
   const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
+    if (paused) return;
+    // Don't auto-rotate for users who prefer reduced motion.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const interval = setInterval(() => {
       setIndex((i) => (i + 1) % TICKER_ITEMS.length);
-    }, 3000);
+    }, 5500);
     return () => clearInterval(interval);
-  }, []);
+  }, [paused]);
 
   const item = TICKER_ITEMS[index];
 
@@ -20,6 +24,8 @@ function LiveTicker() {
     <div
       className="border-gold bg-navy-deep border-l-4 p-5 font-mono text-xs"
       style={{ borderRadius: 0 }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
     >
       <div className="mb-3 flex flex-shrink-0 items-center gap-3">
         <span className="inline-flex items-center gap-1.5">
@@ -100,7 +106,7 @@ const stagger = {
 export default function Home() {
   return (
     <div
-      className="bg-cream text-navy selection:bg-navy selection:text-cream min-h-screen"
+      className="bg-cream text-navy selection:bg-navy selection:text-cream min-h-screen pb-16 md:pb-0"
       style={{ fontFamily: "'Inter Variable', sans-serif" }}
     >
       <a
@@ -155,7 +161,7 @@ export default function Home() {
               }}
               data-testid="link-nav-acesso"
             >
-              Solicitar Acesso
+              Ver Meus Leads
             </a>
           </div>
         </div>
@@ -185,10 +191,12 @@ export default function Home() {
 
           <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-36 pb-16 md:px-10">
             <m.div initial="hidden" animate="visible" variants={stagger}>
-              {/* <m.div variants={fadeUp} className="flex items-center gap-4 mb-10">
-              <span className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse" />
-              <span className="text-gold text-[10px] uppercase tracking-[0.3em] font-bold">Sistema Ativo — Monitoramento Contínuo</span>
-            </m.div> */}
+              <m.div variants={fadeUp} className="mb-6 flex items-center gap-3">
+                <span className="bg-gold h-1.5 w-1.5 flex-shrink-0 rounded-full" />
+                <span className="text-gold text-[10px] font-bold tracking-[0.3em] uppercase">
+                  Para escritórios de direito imobiliário · Alienação fiduciária
+                </span>
+              </m.div>
 
               <m.h1
                 variants={fadeUp}
@@ -210,8 +218,8 @@ export default function Home() {
               <m.div variants={fadeUp} className="mb-10 grid max-w-3xl gap-6 md:grid-cols-2">
                 <p className="text-cream/60 text-base leading-relaxed">
                   Identificamos pessoas que estão prestes a perder um imóvel e entregamos ao seu
-                  escritório o nome, telefone e WhatsApp delas — antes que qualquer concorrente
-                  saiba que esse cliente existe.
+                  escritório o nome, telefone e WhatsApp delas em minutos — antes que qualquer
+                  concorrente saiba que esse cliente existe.
                 </p>
                 <LiveTicker />
               </m.div>
@@ -225,7 +233,7 @@ export default function Home() {
                   }}
                   data-testid="button-hero-cta"
                 >
-                  Solicitar Demonstração <ArrowRight size={14} />
+                  Ver Leads da Minha Região <ArrowRight size={14} />
                 </a>
                 <a
                   href="#mecanismo"
@@ -235,6 +243,10 @@ export default function Home() {
                   Ver Metodologia
                 </a>
               </m.div>
+
+              <m.p variants={fadeUp} className="text-cream/55 mt-4 text-xs tracking-[0.05em]">
+                Demonstração sem compromisso · sem mensalidade, sem fidelidade
+              </m.p>
             </m.div>
           </div>
 
@@ -261,8 +273,32 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Agitation band — cost of inaction, between hero and the mechanism */}
+        <section className="bg-navy-deep px-6 py-16 md:px-10">
+          <div className="mx-auto max-w-4xl">
+            <p
+              className="text-cream/80 text-lg leading-relaxed md:text-2xl"
+              style={{ fontFamily: "'Newsreader Variable', serif" }}
+            >
+              Hoje, quem está prestes a perder o imóvel encontra{" "}
+              <em className="text-gold-light">outro advogado primeiro</em> — ou ninguém. Você nunca
+              soube que esse cliente existia.
+            </p>
+          </div>
+        </section>
+
         <HomeSections />
       </main>
+
+      {/* Mobile sticky CTA — persistent path to convert on small screens */}
+      <a
+        href="#acesso"
+        className="text-navy fixed right-0 bottom-0 left-0 z-50 flex items-center justify-center gap-2 py-4 text-xs font-bold tracking-[0.2em] uppercase md:hidden"
+        style={{ background: "var(--gold-gradient)" }}
+        data-testid="sticky-cta-mobile"
+      >
+        Ver Leads da Minha Região <ArrowRight size={14} />
+      </a>
     </div>
   );
 }

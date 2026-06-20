@@ -167,8 +167,20 @@ export const INVESTMENT = [
 
 export const FAQ = [
   {
-    q: "De onde vêm os dados? Isso é legal?",
+    q: "Receber esses leads é compatível com as regras da OAB?",
+    a: "Sim. A Chreos entrega inteligência derivada de registros e publicações públicas — uma intermediação transparente de informação, e não captação ativa e indiscriminada de clientela. A decisão de abordar (ou não) cada caso é sempre do advogado, que deve conduzir o contato de forma informativa e dentro do Provimento 205/2021 da OAB: sem promessa de resultado e sem oferta de honorários.",
+  },
+  {
+    q: "E a LGPD? É legal tratar esses dados?",
+    a: "Os dados têm origem em atos e publicações oficiais e públicas — diários de registro de imóveis e editais de leilão. O tratamento segue os princípios da LGPD (finalidade, minimização e transparência), apoiado, em regra, no legítimo interesse aplicável a dados de fontes públicas (art. 7º da Lei 13.709/2018). Ao receber um lead, o advogado passa a ser controlador independente para o uso que fizer da informação.",
+  },
+  {
+    q: "De onde vêm os dados?",
     a: "Todas as informações vêm de fontes públicas oficiais — diários de registro de imóveis e editais de leilão publicados por cartórios de todo o Brasil. Nosso trabalho é monitorar, organizar e enriquecer registros que já são públicos por lei.",
+  },
+  {
+    q: "Os leads são exclusivos?",
+    a: "Você escolhe. A exclusividade é uma opção do seu perfil: leads exclusivos não são entregues a nenhum outro escritório e, por isso, têm valor maior por lead. Definimos juntos o que faz mais sentido para a sua estratégia.",
   },
   {
     q: "Como funciona o pagamento?",
@@ -183,18 +195,14 @@ export const FAQ = [
     a: "Não. Você começa quando quiser, pausa quando quiser e ajusta seu perfil a qualquer momento.",
   },
   {
-    q: "Os leads são exclusivos?",
-    a: "Você escolhe. A exclusividade é uma opção do seu perfil: leads exclusivos não são entregues a nenhum outro escritório e, por isso, têm valor maior por lead. Definimos juntos o que faz mais sentido para a sua estratégia.",
-  },
-  {
     q: "Em quanto tempo começo a receber leads?",
     a: "Em poucos dias após a configuração do seu perfil. O prazo exato depende dos filtros escolhidos — perfis mais amplos começam a receber antes; filtros muito específicos podem levar um pouco mais para gerar os primeiros leads.",
   },
 ];
 
 export const CTA_BULLETS = [
-  "Demonstração ao vivo com leads reais da sua região",
+  "Demonstração do que o seu perfil pode gerar na sua região",
   "Configuração do seu perfil de cliente ideal",
-  "Entrega personalizada e suporte contínuo",
-  "Sem contrato longo — comece quando quiser",
+  "Exclusividade por região e nicho — leads que não vão para o concorrente",
+  "Sem mensalidade, sem fidelidade — comece quando quiser",
 ];
