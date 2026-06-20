@@ -1,8 +1,12 @@
-import { useState, useEffect, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { ArrowRight } from "lucide-react";
 import { TICKER_ITEMS, STATS } from "@/data/landing";
-import HomeSections from "./home-sections";
+
+const HomeSections = lazy(() => import("./home-sections"));
+
+// Reused across every CountUp tick — building a new Intl formatter per
+// toLocaleString() call was the bulk of the animation's main-thread cost.
+const ptBR = new Intl.NumberFormat("pt-BR");
 
 function LiveTicker() {
   const [index, setIndex] = useState(0);
@@ -28,53 +32,44 @@ function LiveTicker() {
             Edital Capturado
           </span>
         </span>
-        <span className="text-[10px] text-white/20">DIÁRIO REGISTRAL — AO VIVO</span>
+        <span className="text-[10px] text-white/50">DIÁRIO REGISTRAL — DEMONSTRAÇÃO</span>
       </div>
       <div style={{ height: 80, overflow: "hidden", position: "relative" }}>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={index}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="grid grid-cols-3 gap-x-4 gap-y-3"
-            style={{ position: "absolute", inset: 0 }}
-          >
-            <div className="min-w-0">
-              <div className="mb-0.5 text-[9px] tracking-widest text-white/30 uppercase">
-                Devedor
-              </div>
-              <div className="truncate text-white/90">{item.devedor}</div>
+        {/* key={index} remounts on each tick so the CSS fade-in replays */}
+        <div
+          key={index}
+          className="anim-fade-in grid grid-cols-3 gap-x-4 gap-y-3"
+          style={{ position: "absolute", inset: 0 }}
+        >
+          <div className="min-w-0">
+            <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">Devedor</div>
+            <div className="truncate text-white/90">{item.devedor}</div>
+          </div>
+          <div className="min-w-0">
+            <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">Valor</div>
+            <div className="truncate text-[#e6c364]">{item.valor}</div>
+          </div>
+          <div className="min-w-0">
+            <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">Credor</div>
+            <div className="truncate text-white/90">{item.credor}</div>
+          </div>
+          <div className="min-w-0">
+            <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">
+              Matrícula
             </div>
-            <div className="min-w-0">
-              <div className="mb-0.5 text-[9px] tracking-widest text-white/30 uppercase">Valor</div>
-              <div className="truncate text-[#e6c364]">{item.valor}</div>
+            <div className="truncate text-white/70">{item.matricula}</div>
+          </div>
+          <div className="min-w-0">
+            <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">
+              Cartório
             </div>
-            <div className="min-w-0">
-              <div className="mb-0.5 text-[9px] tracking-widest text-white/30 uppercase">
-                Credor
-              </div>
-              <div className="truncate text-white/90">{item.credor}</div>
-            </div>
-            <div className="min-w-0">
-              <div className="mb-0.5 text-[9px] tracking-widest text-white/30 uppercase">
-                Matrícula
-              </div>
-              <div className="truncate text-white/70">{item.matricula}</div>
-            </div>
-            <div className="min-w-0">
-              <div className="mb-0.5 text-[9px] tracking-widest text-white/30 uppercase">
-                Cartório
-              </div>
-              <div className="truncate text-white/70">{item.cartorio}</div>
-            </div>
-            <div className="min-w-0">
-              <div className="mb-0.5 text-[9px] tracking-widest text-white/30 uppercase">UF</div>
-              <div className="truncate text-white/70">{item.estado}</div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
+            <div className="truncate text-white/70">{item.cartorio}</div>
+          </div>
+          <div className="min-w-0">
+            <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">UF</div>
+            <div className="truncate text-white/70">{item.estado}</div>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -82,8 +77,26 @@ function LiveTicker() {
 
 function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
   const [count, setCount] = useState(0);
+  const [inView, setInView] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true });
+
+  // Trigger the count-up once the element scrolls into view (replaces
+  // framer-motion's useInView so framer stays off the home route).
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!inView) return;
@@ -104,28 +117,11 @@ function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
 
   return (
     <span ref={ref}>
-      {count.toLocaleString("pt-BR")}
+      {ptBR.format(count)}
       {suffix}
     </span>
   );
 }
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.9,
-      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
-    },
-  },
-};
-
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
-};
 
 export default function Home() {
   return (
@@ -133,6 +129,13 @@ export default function Home() {
       className="min-h-screen bg-[#fcf9f3] text-[#0f1c2c] selection:bg-[#0f1c2c] selection:text-[#fcf9f3]"
       style={{ fontFamily: "'Inter Variable', sans-serif" }}
     >
+      <a
+        href="#main"
+        className="sr-only z-[100] bg-[#C9A84C] px-4 py-2 text-sm font-bold text-[#0f1c2c] focus:not-sr-only focus:absolute focus:top-4 focus:left-4"
+      >
+        Ir para o conteúdo principal
+      </a>
+
       {/* NAV */}
       <nav
         className="fixed top-0 right-0 left-0 z-50"
@@ -184,103 +187,107 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* HERO — full bleed dark navy */}
-      <section className="relative flex min-h-screen flex-col justify-end overflow-hidden bg-[#0f1c2c]">
-        {/* Background grid texture */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(0deg, #fcf9f3 0px, #fcf9f3 1px, transparent 1px, transparent 60px), repeating-linear-gradient(90deg, #fcf9f3 0px, #fcf9f3 1px, transparent 1px, transparent 60px)",
-          }}
-        />
-
-        {/* Large background text */}
-        <div className="pointer-events-none absolute top-1/2 right-0 left-0 -translate-y-1/2 overflow-hidden select-none">
+      <main id="main">
+        {/* HERO — full bleed dark navy */}
+        <section className="relative flex min-h-screen flex-col justify-end overflow-hidden bg-[#0f1c2c]">
+          {/* Background grid texture */}
           <div
-            className="pl-4 font-serif text-[18vw] leading-none font-bold whitespace-nowrap text-[#fcf9f3]/[0.025]"
-            style={{ fontFamily: "'Newsreader Variable', serif" }}
-          >
-            CHREOS
-          </div>
-        </div>
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(0deg, #fcf9f3 0px, #fcf9f3 1px, transparent 1px, transparent 60px), repeating-linear-gradient(90deg, #fcf9f3 0px, #fcf9f3 1px, transparent 1px, transparent 60px)",
+            }}
+          />
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-36 pb-16 md:px-10">
-          <motion.div initial="hidden" animate="visible" variants={stagger}>
-            {/* <motion.div variants={fadeUp} className="flex items-center gap-4 mb-10">
-              <span className="w-1.5 h-1.5 bg-[#C9A84C] rounded-full animate-pulse" />
-              <span className="text-[#C9A84C] text-[10px] uppercase tracking-[0.3em] font-bold">Sistema Ativo — Monitoramento Contínuo</span>
-            </motion.div> */}
-
-            <motion.h1
-              variants={fadeUp}
-              className="mb-10 leading-[0.95] tracking-[-0.02em] text-[#fcf9f3]"
-              style={{
-                fontFamily: "'Newsreader Variable', serif",
-                fontSize: "clamp(3.2rem, 8vw, 7.5rem)",
-              }}
+          {/* Large background text */}
+          <div className="pointer-events-none absolute top-1/2 right-0 left-0 -translate-y-1/2 overflow-hidden select-none">
+            <div
+              className="pl-4 font-serif text-[18vw] leading-none font-bold whitespace-nowrap text-[#fcf9f3]/[0.025]"
+              style={{ fontFamily: "'Newsreader Variable', serif" }}
             >
-              Pare de esperar
-              <br />
-              por clientes.
-              <br />
-              Alcance-os no
-              <br />
-              momento <em style={{ fontStyle: "italic", color: "#e6c364" }}>exato.</em>
-            </motion.h1>
-
-            <motion.div variants={fadeUp} className="mb-10 grid max-w-3xl gap-6 md:grid-cols-2">
-              <p className="text-base leading-relaxed text-[#fcf9f3]/60">
-                Identificamos automaticamente pessoas que estão prestes a perder um imóvel e
-                entregamos ao seu escritório o nome, telefone e WhatsApp delas — antes que qualquer
-                concorrente saiba que esse cliente existe.
-              </p>
-              <LiveTicker />
-            </motion.div>
-
-            <motion.div variants={fadeUp} className="flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#acesso"
-                className="inline-flex items-center gap-2 px-7 py-4 text-xs font-bold tracking-[0.2em] text-[#0f1c2c] uppercase transition-opacity hover:opacity-90"
-                style={{
-                  background: "linear-gradient(135deg, #C9A84C 0%, #e6c364 100%)",
-                }}
-                data-testid="button-hero-cta"
-              >
-                Solicitar Demonstração <ArrowRight size={14} />
-              </a>
-              <a
-                href="#mecanismo"
-                className="inline-flex items-center gap-2 border border-[#fcf9f3]/10 px-7 py-4 text-xs font-bold tracking-[0.2em] text-[#fcf9f3]/70 uppercase transition-colors hover:border-[#fcf9f3]/30"
-                data-testid="button-hero-secondary"
-              >
-                Ver Metodologia
-              </a>
-            </motion.div>
-          </motion.div>
-        </div>
-
-        {/* Stats strip */}
-        <div className="relative z-10 border-t border-[#fcf9f3]/10 bg-[#0a1520]">
-          <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 py-6 md:grid-cols-4 md:gap-0 md:divide-x md:divide-[#fcf9f3]/10 md:px-10">
-            {STATS.map((s, i) => (
-              <div key={i} className="first:pl-0 md:px-8">
-                <div
-                  className="font-mono font-bold text-[#e6c364]"
-                  style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)" }}
-                >
-                  <CountUp to={s.n} suffix={s.suf} />
-                </div>
-                <div className="mt-1 text-[10px] tracking-[0.15em] text-[#fcf9f3]/40 uppercase">
-                  {s.label}
-                </div>
-              </div>
-            ))}
+              CHREOS
+            </div>
           </div>
-        </div>
-      </section>
 
-      <HomeSections />
+          <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-36 pb-16 md:px-10">
+            <div>
+              <h1
+                className="anim-fade-up mb-10 leading-[0.95] tracking-[-0.02em] text-[#fcf9f3]"
+                style={{
+                  fontFamily: "'Newsreader Variable', serif",
+                  fontSize: "clamp(3.2rem, 8vw, 7.5rem)",
+                }}
+              >
+                Pare de esperar
+                <br />
+                por clientes.
+                <br />
+                Alcance-os no
+                <br />
+                momento <em style={{ fontStyle: "italic", color: "#e6c364" }}>exato.</em>
+              </h1>
+
+              <div
+                className="anim-fade-up mb-10 grid max-w-3xl gap-6 md:grid-cols-2"
+                style={{ animationDelay: "0.12s" }}
+              >
+                <p className="text-base leading-relaxed text-[#fcf9f3]/60">
+                  Identificamos automaticamente pessoas que estão prestes a perder um imóvel e
+                  entregamos ao seu escritório o nome, telefone e WhatsApp delas — antes que
+                  qualquer concorrente saiba que esse cliente existe.
+                </p>
+                <LiveTicker />
+              </div>
+
+              <div
+                className="anim-fade-up flex flex-col gap-3 sm:flex-row"
+                style={{ animationDelay: "0.24s" }}
+              >
+                <a
+                  href="#acesso"
+                  className="inline-flex items-center gap-2 px-7 py-4 text-xs font-bold tracking-[0.2em] text-[#0f1c2c] uppercase transition-opacity hover:opacity-90"
+                  style={{
+                    background: "linear-gradient(135deg, #C9A84C 0%, #e6c364 100%)",
+                  }}
+                  data-testid="button-hero-cta"
+                >
+                  Solicitar Demonstração <ArrowRight size={14} />
+                </a>
+                <a
+                  href="#mecanismo"
+                  className="inline-flex items-center gap-2 border border-[#fcf9f3]/10 px-7 py-4 text-xs font-bold tracking-[0.2em] text-[#fcf9f3]/70 uppercase transition-colors hover:border-[#fcf9f3]/30"
+                  data-testid="button-hero-secondary"
+                >
+                  Ver Metodologia
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Stats strip */}
+          <div className="relative z-10 border-t border-[#fcf9f3]/10 bg-[#0a1520]">
+            <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 py-6 md:grid-cols-4 md:gap-0 md:divide-x md:divide-[#fcf9f3]/10 md:px-10">
+              {STATS.map((s, i) => (
+                <div key={i} className="first:pl-0 md:px-8">
+                  <div
+                    className="font-mono font-bold text-[#e6c364]"
+                    style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)" }}
+                  >
+                    <CountUp to={s.n} suffix={s.suf} />
+                  </div>
+                  <div className="mt-1 text-[10px] tracking-[0.15em] text-[#fcf9f3]/55 uppercase">
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <Suspense fallback={null}>
+          <HomeSections />
+        </Suspense>
+      </main>
     </div>
   );
 }

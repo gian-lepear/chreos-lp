@@ -608,11 +608,11 @@ export default function HomeSections() {
               >
                 Chreos
               </div>
-              <div className="text-xs tracking-widest text-[#fcf9f3]/35 uppercase">
+              <div className="text-xs tracking-widest text-[#fcf9f3]/55 uppercase">
                 Leads quentes para advogados
               </div>
             </div>
-            <div className="flex gap-8 text-xs tracking-[0.15em] text-[#fcf9f3]/35 uppercase">
+            <div className="flex gap-8 text-xs tracking-[0.15em] text-[#fcf9f3]/55 uppercase">
               <Link href="/privacidade" className="transition-colors hover:text-[#fcf9f3]/70">
                 Privacidade
               </Link>

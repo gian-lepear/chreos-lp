@@ -22,6 +22,10 @@ const criticalCssPlugin = {
       path: outDir,
       publicPath: basePath,
       pruneSource: false,
+      // Critical CSS is inlined above; rewrite the remaining blocking
+      // <link rel="stylesheet"> into an async preload+swap so it stops
+      // blocking First Contentful Paint.
+      preload: "swap",
     });
     const processed = await beasties.process(html);
     await fs.writeFile(indexPath, processed);
@@ -53,6 +57,12 @@ function seoPlugin(env: Record<string, string>) {
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>${siteUrl}/privacidade</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>
 `;
         await fs.writeFile(path.join(outDir, "sitemap.xml"), sitemap);
@@ -61,8 +71,20 @@ function seoPlugin(env: Record<string, string>) {
   };
 }
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, process.cwd(), "");
+
+  // Fail the production build loudly if the WhatsApp target is missing or
+  // malformed — otherwise the contact form ships broken with no error.
+  if (command === "build") {
+    const whatsapp = env.VITE_CONTACT_FORM_WHATSAPP_NUMBER;
+    if (!/^[0-9]{11,15}$/.test(whatsapp ?? "")) {
+      throw new Error(
+        `VITE_CONTACT_FORM_WHATSAPP_NUMBER must be a digits-only international number ` +
+          `(11-15 digits, e.g. 5511976396660). Got: ${JSON.stringify(whatsapp)}`,
+      );
+    }
+  }
 
   return {
     base: basePath,
@@ -79,6 +101,14 @@ export default defineConfig(({ mode }) => {
       outDir: path.resolve(import.meta.dirname, "dist/public"),
       emptyOutDir: true,
       chunkSizeWarningLimit: 700,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            react: ["react", "react-dom", "wouter"],
+            motion: ["framer-motion"],
+          },
+        },
+      },
     },
     server: {
       port: safePort,

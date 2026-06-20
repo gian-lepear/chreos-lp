@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "wouter";
 import { ArrowLeft } from "lucide-react";
 
@@ -5,7 +6,33 @@ const YEAR = new Date().getFullYear();
 const LAST_UPDATE = "17 de maio de 2026";
 const HOME_ACESSO = `${import.meta.env.BASE_URL}#acesso`;
 
+const PAGE_TITLE = "Política de Privacidade | Chreos";
+const PAGE_DESCRIPTION =
+  "Política de Privacidade da Chreos: como coletamos, usamos e protegemos os dados dos advogados e escritórios que solicitam acesso à plataforma.";
+const CANONICAL = "https://chreos.com.br/privacidade";
+
 export default function Privacy() {
+  // This SPA ships a single static <head> tuned for the home page; patch the
+  // title/description/canonical for /privacidade and restore them on unmount.
+  useEffect(() => {
+    const prevTitle = document.title;
+    document.title = PAGE_TITLE;
+
+    const desc = document.querySelector('meta[name="description"]');
+    const prevDesc = desc?.getAttribute("content") ?? null;
+    desc?.setAttribute("content", PAGE_DESCRIPTION);
+
+    const canonical = document.querySelector('link[rel="canonical"]');
+    const prevCanonical = canonical?.getAttribute("href") ?? null;
+    canonical?.setAttribute("href", CANONICAL);
+
+    return () => {
+      document.title = prevTitle;
+      if (prevDesc !== null) desc?.setAttribute("content", prevDesc);
+      if (prevCanonical !== null) canonical?.setAttribute("href", prevCanonical);
+    };
+  }, []);
+
   return (
     <div
       className="min-h-screen bg-[#fcf9f3] text-[#0f1c2c]"
@@ -262,13 +289,44 @@ export default function Privacy() {
             </p>
           </Block>
 
-          <Block number="08" title="Cookies">
+          <Block number="08" title="Cookies e consentimento">
             <p>
-              O site da Chreos pode utilizar cookies e tecnologias similares para funcionamento
-              básico, medição de audiência e melhoria contínua da experiência de navegação. Você
-              pode, a qualquer momento, configurar o seu navegador para bloquear ou alertar sobre o
-              uso de cookies, ciente de que algumas funcionalidades podem deixar de operar
-              corretamente.
+              O site da Chreos utiliza cookies e tecnologias similares para funcionamento básico e
+              para medição de campanhas publicitárias. Utilizamos especificamente o{" "}
+              <strong>Google Ads</strong> (Google LLC) para mensurar conversões — ou seja, para
+              identificar quando uma visita originada de um anúncio resulta em contato pelo
+              formulário. Para isso, o Google pode gravar cookies de publicidade em seu navegador,
+              tais como:
+            </p>
+            <ul>
+              <li>
+                <strong>_gcl_*</strong> — atribuição de conversões do Google Ads;
+              </li>
+              <li>
+                cookies dos domínios <strong>google.com</strong> e{" "}
+                <strong>doubleclick.net</strong> — medição e personalização de anúncios.
+              </li>
+            </ul>
+            <p>
+              Esses cookies de publicidade <strong>só são ativados mediante o seu consentimento</strong>.
+              Ao acessar o site, exibimos um aviso no qual você pode <strong>Aceitar</strong> ou{" "}
+              <strong>Recusar</strong>. Enquanto você não aceita, nenhum cookie de anúncio é gravado
+              (adotamos o Consent Mode do Google, com todos os sinais de publicidade negados por
+              padrão).
+            </p>
+            <p>
+              Você pode <strong>revogar o consentimento</strong> a qualquer momento limpando os dados
+              do site no seu navegador (o aviso voltará a ser exibido) ou configurando o navegador
+              para bloquear cookies. Saiba mais nas políticas do Google em{" "}
+              <a
+                href="https://policies.google.com/technologies/cookies"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#0f1c2c] underline underline-offset-2"
+              >
+                policies.google.com/technologies/cookies
+              </a>
+              .
             </p>
           </Block>
 

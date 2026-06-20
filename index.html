@@ -4,16 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18227481490"></script>
+    <!-- Google tag (gtag.js) — deferred to keep gtag.js off the critical path.
+         The inline bootstrap queues events immediately; the heavy external
+         script loads after the page is interactive (~2s post-load). -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag("js", new Date());
 
+      // Consent Mode v2 — deny all advertising/analytics storage by default
+      // (LGPD). The React consent banner flips these to "granted" via
+      // gtag("consent","update", ...) once the user accepts.
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+        wait_for_update: 500,
+      });
+
+      gtag("js", new Date());
       gtag("config", "AW-18227481490");
+
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          var s = document.createElement("script");
+          s.async = true;
+          s.src = "https://www.googletagmanager.com/gtag/js?id=AW-18227481490";
+          document.head.appendChild(s);
+        }, 2000);
+      });
     </script>
 
     <title>Chreos — Inteligência em Alienação Fiduciária para Advogados</title>
@@ -29,6 +50,8 @@
     />
     <meta name="author" content="Chreos" />
     <link rel="canonical" href="https://chreos.com.br/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://chreos.com.br/" />
+    <link rel="alternate" hreflang="x-default" href="https://chreos.com.br/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />

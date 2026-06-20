@@ -29,6 +29,7 @@ import {
 import { Check, ChevronsUpDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/hooks/use-toast";
 
 const AREAS_ATUACAO = [
   "Direito Imobiliário",
@@ -111,6 +112,7 @@ function buildWhatsAppMessage(data: FormValues): string {
 
 export function CTAForm() {
   const [estadoOpen, setEstadoOpen] = useState(false);
+  const { toast } = useToast();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -119,25 +121,43 @@ export function CTAForm() {
 
   function onSubmit(data: FormValues) {
     if (!WHATSAPP_NUMBER) {
-      console.error(
-        "VITE_CONTACT_FORM_WHATSAPP_NUMBER is not set; cannot open WhatsApp redirect.",
-      );
+      console.error("VITE_CONTACT_FORM_WHATSAPP_NUMBER is not set; cannot open WhatsApp redirect.");
+      toast({
+        title: "Não foi possível abrir o WhatsApp",
+        description: "Contato temporariamente indisponível. Tente novamente mais tarde.",
+        variant: "destructive",
+      });
       return;
     }
-    // Google Ads conversion — "Enviar formulário de lead"
-    window.gtag?.("event", "conversion", {
-      send_to: "AW-18227481490/cRXACOi__7scEJKXxfND",
-      value: 1.0,
-      currency: "BRL",
-    });
 
     const message = buildWhatsAppMessage(data);
     const encoded = encodeURIComponent(message);
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, "_blank");
+    const win = window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`,
+      "_blank",
+      "noopener",
+    );
+
+    // Only count the conversion if the WhatsApp tab actually opened
+    // (window.open returns null when blocked by a popup blocker).
+    if (win) {
+      // Google Ads conversion — "Enviar formulário de lead"
+      window.gtag?.("event", "conversion", {
+        send_to: "AW-18227481490/cRXACOi__7scEJKXxfND",
+        value: 1.0,
+        currency: "BRL",
+      });
+    } else {
+      toast({
+        title: "Abra o WhatsApp para concluir",
+        description: "Seu navegador bloqueou a janela. Permita pop-ups e tente novamente.",
+        variant: "destructive",
+      });
+    }
   }
 
   const fieldClass =
-    "w-full bg-[#16263b] text-[#fcf9f3] placeholder:text-[#fcf9f3]/25 border-0 rounded-none px-4 py-3 text-sm font-mono outline-none focus:bg-[#1d3248] transition-colors";
+    "w-full bg-[#16263b] text-[#fcf9f3] placeholder:text-[#fcf9f3]/25 border-0 rounded-none px-4 py-3 text-sm font-mono outline-none focus:bg-[#1d3248] focus:ring-2 focus:ring-inset focus:ring-[#C9A84C] transition-colors";
   const labelClass =
     "text-[9px] uppercase tracking-[0.3em] text-[#fcf9f3]/40 font-bold mb-1.5 block";
 
