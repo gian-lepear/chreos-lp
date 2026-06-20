@@ -28,7 +28,27 @@ const criticalCssPlugin = {
       preload: "swap",
     });
     const processed = await beasties.process(html);
-    await fs.writeFile(indexPath, processed);
+
+    // Preload the two above-the-fold fonts (hero Newsreader serif = the LCP
+    // element, and Inter for body text) so they start downloading immediately
+    // instead of waiting for CSS parse → font discovery. Filenames are
+    // content-hashed, so glob the built assets at this point.
+    const assetsDir = path.join(outDir, "assets");
+    const assetFiles = await fs.readdir(assetsDir);
+    const criticalFonts = assetFiles.filter((f) =>
+      /^(newsreader-latin-wght-normal|inter-latin-wght-normal)-.*\.woff2$/.test(f),
+    );
+    const preloadTags = criticalFonts
+      .map(
+        (f) =>
+          `<link rel="preload" href="${basePath}assets/${f}" as="font" type="font/woff2" crossorigin>`,
+      )
+      .join("\n    ");
+
+    const finalHtml = preloadTags
+      ? processed.replace("</head>", `    ${preloadTags}\n  </head>`)
+      : processed;
+    await fs.writeFile(indexPath, finalHtml);
   },
 };
 
