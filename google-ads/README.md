@@ -11,12 +11,17 @@ Plano para tirar o foco do termo técnico **"alienação fiduciária"** (que mir
 > é o lead da Chreos, não o cliente que compra leads.
 
 ## Arquivos
+- **`README.md`** (este) — estrutura, lances, anúncios e cautelas OAB.
+- **`passo-a-passo-editor.md`** — guia de execução: conversões, lista negativa,
+  criar campanhas, importar, RSAs, extensões, postar e operar nas 1ªs semanas.
 - **`negativos-compartilhados.txt`** — ~85 termos. Crie uma **Lista de palavras
   negativas compartilhada** no Google Ads e cole tudo. Aplique a **TODAS** as
   campanhas. É a correção mais importante.
 - **`keywords.csv`** — importável no **Google Ads Editor** (colunas Campaign /
   Ad group / Keyword / Match type).
-- **`README.md`** (este) — estrutura, lances, anúncios e cautelas OAB.
+- **`extensoes.md`** — sitelinks, callouts, snippets, logo/imagem (OAB-safe).
+
+> **Comece pelo `passo-a-passo-editor.md`.**
 
 ---
 
