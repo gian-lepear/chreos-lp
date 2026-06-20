@@ -153,3 +153,45 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* Entrance animations — CSS replacements for the framer-motion hero/ticker
+   so framer stays off the home route's critical path. */
+@keyframes chreos-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes chreos-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.anim-fade-up {
+  opacity: 0;
+  animation: chreos-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.anim-fade-in {
+  animation: chreos-fade-in 0.4s ease forwards;
+}
+
+/* Respect users who prefer reduced motion: near-instant animations and
+   transitions covers both the CSS keyframes and most Framer Motion tweens
+   (WCAG 2.3.3). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
