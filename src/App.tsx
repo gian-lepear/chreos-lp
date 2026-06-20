@@ -1,7 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import { LazyMotion, domAnimation, MotionConfig } from "framer-motion";
 import { ConsentBanner } from "@/components/ConsentBanner";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import Home from "@/pages/home";
@@ -24,13 +23,14 @@ function Router() {
 function App() {
   return (
     <ErrorBoundary>
-      <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL?.replace(/\/$/, "") || ""}>
-          <Router />
-        </WouterRouter>
-        <ConsentBanner />
-        <Toaster />
-      </TooltipProvider>
+      <LazyMotion features={domAnimation} strict>
+        <MotionConfig reducedMotion="user">
+          <WouterRouter base={import.meta.env.BASE_URL?.replace(/\/$/, "") || ""}>
+            <Router />
+            <ConsentBanner />
+          </WouterRouter>
+        </MotionConfig>
+      </LazyMotion>
     </ErrorBoundary>
   );
 }
