@@ -245,7 +245,7 @@ export default function Home() {
               </m.div>
 
               <m.p variants={fadeUp} className="text-cream/55 mt-4 text-xs tracking-[0.05em]">
-                Demonstração sem compromisso · sem mensalidade, sem fidelidade
+                Lead exclusivo · sem mensalidade, sem fidelidade · demonstração sem compromisso
               </m.p>
             </m.div>
           </div>
@@ -281,8 +281,9 @@ export default function Home() {
               style={{ fontFamily: "'Newsreader Variable', serif" }}
             >
               Quando o imóvel vai a leilão, já é tarde — e o cliente já é de outro advogado. A
-              Chreos te coloca <em className="text-gold-light">um passo à frente</em>: você fala com
-              ele ainda na fase de intimação, quando ainda há prazo para agir.
+              Chreos encontra essa pessoa{" "}
+              <em className="text-gold-light">na intimação, antes de ela pesquisar no Google</em> —
+              e entrega o contato só para o seu escritório.
             </p>
           </div>
         </section>
