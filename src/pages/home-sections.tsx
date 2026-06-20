@@ -399,9 +399,10 @@ export default function HomeSections() {
                   </div>
                   <div className="text-cream/75 text-sm leading-relaxed">
                     Leads notificados pela{" "}
-                    <span className="text-gold-light font-semibold">2ª ou 3ª vez</span> têm taxa de
-                    conversão significativamente maior — a urgência é real, documentada e o cliente
-                    já entendeu que precisa agir.
+                    <span className="text-gold-light font-semibold">2ª ou 3ª vez</span> estão na
+                    reta final do processo — dentro do prazo de 15 dias para purgar a mora (art. 26
+                    da Lei 9.514/1997). A urgência é documentada, não presumida: o cliente já
+                    entendeu que precisa agir.
                   </div>
                 </div>
               </m.div>
@@ -441,8 +442,11 @@ export default function HomeSections() {
                     Alerta Gerado
                   </div>
                   <div className="text-cream/80 text-sm">
-                    Devedor identificado. Probabilidade de acordo{" "}
-                    <span className="text-gold-light font-mono font-bold">MÁXIMA</span>.
+                    Devedor na 3ª intimação —{" "}
+                    <span className="text-gold-light font-mono font-bold">
+                      prazo de purgação correndo
+                    </span>
+                    , janela de contato curta.
                   </div>
                 </div>
               </m.div>
@@ -659,8 +663,9 @@ export default function HomeSections() {
               com quem <em>precisa de você.</em>
             </h2>
             <p className="text-cream/55 mb-10 max-w-md text-base leading-relaxed">
-              Preencha o formulário ao lado e agende uma conversa conosco. Vamos mostrar leads reais
-              da sua região e explicar como podemos trabalhar com o seu escritório.
+              Preencha o formulário ao lado e agende uma conversa conosco. Vamos mostrar o que o seu
+              perfil pode gerar na sua região e explicar como podemos trabalhar com o seu
+              escritório.
             </p>
             <div className="space-y-5">
               {CTA_BULLETS.map((item, i) => (
@@ -675,6 +680,11 @@ export default function HomeSections() {
                 </div>
               ))}
             </div>
+            <p className="text-cream/55 mt-10 max-w-md text-xs leading-relaxed">
+              Operamos em conformidade com a LGPD (Lei 13.709/2018) e com as normas de publicidade
+              da advocacia (Provimento 205/2021 da OAB). Dados de origem pública e oficial; a
+              abordagem é sempre de responsabilidade do advogado.
+            </p>
           </m.div>
 
           <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
