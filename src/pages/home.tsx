@@ -194,7 +194,7 @@ export default function Home() {
               <m.div variants={fadeUp} className="mb-6 flex items-center gap-3">
                 <span className="bg-gold h-1.5 w-1.5 flex-shrink-0 rounded-full" />
                 <span className="text-gold text-[10px] font-bold tracking-[0.3em] uppercase">
-                  Para escritórios de direito imobiliário · Alienação fiduciária
+                  Leads quentes de alienação fiduciária para advogados
                 </span>
               </m.div>
 
