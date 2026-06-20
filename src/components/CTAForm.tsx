@@ -47,10 +47,35 @@ const ESTADOS = [
 
 const WHATSAPP_NUMBER = import.meta.env.VITE_CONTACT_FORM_WHATSAPP_NUMBER;
 
+// Web3Forms access key — public by design (it ships in client JS). Override
+// per-environment with VITE_WEB3FORMS_KEY; captures the lead server-side so it
+// isn't lost if the visitor never finishes the WhatsApp chat.
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || "49ebb410-0edb-4911-bf1a-7c14e2c2d7cd";
+
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
   }
+}
+
+function captureLead(data: FormValues): void {
+  if (!WEB3FORMS_KEY) return;
+  const payload: Record<string, string> = {
+    access_key: WEB3FORMS_KEY,
+    subject: `Novo lead Chreos — ${data.name}`,
+    from_name: "Chreos — Landing",
+    nome: data.name,
+    estado: data.estado,
+  };
+  // "email" is the Web3Forms reply-to; only send it when it's a real address.
+  if (data.email) payload.email = data.email;
+  // Fire-and-forget: a capture failure must never block the WhatsApp handoff.
+  // Web3Forms requires a browser-origin call (free tier blocks server-side).
+  void fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify(payload),
+  }).catch(() => {});
 }
 
 const formSchema = z.object({
@@ -82,8 +107,8 @@ export function CTAForm() {
     defaultValues: { name: "", email: "", estado: "" },
   });
 
-  // Fire the Google Ads conversion at most once, only when WhatsApp actually
-  // opened (avoids counting a conversion when the popup is blocked).
+  // PRIMARY conversion = a valid lead was submitted (and captured server-side),
+  // regardless of whether the WhatsApp tab actually opens. Fires at most once.
   function fireConversion() {
     if (converted) return;
     setConverted(true);
@@ -100,14 +125,18 @@ export function CTAForm() {
       return;
     }
 
+    // Capture the lead first so it survives a blocked popup or abandoned chat.
+    captureLead(data);
+    // The submitted lead is the real conversion now that it's captured.
+    fireConversion();
+
     const message = buildWhatsAppMessage(data);
     const encoded = encodeURIComponent(message);
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
     setWhatsappUrl(url);
-    // noopener closes the tabnabbing vector; null means the popup was blocked,
-    // so the success-state fallback link below carries the conversion instead.
     const win = window.open(url, "_blank", "noopener");
-    if (win) fireConversion();
+    // Soft/micro signal: did the WhatsApp tab actually open? (not a conversion)
+    window.gtag?.("event", "whatsapp_open", { opened: Boolean(win) });
   }
 
   const fieldClass =
@@ -147,7 +176,6 @@ export function CTAForm() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={fireConversion}
               className="text-navy flex w-full items-center justify-center gap-2 py-4 text-[10px] font-bold tracking-[0.3em] uppercase transition-opacity hover:opacity-90"
               style={{
                 background: "var(--gold-gradient)",
