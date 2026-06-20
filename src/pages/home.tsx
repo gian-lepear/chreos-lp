@@ -1,12 +1,8 @@
-import { useState, useEffect, useRef, lazy, Suspense } from "react";
+import { useState, useEffect } from "react";
+import { m, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { TICKER_ITEMS, STATS } from "@/data/landing";
-
-const HomeSections = lazy(() => import("./home-sections"));
-
-// Reused across every CountUp tick — building a new Intl formatter per
-// toLocaleString() call was the bulk of the animation's main-thread cost.
-const ptBR = new Intl.NumberFormat("pt-BR");
+import HomeSections from "./home-sections";
 
 function LiveTicker() {
   const [index, setIndex] = useState(0);
@@ -22,116 +18,94 @@ function LiveTicker() {
 
   return (
     <div
-      className="border-l-4 border-[#C9A84C] bg-[#0a1520] p-5 font-mono text-xs"
+      className="border-gold bg-navy-deep border-l-4 p-5 font-mono text-xs"
       style={{ borderRadius: 0 }}
     >
       <div className="mb-3 flex flex-shrink-0 items-center gap-3">
         <span className="inline-flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#C9A84C]" />
-          <span className="text-[10px] font-bold tracking-widest text-[#C9A84C] uppercase">
+          <span className="bg-gold h-1.5 w-1.5 animate-pulse rounded-full" />
+          <span className="text-gold text-[10px] font-bold tracking-widest uppercase">
             Edital Capturado
           </span>
         </span>
-        <span className="text-[10px] text-white/50">DIÁRIO REGISTRAL — DEMONSTRAÇÃO</span>
+        <span className="text-[10px] text-white/55">DIÁRIO REGISTRAL — DADOS ILUSTRATIVOS</span>
       </div>
-      <div style={{ height: 80, overflow: "hidden", position: "relative" }}>
-        {/* key={index} remounts on each tick so the CSS fade-in replays */}
-        <div
-          key={index}
-          className="anim-fade-in grid grid-cols-3 gap-x-4 gap-y-3"
-          style={{ position: "absolute", inset: 0 }}
-        >
-          <div className="min-w-0">
-            <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">Devedor</div>
-            <div className="truncate text-white/90">{item.devedor}</div>
-          </div>
-          <div className="min-w-0">
-            <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">Valor</div>
-            <div className="truncate text-[#e6c364]">{item.valor}</div>
-          </div>
-          <div className="min-w-0">
-            <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">Credor</div>
-            <div className="truncate text-white/90">{item.credor}</div>
-          </div>
-          <div className="min-w-0">
-            <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">
-              Matrícula
+      <div className="relative h-[128px] overflow-hidden md:h-[80px]">
+        <AnimatePresence mode="wait">
+          <m.div
+            key={index}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="grid grid-cols-2 gap-x-4 gap-y-3 md:grid-cols-3"
+            style={{ position: "absolute", inset: 0 }}
+          >
+            <div className="min-w-0">
+              <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">
+                Devedor
+              </div>
+              <div className="truncate text-white/90">{item.devedor}</div>
             </div>
-            <div className="truncate text-white/70">{item.matricula}</div>
-          </div>
-          <div className="min-w-0">
-            <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">
-              Cartório
+            <div className="min-w-0">
+              <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">Valor</div>
+              <div className="text-gold-light truncate">{item.valor}</div>
             </div>
-            <div className="truncate text-white/70">{item.cartorio}</div>
-          </div>
-          <div className="min-w-0">
-            <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">UF</div>
-            <div className="truncate text-white/70">{item.estado}</div>
-          </div>
-        </div>
+            <div className="min-w-0">
+              <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">
+                Credor
+              </div>
+              <div className="truncate text-white/90">{item.credor}</div>
+            </div>
+            <div className="min-w-0">
+              <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">
+                Matrícula
+              </div>
+              <div className="truncate text-white/70">{item.matricula}</div>
+            </div>
+            <div className="min-w-0">
+              <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">
+                Cartório
+              </div>
+              <div className="truncate text-white/70">{item.cartorio}</div>
+            </div>
+            <div className="min-w-0">
+              <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">UF</div>
+              <div className="truncate text-white/70">{item.estado}</div>
+            </div>
+          </m.div>
+        </AnimatePresence>
       </div>
     </div>
   );
 }
 
-function CountUp({ to, suffix = "" }: { to: number; suffix?: string }) {
-  const [count, setCount] = useState(0);
-  const [inView, setInView] = useState(false);
-  const ref = useRef<HTMLSpanElement>(null);
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.9,
+      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+    },
+  },
+};
 
-  // Trigger the count-up once the element scrolls into view (replaces
-  // framer-motion's useInView so framer stays off the home route).
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0 },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!inView) return;
-    const duration = 1800;
-    const startTime = performance.now();
-    let rafId: number;
-
-    function tick(now: number) {
-      const progress = Math.min((now - startTime) / duration, 1);
-      setCount(Math.floor(progress * to));
-      if (progress < 1) rafId = requestAnimationFrame(tick);
-      else setCount(to);
-    }
-
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, [inView, to]);
-
-  return (
-    <span ref={ref}>
-      {ptBR.format(count)}
-      {suffix}
-    </span>
-  );
-}
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
 
 export default function Home() {
   return (
     <div
-      className="min-h-screen bg-[#fcf9f3] text-[#0f1c2c] selection:bg-[#0f1c2c] selection:text-[#fcf9f3]"
+      className="bg-cream text-navy selection:bg-navy selection:text-cream min-h-screen"
       style={{ fontFamily: "'Inter Variable', sans-serif" }}
     >
       <a
         href="#main"
-        className="sr-only z-[100] bg-[#C9A84C] px-4 py-2 text-sm font-bold text-[#0f1c2c] focus:not-sr-only focus:absolute focus:top-4 focus:left-4"
+        className="bg-gold text-navy sr-only z-[100] px-4 py-2 text-sm font-bold focus:not-sr-only focus:absolute focus:top-4 focus:left-4"
       >
         Ir para o conteúdo principal
       </a>
@@ -150,34 +124,34 @@ export default function Home() {
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             style={{ fontFamily: "'Newsreader Variable', serif" }}
-            className="cursor-pointer text-4xl font-semibold tracking-tight text-[#fcf9f3] md:text-5xl"
+            className="text-cream cursor-pointer text-4xl font-semibold tracking-tight md:text-5xl"
           >
             Chreos
           </button>
-          <div className="hidden items-center gap-8 md:flex">
+          <div className="flex items-center gap-8">
             <a
               href="#mecanismo"
-              className="text-xs tracking-[0.15em] text-[#fcf9f3]/60 uppercase transition-colors hover:text-[#fcf9f3]"
+              className="text-cream/60 hover:text-cream hidden text-xs tracking-[0.15em] uppercase transition-colors md:block"
             >
               Como Funciona
             </a>
             <a
               href="#inteligencia"
-              className="text-xs tracking-[0.15em] text-[#fcf9f3]/60 uppercase transition-colors hover:text-[#fcf9f3]"
+              className="text-cream/60 hover:text-cream hidden text-xs tracking-[0.15em] uppercase transition-colors md:block"
             >
               Seus Leads
             </a>
             <a
               href="#filtros"
-              className="text-xs tracking-[0.15em] text-[#fcf9f3]/60 uppercase transition-colors hover:text-[#fcf9f3]"
+              className="text-cream/60 hover:text-cream hidden text-xs tracking-[0.15em] uppercase transition-colors md:block"
             >
               Personalização
             </a>
             <a
               href="#acesso"
-              className="px-5 py-2.5 text-xs font-bold tracking-[0.15em] text-[#0f1c2c] uppercase transition-opacity hover:opacity-90"
+              className="text-navy px-5 py-2.5 text-xs font-bold tracking-[0.15em] uppercase transition-opacity hover:opacity-90"
               style={{
-                background: "linear-gradient(135deg, #C9A84C 0%, #e6c364 100%)",
+                background: "var(--gold-gradient)",
               }}
               data-testid="link-nav-acesso"
             >
@@ -189,7 +163,7 @@ export default function Home() {
 
       <main id="main">
         {/* HERO — full bleed dark navy */}
-        <section className="relative flex min-h-screen flex-col justify-end overflow-hidden bg-[#0f1c2c]">
+        <section className="bg-navy relative flex min-h-screen flex-col justify-end overflow-hidden">
           {/* Background grid texture */}
           <div
             className="absolute inset-0 opacity-[0.03]"
@@ -202,7 +176,7 @@ export default function Home() {
           {/* Large background text */}
           <div className="pointer-events-none absolute top-1/2 right-0 left-0 -translate-y-1/2 overflow-hidden select-none">
             <div
-              className="pl-4 font-serif text-[18vw] leading-none font-bold whitespace-nowrap text-[#fcf9f3]/[0.025]"
+              className="text-cream/[0.025] pl-4 font-serif text-[18vw] leading-none font-bold whitespace-nowrap"
               style={{ fontFamily: "'Newsreader Variable', serif" }}
             >
               CHREOS
@@ -210,9 +184,15 @@ export default function Home() {
           </div>
 
           <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-36 pb-16 md:px-10">
-            <div>
-              <h1
-                className="anim-fade-up mb-10 leading-[0.95] tracking-[-0.02em] text-[#fcf9f3]"
+            <m.div initial="hidden" animate="visible" variants={stagger}>
+              {/* <m.div variants={fadeUp} className="flex items-center gap-4 mb-10">
+              <span className="w-1.5 h-1.5 bg-gold rounded-full animate-pulse" />
+              <span className="text-gold text-[10px] uppercase tracking-[0.3em] font-bold">Sistema Ativo — Monitoramento Contínuo</span>
+            </m.div> */}
+
+              <m.h1
+                variants={fadeUp}
+                className="text-cream mb-10 leading-[0.95] tracking-[-0.02em]"
                 style={{
                   fontFamily: "'Newsreader Variable', serif",
                   fontSize: "clamp(3.2rem, 8vw, 7.5rem)",
@@ -225,29 +205,23 @@ export default function Home() {
                 Alcance-os no
                 <br />
                 momento <em style={{ fontStyle: "italic", color: "#e6c364" }}>exato.</em>
-              </h1>
+              </m.h1>
 
-              <div
-                className="anim-fade-up mb-10 grid max-w-3xl gap-6 md:grid-cols-2"
-                style={{ animationDelay: "0.12s" }}
-              >
-                <p className="text-base leading-relaxed text-[#fcf9f3]/60">
-                  Identificamos automaticamente pessoas que estão prestes a perder um imóvel e
-                  entregamos ao seu escritório o nome, telefone e WhatsApp delas — antes que
-                  qualquer concorrente saiba que esse cliente existe.
+              <m.div variants={fadeUp} className="mb-10 grid max-w-3xl gap-6 md:grid-cols-2">
+                <p className="text-cream/60 text-base leading-relaxed">
+                  Identificamos pessoas que estão prestes a perder um imóvel e entregamos ao seu
+                  escritório o nome, telefone e WhatsApp delas — antes que qualquer concorrente
+                  saiba que esse cliente existe.
                 </p>
                 <LiveTicker />
-              </div>
+              </m.div>
 
-              <div
-                className="anim-fade-up flex flex-col gap-3 sm:flex-row"
-                style={{ animationDelay: "0.24s" }}
-              >
+              <m.div variants={fadeUp} className="flex flex-col gap-3 sm:flex-row">
                 <a
                   href="#acesso"
-                  className="inline-flex items-center gap-2 px-7 py-4 text-xs font-bold tracking-[0.2em] text-[#0f1c2c] uppercase transition-opacity hover:opacity-90"
+                  className="text-navy inline-flex items-center gap-2 px-7 py-4 text-xs font-bold tracking-[0.2em] uppercase transition-opacity hover:opacity-90"
                   style={{
-                    background: "linear-gradient(135deg, #C9A84C 0%, #e6c364 100%)",
+                    background: "var(--gold-gradient)",
                   }}
                   data-testid="button-hero-cta"
                 >
@@ -255,27 +229,30 @@ export default function Home() {
                 </a>
                 <a
                   href="#mecanismo"
-                  className="inline-flex items-center gap-2 border border-[#fcf9f3]/10 px-7 py-4 text-xs font-bold tracking-[0.2em] text-[#fcf9f3]/70 uppercase transition-colors hover:border-[#fcf9f3]/30"
+                  className="border-cream/10 text-cream/70 hover:border-cream/30 inline-flex items-center gap-2 border px-7 py-4 text-xs font-bold tracking-[0.2em] uppercase transition-colors"
                   data-testid="button-hero-secondary"
                 >
                   Ver Metodologia
                 </a>
-              </div>
-            </div>
+              </m.div>
+            </m.div>
           </div>
 
           {/* Stats strip */}
-          <div className="relative z-10 border-t border-[#fcf9f3]/10 bg-[#0a1520]">
-            <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 py-6 md:grid-cols-4 md:gap-0 md:divide-x md:divide-[#fcf9f3]/10 md:px-10">
+          <div className="border-cream/10 bg-navy-deep relative z-10 border-t">
+            <div className="md:divide-cream/10 mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 py-6 md:grid-cols-4 md:gap-0 md:divide-x md:px-10">
               {STATS.map((s, i) => (
                 <div key={i} className="first:pl-0 md:px-8">
                   <div
-                    className="font-mono font-bold text-[#e6c364]"
-                    style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)" }}
+                    className="text-gold-light font-semibold"
+                    style={{
+                      fontFamily: "'Newsreader Variable', serif",
+                      fontSize: "clamp(1.3rem, 2.2vw, 1.8rem)",
+                    }}
                   >
-                    <CountUp to={s.n} suffix={s.suf} />
+                    {s.v}
                   </div>
-                  <div className="mt-1 text-[10px] tracking-[0.15em] text-[#fcf9f3]/55 uppercase">
+                  <div className="text-cream/55 mt-1 text-[10px] tracking-[0.15em] uppercase">
                     {s.label}
                   </div>
                 </div>
@@ -284,9 +261,7 @@ export default function Home() {
           </div>
         </section>
 
-        <Suspense fallback={null}>
-          <HomeSections />
-        </Suspense>
+        <HomeSections />
       </main>
     </div>
   );

@@ -50,10 +50,10 @@ export const TICKER_ITEMS = [
 ];
 
 export const STATS = [
-  { n: 3847, suf: "", label: "Editais processados por semana" },
-  { n: 214, suf: "+", label: "Escritórios atendidos" },
-  { n: 27, suf: "", label: "Estados monitorados" },
-  { n: 92, suf: "%", label: "Leads com contato enriquecido" },
+  { v: "Brasil inteiro", label: "Fontes públicas em todos os estados" },
+  { v: "Fontes oficiais", label: "Diários registrais e editais" },
+  { v: "Pay-per-lead", label: "Sem mensalidade, sem fidelidade" },
+  { v: "Contato direto", label: "WhatsApp, telefone e e-mail" },
 ];
 
 export const STEPS = [
@@ -61,22 +61,22 @@ export const STEPS = [
     n: "I",
     tag: "DETECÇÃO",
     title: "Identificamos quem vai perder o imóvel",
-    sub: "Monitoramento automático",
-    body: "Monitoramos diariamente as publicações oficiais do registro de imóveis e detectamos automaticamente as pessoas que estão inadimplentes e com risco real de perder sua propriedade.",
+    sub: "Monitoramento de fontes oficiais",
+    body: "Monitoramos as publicações oficiais do registro de imóveis e detectamos as pessoas que estão inadimplentes e com risco real de perder sua propriedade.",
   },
   {
     n: "II",
     tag: "ORGANIZAÇÃO",
     title: "Organizamos todas as informações do caso",
     sub: "Perfil completo do potencial cliente",
-    body: "Cada lead chega com nome completo, banco credor, valor da dívida, endereço e número da matricula do imóvel — tudo o que seu escritório precisa para decidir se vale a pena entrar em contato.",
+    body: "Cada lead chega com nome completo, banco credor, valor da dívida, endereço e número da matrícula do imóvel — tudo o que seu escritório precisa para decidir se vale a pena entrar em contato.",
   },
   {
     n: "III",
     tag: "CONTATO",
     title: "Buscamos o contato direto da pessoa",
     sub: "WhatsApp · Telefone · E-mail",
-    body: "Localizamos o WhatsApp, telefone e e-mail atualizado de cada pessoa. Seu escritório não precisa procurar nada — basta abrir o lead e já começar a conversa.",
+    body: "Localizamos o WhatsApp, telefone e e-mail atualizados de cada pessoa. Seu escritório não precisa procurar nada — basta abrir o lead e já começar a conversa.",
   },
   {
     n: "IV",
@@ -126,57 +126,69 @@ export const FILTERS = [
 export const TIMELINE = [
   {
     n: "01",
-    date: "14 Mar 2024",
+    date: "14 Out 2025",
     label: "1ª Intimação",
     note: "Devedor notificado pela primeira vez.",
     cold: true,
   },
   {
     n: "02",
-    date: "02 Ago 2024",
+    date: "02 Fev 2026",
     label: "2ª Intimação",
     note: "Segunda notificação sobre o mesmo imóvel.",
     cold: true,
   },
   {
     n: "03",
-    date: "18 Jan 2025",
+    date: "18 Mai 2026",
     label: "3ª Intimação",
     note: "Situação crítica, prazo de 15 dias para purgar a mora. Lead classificado como Alta Urgência.",
     cold: false,
   },
 ];
 
-export const TESTIMONIALS = [
-  // {
-  //   quote: "Reduzimos nosso custo de aquisição a uma fração do que era antes. A Chreos não entrega contatos — entrega clientes que já precisam contratar.",
-  //   author: "Dr. Roberto Junqueira",
-  //   firm: "Junqueira & Associados",
-  //   location: "São Paulo, SP",
-  //   stat: "−74% CAC",
-  // },
+export const INVESTMENT = [
   {
-    quote:
-      "A funcionalidade de reincidência mudou completamente nossa tese comercial. Hoje abordamos o devedor quando ele já esgotou todas as opções administrativas.",
-    author: "Dra. Helena Valente",
-    firm: "Valente Imobiliário",
-    location: "Curitiba, PR",
-    stat: "+3× conversão",
+    label: "Pague por lead",
+    detail: "Sem mensalidade · Sem adesão",
+    desc: "Você paga apenas pelos leads que recebe. Não existe mensalidade, taxa de adesão ou custo escondido.",
   },
-  // {
-  //   quote: "Antes, dependíamos de tráfego pago e indicações. Agora operamos com dados. A diferença é brutal — os clientes que chegam já sabem que precisam de nós.",
-  //   author: "Dr. Marcus Braga",
-  //   firm: "Braga Direito Real",
-  //   location: "Belo Horizonte, MG",
-  //   stat: "2× faturamento",
-  // },
   {
-    quote:
-      "O filtro por faixa de dívida nos permitiu focar em imóveis de alto padrão. Triplicamos o ticket médio dos nossos casos em 4 meses.",
-    author: "Dra. Camila Reys",
-    firm: "Reys & Figueiredo",
-    location: "Rio de Janeiro, RJ",
-    stat: "3× ticket médio",
+    label: "Preço definido pelos seus filtros",
+    detail: "Perfil sob medida",
+    desc: "O valor por lead é definido junto com você, de acordo com o perfil configurado — região, faixa de dívida, urgência. Quanto mais específico o filtro, mais qualificado o lead.",
+  },
+  {
+    label: "Sem fidelidade",
+    detail: "Comece e pause quando quiser",
+    desc: "Você começa quando quiser, pausa quando quiser e ajusta seu perfil a qualquer momento. O risco é nosso, não seu.",
+  },
+];
+
+export const FAQ = [
+  {
+    q: "De onde vêm os dados? Isso é legal?",
+    a: "Todas as informações vêm de fontes públicas oficiais — diários de registro de imóveis e editais de leilão publicados por cartórios de todo o Brasil. Nosso trabalho é monitorar, organizar e enriquecer registros que já são públicos por lei.",
+  },
+  {
+    q: "Como funciona o pagamento?",
+    a: "Modelo pay-per-lead: você paga apenas pelos leads que recebe. O valor é definido de acordo com os filtros do seu perfil — não existe mensalidade nem taxa de adesão.",
+  },
+  {
+    q: "Quantos leads posso receber?",
+    a: "O volume depende dos filtros configurados e da sua região — perfis mais amplos geram mais leads. Na demonstração mostramos exatamente quanto o seu perfil pode gerar.",
+  },
+  {
+    q: "Existe contrato de fidelidade?",
+    a: "Não. Você começa quando quiser, pausa quando quiser e ajusta seu perfil a qualquer momento.",
+  },
+  {
+    q: "Os leads são exclusivos?",
+    a: "Você escolhe. A exclusividade é uma opção do seu perfil: leads exclusivos não são entregues a nenhum outro escritório e, por isso, têm valor maior por lead. Definimos juntos o que faz mais sentido para a sua estratégia.",
+  },
+  {
+    q: "Em quanto tempo começo a receber leads?",
+    a: "Em poucos dias após a configuração do seu perfil. O prazo exato depende dos filtros escolhidos — perfis mais amplos começam a receber antes; filtros muito específicos podem levar um pouco mais para gerar os primeiros leads.",
   },
 ];
 
