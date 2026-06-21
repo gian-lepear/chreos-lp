@@ -118,7 +118,7 @@ export default function Home() {
 
   return (
     <div
-      className="bg-cream text-navy selection:bg-navy selection:text-cream min-h-screen pb-16 md:pb-0"
+      className="bg-cream text-navy selection:bg-navy selection:text-cream min-h-screen"
       style={{ fontFamily: "'Inter Variable', sans-serif" }}
     >
       <a

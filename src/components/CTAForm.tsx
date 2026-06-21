@@ -165,7 +165,7 @@ export function CTAForm() {
   }
 
   const fieldClass =
-    "w-full bg-navy-raised text-cream placeholder:text-cream/45 border-0 rounded-none px-4 py-3 text-base font-mono outline-none focus:bg-navy-hover focus:ring-2 focus:ring-inset focus:ring-gold transition-colors";
+    "w-full bg-navy-raised text-cream placeholder:text-cream/60 border-0 rounded-none px-4 py-3 text-base font-mono outline-none focus:bg-navy-hover focus:ring-2 focus:ring-inset focus:ring-gold transition-colors";
   const labelClass = "text-[10px] uppercase tracking-[0.25em] text-cream/60 font-bold mb-2 block";
 
   return (
@@ -276,7 +276,7 @@ export function CTAForm() {
                           className={cn(
                             fieldClass,
                             "h-[46px] cursor-pointer",
-                            field.value ? "text-cream" : "text-cream/45",
+                            field.value ? "text-cream" : "text-cream/60",
                           )}
                           style={{ borderRadius: 0 }}
                         >

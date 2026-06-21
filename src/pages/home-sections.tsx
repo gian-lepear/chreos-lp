@@ -538,7 +538,7 @@ export default function HomeSections() {
                       >
                         {ev.label}
                       </div>
-                      <div className="text-cream/45 text-xs leading-relaxed">{ev.note}</div>
+                      <div className="text-cream/60 text-xs leading-relaxed">{ev.note}</div>
                     </div>
                   </div>
                 ))}
@@ -842,7 +842,7 @@ export default function HomeSections() {
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-navy-deep px-6 py-12 md:px-10">
+      <footer className="bg-navy-deep px-6 pt-12 pb-24 md:px-10 md:py-12">
         <div className="mx-auto max-w-7xl">
           <div className="border-cream/10 flex flex-col items-start justify-between gap-8 border-b pb-10 md:flex-row md:items-end">
             <div>
@@ -882,7 +882,7 @@ export default function HomeSections() {
               GLPA Data Services LTDA · CNPJ 55.704.724/0001-08
             </div>
           </div>
-          <p className="text-cream/40 mt-6 max-w-3xl text-[11px] leading-relaxed">
+          <p className="text-cream/60 mt-6 max-w-3xl text-[11px] leading-relaxed">
             A Chreos é um produto da GLPA Data Services LTDA, empresa de tecnologia da informação. Não
             é sociedade de advogados e não presta serviços jurídicos — fornece inteligência de dados de
             fontes públicas para a decisão do escritório.

@@ -104,7 +104,7 @@ export default function Privacy() {
             solicitam acesso à plataforma, em conformidade com a Lei Geral de Proteção de Dados (Lei
             nº 13.709/2018).
           </p>
-          <div className="mt-10 font-mono text-[10px] tracking-[0.2em] text-cream/40 uppercase">
+          <div className="mt-10 font-mono text-[10px] tracking-[0.2em] text-cream/60 uppercase">
             Última atualização: {LAST_UPDATE}
           </div>
         </div>
@@ -422,7 +422,7 @@ export default function Privacy() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn do fundador (abre em nova aba)"
-                className="mt-2 -ml-2 inline-flex h-9 w-9 items-center justify-center text-cream/40 transition-colors hover:text-cream/70"
+                className="mt-2 -ml-2 inline-flex h-9 w-9 items-center justify-center text-cream/60 transition-colors hover:text-cream/70"
               >
                 <Linkedin size={18} aria-hidden />
               </a>
