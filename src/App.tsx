@@ -20,10 +20,36 @@ function ScrollToHash() {
   useEffect(() => {
     const { hash } = window.location;
     if (!hash) return;
-    const id = decodeURIComponent(hash.slice(1));
+    let id: string;
+    try {
+      id = decodeURIComponent(hash.slice(1));
+    } catch {
+      id = hash.slice(1); // hash malformado: usa cru em vez de derrubar a página
+    }
     const scrollToTarget = () => document.getElementById(id)?.scrollIntoView();
     requestAnimationFrame(scrollToTarget);
-    if (document.fonts?.ready) void document.fonts.ready.then(scrollToTarget);
+
+    // Re-rola após as fontes carregarem (o serif grande reflui as seções acima e
+    // desloca a âncora) — mas só se o usuário NÃO tiver rolado nesse meio-tempo,
+    // pra não arrancá-lo de volta. scrollIntoView programático não dispara esses
+    // eventos, então só input real marca userScrolled.
+    let userScrolled = false;
+    const markScrolled = () => {
+      userScrolled = true;
+    };
+    window.addEventListener("wheel", markScrolled, { once: true, passive: true });
+    window.addEventListener("touchmove", markScrolled, { once: true, passive: true });
+    window.addEventListener("keydown", markScrolled, { once: true });
+    if (document.fonts?.ready) {
+      void document.fonts.ready.then(() => {
+        if (!userScrolled) scrollToTarget();
+      });
+    }
+    return () => {
+      window.removeEventListener("wheel", markScrolled);
+      window.removeEventListener("touchmove", markScrolled);
+      window.removeEventListener("keydown", markScrolled);
+    };
   }, [location]);
   return null;
 }

@@ -1,12 +1,10 @@
-import { lazy, Suspense } from "react";
 import { m } from "framer-motion";
 import { ArrowUpRight, Linkedin } from "lucide-react";
 import { Link } from "wouter";
-
-// Code-split: o form (zod + react-hook-form + resolver, ~37KB gzip) sai do
-// chunk crítico index.js. Fica no fim da página (abaixo da dobra), então o
-// chunk carrega sob demanda sem competir com o primeiro paint.
-const CTAForm = lazy(() => import("@/components/CTAForm").then((m) => ({ default: m.CTAForm })));
+// Import estático (não lazy): o form precisa sair no HTML prerenderizado pros
+// crawlers/bots de IA sem JS. renderToString não suporta Suspense — com lazy, o
+// form some do HTML estático e injeta um erro do React no lugar.
+import { CTAForm } from "@/components/CTAForm";
 import {
   STEPS,
   LEAD_FEATURES,
@@ -841,9 +839,7 @@ export default function HomeSections() {
           </m.div>
 
           <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <Suspense fallback={null}>
-              <CTAForm />
-            </Suspense>
+            <CTAForm />
           </m.div>
         </div>
       </section>

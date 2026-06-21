@@ -13,8 +13,9 @@ export type ConsentChoice = "granted" | "denied";
 const STORAGE_KEY = "chreos-consent";
 
 // The four advertising/analytics signals we toggle together. The Chreos site
-// only uses Google Ads (conversion tracking), so a single accept/reject is
-// enough — no per-category granularity needed.
+// uses Google Ads (conversão) e Google Analytics 4 (tráfego/audiência) na mesma
+// gtag.js, então um único aceitar/recusar cobre os dois — sem granularidade por
+// categoria.
 const SIGNALS = ["ad_storage", "ad_user_data", "ad_personalization", "analytics_storage"] as const;
 
 export function readConsent(): ConsentChoice | null {

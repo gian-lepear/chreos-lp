@@ -427,11 +427,11 @@ export default function Privacy() {
                 <Linkedin size={18} aria-hidden />
               </a>
             </div>
-            <div className="flex gap-8 text-xs tracking-[0.15em] text-cream/35 uppercase">
-              <Link href="/privacidade" className="transition-colors hover:text-cream/70">
+            <div className="flex gap-8 text-xs tracking-[0.15em] text-cream/60 uppercase">
+              <Link href="/privacidade" className="transition-colors hover:text-cream/80">
                 Privacidade
               </Link>
-              <a href="#acesso" className="transition-colors hover:text-cream/70">
+              <a href={HOME_ACESSO} className="transition-colors hover:text-cream/80">
                 Contato
               </a>
             </div>
