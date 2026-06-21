@@ -4,22 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18227481490"></script>
+    <!-- Google tag (gtag.js) — deferred to keep gtag.js off the critical path.
+         The inline bootstrap queues events immediately; the heavy external
+         script loads after the page is interactive (~2s post-load). -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag("js", new Date());
 
+      // Consent Mode v2 — deny all advertising/analytics storage by default
+      // (LGPD). The React consent banner flips these to "granted" via
+      // gtag("consent","update", ...) once the user accepts.
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+        wait_for_update: 500,
+      });
+
+      gtag("js", new Date());
       gtag("config", "AW-18227481490");
+
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          var s = document.createElement("script");
+          s.async = true;
+          s.src = "https://www.googletagmanager.com/gtag/js?id=AW-18227481490";
+          document.head.appendChild(s);
+        }, 2000);
+      });
     </script>
 
-    <title>Chreos — Leads de Alienação Fiduciária para Advogados</title>
+    <title>Chreos — Leads de Imóveis em Leilão e Execução Extrajudicial</title>
     <meta
       name="description"
-      content="Monitoramos publicações oficiais de cartórios em todo o Brasil e identificamos casos de alienação fiduciária que demandam atuação jurídica imediata."
+      content="Identificamos pessoas prestes a perder o imóvel financiado — ainda na fase de intimação, antes do leilão — e entregamos nome e WhatsApp ao seu escritório. Execução extrajudicial e alienação fiduciária (Lei 9.514/1997)."
     />
     <meta name="robots" content="index, follow" />
     <meta name="google-site-verification" content="WwoZDncdp9axmyIVVI3BJ_SyVwXoJ5oWqsOsEE-DdiU" />
@@ -29,32 +50,31 @@
     />
     <meta name="author" content="Chreos" />
     <link rel="canonical" href="https://chreos.com.br/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://chreos.com.br/" />
+    <link rel="alternate" hreflang="x-default" href="https://chreos.com.br/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Chreos" />
     <meta property="og:url" content="https://chreos.com.br/" />
-    <meta
-      property="og:title"
-      content="Inteligência em Alienação Fiduciária para Advocacia | Chreos"
-    />
+    <meta property="og:title" content="Leads de Imóveis em Leilão para Advocacia | Chreos" />
     <meta
       property="og:description"
-      content="Leads quentes para advogados imobiliários. Identificamos quem vai perder o imóvel e entregamos o contato direto para o seu escritório."
+      content="Identificamos quem está prestes a perder o imóvel financiado — antes do leilão — e entregamos o contato direto ao seu escritório."
     />
     <meta property="og:image" content="https://chreos.com.br/opengraph.jpg" />
-    <meta property="og:image:alt" content="Chreos — Leads jurídicos de alienação fiduciária" />
+    <meta
+      property="og:image:alt"
+      content="Chreos — Leads de imóveis em leilão e execução extrajudicial"
+    />
     <meta property="og:locale" content="pt_BR" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Inteligência em Alienação Fiduciária para Advocacia | Chreos"
-    />
+    <meta name="twitter:title" content="Leads de Imóveis em Leilão para Advocacia | Chreos" />
     <meta
       name="twitter:description"
-      content="Leads quentes para advogados imobiliários. Identificamos quem vai perder o imóvel e entregamos o contato direto para o seu escritório."
+      content="Identificamos quem está prestes a perder o imóvel financiado — antes do leilão — e entregamos o contato direto ao seu escritório."
     />
     <meta name="twitter:image" content="https://chreos.com.br/opengraph.jpg" />
 
@@ -84,7 +104,7 @@
             "taxID": "55.704.724/0001-08",
             "url": "https://chreos.com.br/",
             "logo": "https://chreos.com.br/favicon-512x512.png",
-            "description": "A Chreos monitora cartórios de todo o Brasil e entrega leads jurídicos de alienação fiduciária para escritórios de advocacia imobiliária."
+            "description": "A Chreos monitora cartórios de todo o Brasil e entrega a escritórios de advocacia leads de pessoas prestes a perder o imóvel financiado — antes do leilão (execução extrajudicial / alienação fiduciária, Lei 9.514/1997)."
           },
           {
             "@type": "WebSite",
@@ -100,10 +120,34 @@
             "mainEntity": [
               {
                 "@type": "Question",
-                "name": "De onde vêm os dados? Isso é legal?",
+                "name": "Receber esses leads é compatível com as regras da OAB?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sim. A Chreos entrega inteligência derivada de registros e publicações públicas — uma intermediação transparente de informação, e não captação ativa e indiscriminada de clientela. A decisão de abordar (ou não) cada caso é sempre do advogado, que deve conduzir o contato de forma informativa e dentro do Provimento 205/2021 da OAB: sem promessa de resultado e sem oferta de honorários."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "E a LGPD? É legal tratar esses dados?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Os dados têm origem em atos e publicações oficiais e públicas — diários de registro de imóveis e editais de leilão. O tratamento segue os princípios da LGPD (finalidade, minimização e transparência), apoiado, em regra, no legítimo interesse aplicável a dados de fontes públicas (art. 7º da Lei 13.709/2018). Ao receber um lead, o advogado passa a ser controlador independente para o uso que fizer da informação."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "De onde vêm os dados?",
                 "acceptedAnswer": {
                   "@type": "Answer",
                   "text": "Todas as informações vêm de fontes públicas oficiais — diários de registro de imóveis e editais de leilão publicados por cartórios de todo o Brasil. Nosso trabalho é monitorar, organizar e enriquecer registros que já são públicos por lei."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Os leads são exclusivos?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sim — e isso é o padrão da Chreos. Cada lead é entregue a um único escritório: o mesmo contato nunca vai para um concorrente da sua região. Além de proteger o seu trabalho, a exclusividade é a forma mais alinhada às normas da OAB, que vedam oferecer o mesmo cliente a vários advogados."
                 }
               },
               {
@@ -132,14 +176,6 @@
               },
               {
                 "@type": "Question",
-                "name": "Os leads são exclusivos?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Você escolhe. A exclusividade é uma opção do seu perfil: leads exclusivos não são entregues a nenhum outro escritório e, por isso, têm valor maior por lead. Definimos juntos o que faz mais sentido para a sua estratégia."
-                }
-              },
-              {
-                "@type": "Question",
                 "name": "Em quanto tempo começo a receber leads?",
                 "acceptedAnswer": {
                   "@type": "Answer",
@@ -150,11 +186,11 @@
           },
           {
             "@type": "Service",
-            "name": "Leads Jurídicos de Alienação Fiduciária",
+            "name": "Leads de Imóveis em Leilão e Execução Extrajudicial",
             "provider": { "@id": "https://chreos.com.br/#organization" },
             "areaServed": { "@type": "Country", "name": "Brasil" },
             "serviceType": "Geração de leads para advocacia imobiliária",
-            "description": "Identificação de pessoas em processo de retomada de imóvel por alienação fiduciária, com nome, WhatsApp e contato entregues a escritórios de advocacia."
+            "description": "Identificação de pessoas prestes a perder o imóvel financiado — ainda antes do leilão (execução extrajudicial / alienação fiduciária, Lei 9.514/1997) — com nome, WhatsApp e contato entregues a escritórios de advocacia."
           }
         ]
       }

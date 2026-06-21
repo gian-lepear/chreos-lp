@@ -1,0 +1,40 @@
+/* Self-hosted, subset fonts. Generated from @fontsource-variable sources with
+   fontTools: glyphs limited to Latin + Greek (χρέος) + punctuation/currency,
+   and the weight axis instanced to 400–700 (the only weights the page uses).
+   ~33–42% smaller than the full @fontsource files → faster LCP/FCP.
+   Regenerate: see scripts/subset-fonts.sh */
+
+@font-face {
+  font-family: "Newsreader Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400 700;
+  src: url("./newsreader-latin-subset.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Newsreader Variable";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400 700;
+  src: url("./newsreader-italic-subset.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400 700;
+  src: url("./inter-latin-subset.woff2") format("woff2");
+}
+
+/* Greek glyphs (the χρέος brand word) — Newsreader has no Greek, so a
+   matching literary serif fills U+0370–03FF only. Lazy: loads below the fold. */
+@font-face {
+  font-family: "Newsreader Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400 700;
+  unicode-range: U+0370-03FF;
+  src: url("./literata-greek-subset.woff2") format("woff2");
+}

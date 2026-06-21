@@ -2,7 +2,15 @@ import { m } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "wouter";
 import { CTAForm } from "@/components/CTAForm";
-import { STEPS, LEAD_FEATURES, FILTERS, TIMELINE, INVESTMENT, FAQ, CTA_BULLETS } from "@/data/landing";
+import {
+  STEPS,
+  LEAD_FEATURES,
+  FILTERS,
+  TIMELINE,
+  INVESTMENT,
+  FAQ,
+  CTA_BULLETS,
+} from "@/data/landing";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -37,14 +45,14 @@ export default function HomeSections() {
           >
             <m.div
               variants={fadeUp}
-              className="mb-16 flex items-end justify-between border-b border-navy/10 pb-8"
+              className="border-navy/10 mb-16 flex items-end justify-between border-b pb-8"
             >
               <div>
-                <div className="mb-3 text-[10px] font-bold tracking-[0.3em] text-navy/60 uppercase">
+                <div className="text-navy/60 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
                   01 — Como Funciona
                 </div>
                 <h2
-                  className="leading-tight text-navy"
+                  className="text-navy leading-tight"
                   style={{
                     fontFamily: "'Newsreader Variable', serif",
                     fontSize: "clamp(2rem, 4.5vw, 3.8rem)",
@@ -56,7 +64,7 @@ export default function HomeSections() {
                 </h2>
               </div>
               <div className="hidden max-w-xs text-right md:block">
-                <p className="text-sm leading-relaxed text-navy/50">
+                <p className="text-navy/50 text-sm leading-relaxed">
                   Enquanto seu escritório atende os casos de hoje, já estamos montando a fila de
                   clientes de amanhã — com nome, contato e urgência documentada.
                 </p>
@@ -68,11 +76,11 @@ export default function HomeSections() {
                 <m.div
                   key={i}
                   variants={fadeUp}
-                  className="group -mx-4 flex gap-8 border-b border-navy/10 px-4 py-10 transition-colors hover:bg-cream-dim md:gap-16"
+                  className="group border-navy/10 hover:bg-cream-dim -mx-4 flex gap-8 border-b px-4 py-10 transition-colors md:gap-16"
                 >
                   <div className="w-12 flex-shrink-0 md:w-16">
                     <span
-                      className="font-serif text-4xl font-bold text-navy/15 md:text-5xl"
+                      className="text-navy/15 font-serif text-4xl font-bold md:text-5xl"
                       style={{ fontFamily: "'Newsreader Variable', serif" }}
                     >
                       {step.n}
@@ -80,16 +88,16 @@ export default function HomeSections() {
                   </div>
                   <div className="grid flex-1 items-start gap-4 md:grid-cols-3 md:gap-8">
                     <div>
-                      <div className="mb-2 text-[9px] font-bold tracking-[0.3em] text-gold uppercase">
+                      <div className="text-gold mb-2 text-[9px] font-bold tracking-[0.3em] uppercase">
                         {step.tag}
                       </div>
-                      <h3 className="text-lg font-semibold tracking-tight text-navy">
+                      <h3 className="text-navy text-lg font-semibold tracking-tight">
                         {step.title}
                       </h3>
-                      <div className="mt-1 text-sm text-navy/55">{step.sub}</div>
+                      <div className="text-navy/55 mt-1 text-sm">{step.sub}</div>
                     </div>
                     <div className="md:col-span-2">
-                      <p className="text-sm leading-relaxed text-navy/65 md:text-base">
+                      <p className="text-navy/65 text-sm leading-relaxed md:text-base">
                         {step.body}
                       </p>
                     </div>
@@ -114,11 +122,11 @@ export default function HomeSections() {
             variants={stagger}
           >
             <m.div variants={fadeUp} className="mb-14">
-              <div className="mb-3 text-[10px] font-bold tracking-[0.3em] text-cream/55 uppercase">
+              <div className="text-cream/55 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
                 02 — Seus Leads
               </div>
               <h2
-                className="leading-tight text-cream"
+                className="text-cream leading-tight"
                 style={{
                   fontFamily: "'Newsreader Variable', serif",
                   fontSize: "clamp(2rem, 4.5vw, 3.8rem)",
@@ -132,7 +140,7 @@ export default function HomeSections() {
 
             <m.div variants={fadeUp} className="grid gap-6 lg:grid-cols-5">
               {/* Dossier card */}
-              <div className="relative overflow-hidden bg-cream lg:col-span-3">
+              <div className="bg-cream relative overflow-hidden lg:col-span-3">
                 <div
                   className="absolute top-0 bottom-0 left-0 w-[5px]"
                   style={{
@@ -144,18 +152,18 @@ export default function HomeSections() {
                   <div className="mb-6 flex items-start justify-between">
                     <div>
                       <span
-                        className="mb-3 inline-block bg-navy px-2.5 py-1 text-[9px] font-bold tracking-[0.25em] text-cream uppercase"
+                        className="bg-navy text-cream mb-3 inline-block px-2.5 py-1 text-[9px] font-bold tracking-[0.25em] uppercase"
                         style={{ borderRadius: "9999px" }}
                       >
                         Alta Urgência · 3ª Notificação
                       </span>
                       <h3
-                        className="text-xl font-semibold text-navy"
+                        className="text-navy text-xl font-semibold"
                         style={{ fontFamily: "'Newsreader Variable', serif" }}
                       >
                         Carlos Eduardo Mendes
                       </h3>
-                      <div className="mt-0.5 text-xs tracking-widest text-navy/50 uppercase">
+                      <div className="text-navy/50 mt-0.5 text-xs tracking-widest uppercase">
                         Potencial Cliente
                       </div>
                     </div>
@@ -166,30 +174,28 @@ export default function HomeSections() {
                   </div>
                 </div>
 
-                <div className="mx-6 mb-0 bg-cream-dim p-4">
+                <div className="bg-cream-dim mx-6 mb-0 p-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <div className="mb-1 text-[9px] font-bold tracking-[0.2em] text-navy/60 uppercase">
-                        Credor Fiduciário
+                      <div className="text-navy/60 mb-1 text-[9px] font-bold tracking-[0.2em] uppercase">
+                        Banco Credor
                       </div>
-                      <div className="text-sm font-medium text-navy">Banco Itaú S.A.</div>
+                      <div className="text-navy text-sm font-medium">Banco Itaú S.A.</div>
                     </div>
                     <div>
-                      <div className="mb-1 text-[9px] font-bold tracking-[0.2em] text-navy/60 uppercase">
+                      <div className="text-navy/60 mb-1 text-[9px] font-bold tracking-[0.2em] uppercase">
                         Valor da Dívida
                       </div>
-                      <div className="font-mono text-sm font-bold text-navy">
-                        R$ 142.850,00
-                      </div>
+                      <div className="text-navy font-mono text-sm font-bold">R$ 142.850,00</div>
                     </div>
                     <div>
-                      <div className="mb-1 text-[9px] font-bold tracking-[0.2em] text-navy/60 uppercase">
+                      <div className="text-navy/60 mb-1 text-[9px] font-bold tracking-[0.2em] uppercase">
                         Inadimplência desde
                       </div>
-                      <div className="font-mono text-sm text-navy">14/10/2025</div>
+                      <div className="text-navy font-mono text-sm">14/10/2025</div>
                     </div>
                     <div>
-                      <div className="mb-1 text-[9px] font-bold tracking-[0.2em] text-navy/60 uppercase">
+                      <div className="text-navy/60 mb-1 text-[9px] font-bold tracking-[0.2em] uppercase">
                         Reincidências
                       </div>
                       <div className="mt-0.5 flex gap-1">
@@ -208,47 +214,47 @@ export default function HomeSections() {
                 </div>
 
                 <div className="px-6 pt-4 pb-4">
-                  <div className="mb-2 text-[9px] font-bold tracking-[0.2em] text-navy/60 uppercase">
+                  <div className="text-navy/60 mb-2 text-[9px] font-bold tracking-[0.2em] uppercase">
                     Imóvel e Registro
                   </div>
-                  <div className="text-sm text-navy">
+                  <div className="text-navy text-sm">
                     Rua das Acácias, 145 — Apto 802, Pinheiros
                   </div>
-                  <div className="text-sm text-navy/70">São Paulo — SP · CEP 05435-020</div>
-                  <div className="mt-1 font-mono text-xs text-navy/50">
+                  <div className="text-navy/70 text-sm">São Paulo — SP · CEP 05435-020</div>
+                  <div className="text-navy/50 mt-1 font-mono text-xs">
                     Matrícula 84.992 · 4º CRI de São Paulo · CNS 1.077
                   </div>
                 </div>
 
-                <div className="mx-6 mb-6 bg-cream-shade p-4">
-                  <div className="mb-3 text-[9px] font-bold tracking-[0.2em] text-navy/60 uppercase">
+                <div className="bg-cream-shade mx-6 mb-6 p-4">
+                  <div className="text-navy/60 mb-3 text-[9px] font-bold tracking-[0.2em] uppercase">
                     Contatos Enriquecidos
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] tracking-widest text-navy/50 uppercase">
+                      <span className="text-navy/50 text-[10px] tracking-widest uppercase">
                         WhatsApp
                       </span>
-                      <span className="font-mono text-sm text-navy">+55 11 98844-3322</span>
+                      <span className="text-navy font-mono text-sm">+55 11 98844-3322</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] tracking-widest text-navy/50 uppercase">
+                      <span className="text-navy/50 text-[10px] tracking-widest uppercase">
                         Telefone
                       </span>
-                      <span className="font-mono text-sm text-navy">+55 11 3341-8810</span>
+                      <span className="text-navy font-mono text-sm">+55 11 3341-8810</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] tracking-widest text-navy/50 uppercase">
+                      <span className="text-navy/50 text-[10px] tracking-widest uppercase">
                         E-mail
                       </span>
-                      <span className="font-mono text-sm text-navy">c.mendes@gmail.com</span>
+                      <span className="text-navy font-mono text-sm">c.mendes@gmail.com</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="px-6 pb-6">
                   <button
-                    className="w-full py-3 text-[10px] font-bold tracking-[0.25em] text-navy uppercase transition-opacity hover:opacity-80"
+                    className="text-navy w-full py-3 text-[10px] font-bold tracking-[0.25em] uppercase transition-opacity hover:opacity-80"
                     style={{
                       background: "var(--gold-gradient)",
                     }}
@@ -256,7 +262,7 @@ export default function HomeSections() {
                   >
                     Iniciar Abordagem
                   </button>
-                  <div className="mt-3 text-center text-[9px] tracking-[0.15em] text-navy/55 uppercase">
+                  <div className="text-navy/55 mt-3 text-center text-[9px] tracking-[0.15em] uppercase">
                     Exemplo ilustrativo de lead
                   </div>
                 </div>
@@ -264,31 +270,28 @@ export default function HomeSections() {
 
               {/* Right column — info */}
               <div className="flex flex-col justify-between gap-6 lg:col-span-2">
-                <div className="text-base leading-relaxed text-cream/60">
+                <div className="text-cream/60 text-base leading-relaxed">
                   Cada lead que entregamos já tem tudo o que o seu escritório precisa para dar o
                   primeiro passo. Sem pesquisa extra. Sem tempo perdido. Só chegar e conversar.
                 </div>
                 <div className="space-y-0">
                   {LEAD_FEATURES.map((item, i) => (
-                    <div
-                      key={i}
-                      className="flex items-center gap-4 border-b border-cream/10 py-4"
-                    >
+                    <div key={i} className="border-cream/10 flex items-center gap-4 border-b py-4">
                       <div
                         className="h-4 w-[3px] flex-shrink-0"
                         style={{
                           background: "var(--gold-gradient-v)",
                         }}
                       />
-                      <span className="text-sm text-cream/75">{item}</span>
+                      <span className="text-cream/75 text-sm">{item}</span>
                     </div>
                   ))}
                 </div>
                 <div className="bg-navy-raised p-5">
-                  <div className="mb-2 text-[9px] font-bold tracking-[0.25em] text-cream/30 uppercase">
+                  <div className="text-cream/30 mb-2 text-[9px] font-bold tracking-[0.25em] uppercase">
                     Cobertura Nacional
                   </div>
-                  <div className="font-mono text-sm leading-relaxed text-cream">
+                  <div className="text-cream font-mono text-sm leading-relaxed">
                     27 estados · diários registrais e editais públicos · fontes oficiais
                   </div>
                 </div>
@@ -309,11 +312,11 @@ export default function HomeSections() {
           >
             <m.div variants={fadeUp} className="mb-14 flex items-end justify-between">
               <div>
-                <div className="mb-3 text-[10px] font-bold tracking-[0.3em] text-navy/60 uppercase">
+                <div className="text-navy/60 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
                   03 — Personalização
                 </div>
                 <h2
-                  className="leading-tight text-navy"
+                  className="text-navy leading-tight"
                   style={{
                     fontFamily: "'Newsreader Variable', serif",
                     fontSize: "clamp(2rem, 4.5vw, 3.8rem)",
@@ -324,7 +327,7 @@ export default function HomeSections() {
                   <em>interessa a você.</em>
                 </h2>
               </div>
-              <p className="hidden max-w-xs text-right text-sm leading-relaxed text-navy/50 md:block">
+              <p className="text-navy/50 hidden max-w-xs text-right text-sm leading-relaxed md:block">
                 Não existe lead genérico aqui. Você define exatamente o perfil de cliente que quer
                 receber — e a gente entrega só isso.
               </p>
@@ -335,14 +338,14 @@ export default function HomeSections() {
                 <m.div
                   key={i}
                   variants={fadeUp}
-                  className="group -mx-4 grid gap-4 border-b border-navy/10 px-4 py-8 transition-colors hover:bg-cream-shade md:grid-cols-3 md:gap-8"
+                  className="group border-navy/10 hover:bg-cream-shade -mx-4 grid gap-4 border-b px-4 py-8 transition-colors md:grid-cols-3 md:gap-8"
                 >
                   <div>
-                    <div className="text-base font-semibold text-navy">{f.label}</div>
-                    <div className="mt-1 font-mono text-xs text-gold">{f.detail}</div>
+                    <div className="text-navy text-base font-semibold">{f.label}</div>
+                    <div className="text-gold mt-1 font-mono text-xs">{f.detail}</div>
                   </div>
                   <div className="md:col-span-2">
-                    <p className="text-sm leading-relaxed text-navy/60">{f.desc}</p>
+                    <p className="text-navy/60 text-sm leading-relaxed">{f.desc}</p>
                   </div>
                 </m.div>
               ))}
@@ -352,7 +355,7 @@ export default function HomeSections() {
       </section>
 
       {/* REINCIDÊNCIA */}
-      <section className="overflow-hidden bg-navy px-6 py-28 md:px-10">
+      <section className="bg-navy overflow-hidden px-6 py-28 md:px-10">
         <div className="mx-auto max-w-7xl">
           <m.div
             initial="hidden"
@@ -361,11 +364,11 @@ export default function HomeSections() {
             variants={stagger}
           >
             <m.div variants={fadeUp} className="mb-14">
-              <div className="mb-3 text-[10px] font-bold tracking-[0.3em] text-cream/55 uppercase">
+              <div className="text-cream/55 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
                 04 — Diferencial
               </div>
               <h2
-                className="max-w-2xl leading-tight text-cream"
+                className="text-cream max-w-2xl leading-tight"
                 style={{
                   fontFamily: "'Newsreader Variable', serif",
                   fontSize: "clamp(2rem, 4.5vw, 3.8rem)",
@@ -379,32 +382,33 @@ export default function HomeSections() {
 
             <div className="grid items-start gap-12 lg:grid-cols-2">
               <m.div variants={fadeUp}>
-                <p className="mb-6 text-base leading-relaxed text-cream/65 md:text-lg">
+                <p className="text-cream/65 mb-6 text-base leading-relaxed md:text-lg">
                   A primeira notificação que uma pessoa recebe sobre seu imóvel em risco costuma ser
                   um susto — e ela ainda acredita que vai resolver sozinha. Na segunda ou na
                   terceira, a realidade já bateu. O prazo está acabando, as opções se esgotaram e
                   ela está pronta para contratar um advogado.
                 </p>
-                <p className="mb-10 text-base leading-relaxed text-cream/65 md:text-lg">
+                <p className="text-cream/65 mb-10 text-base leading-relaxed md:text-lg">
                   Rastreamos quantas vezes uma pessoa já foi notificada sobre o mesmo imóvel. Com
                   isso, seu escritório pode focar exatamente nos leads com maior urgência — quem já
                   tentou resolver e não conseguiu, e agora precisa de ajuda de verdade.
                 </p>
                 <div className="bg-navy-raised p-6">
-                  <div className="mb-4 text-[9px] font-bold tracking-[0.25em] text-cream/55 uppercase">
+                  <div className="text-cream/55 mb-4 text-[9px] font-bold tracking-[0.25em] uppercase">
                     Por que isso importa para o seu funil
                   </div>
-                  <div className="text-sm leading-relaxed text-cream/75">
+                  <div className="text-cream/75 text-sm leading-relaxed">
                     Leads notificados pela{" "}
-                    <span className="font-semibold text-gold-light">2ª ou 3ª vez</span> têm taxa de
-                    conversão significativamente maior — a urgência é real, documentada e o cliente
-                    já entendeu que precisa agir.
+                    <span className="text-gold-light font-semibold">2ª ou 3ª vez</span> estão na
+                    reta final do processo — dentro do prazo de 15 dias para purgar a mora (art. 26
+                    da Lei 9.514/1997). A urgência é documentada, não presumida: o cliente já
+                    entendeu que precisa agir.
                   </div>
                 </div>
               </m.div>
 
               <m.div variants={fadeUp} className="space-y-0">
-                <div className="mb-4 text-[9px] font-bold tracking-[0.25em] text-cream/55 uppercase">
+                <div className="text-cream/55 mb-4 text-[9px] font-bold tracking-[0.25em] uppercase">
                   Linha do Tempo — Imóvel Mat. 84.992 · 4º CRI SP
                 </div>
                 {TIMELINE.map((ev, i) => (
@@ -413,37 +417,36 @@ export default function HomeSections() {
                       <div
                         className="flex h-7 w-7 flex-shrink-0 items-center justify-center font-mono text-[10px] font-bold"
                         style={{
-                          background: !ev.cold
-                            ? "var(--gold-gradient)"
-                            : "transparent",
+                          background: !ev.cold ? "var(--gold-gradient)" : "transparent",
                           color: !ev.cold ? "#0f1c2c" : "#fcf9f3",
                           border: ev.cold ? "1px solid rgba(252,249,243,0.2)" : "none",
                         }}
                       >
                         {ev.n}
                       </div>
-                      {i < 2 && <div className="h-10 w-[1px] bg-cream/10" />}
+                      {i < 2 && <div className="bg-cream/10 h-10 w-[1px]" />}
                     </div>
                     <div className="pb-8">
-                      <div className="mb-0.5 font-mono text-[10px] text-cream/55">
-                        {ev.date}
-                      </div>
+                      <div className="text-cream/55 mb-0.5 font-mono text-[10px]">{ev.date}</div>
                       <div
                         className={`mb-1 text-sm font-semibold ${!ev.cold ? "text-gold-light" : "text-cream/70"}`}
                       >
                         {ev.label}
                       </div>
-                      <div className="text-xs leading-relaxed text-cream/45">{ev.note}</div>
+                      <div className="text-cream/45 text-xs leading-relaxed">{ev.note}</div>
                     </div>
                   </div>
                 ))}
-                <div className="mt-2 border-l-2 border-gold bg-gold/10 p-4">
-                  <div className="mb-1 text-[9px] font-bold tracking-widest text-gold uppercase">
+                <div className="border-gold bg-gold/10 mt-2 border-l-2 p-4">
+                  <div className="text-gold mb-1 text-[9px] font-bold tracking-widest uppercase">
                     Alerta Gerado
                   </div>
-                  <div className="text-sm text-cream/80">
-                    Devedor identificado. Probabilidade de acordo{" "}
-                    <span className="font-mono font-bold text-gold-light">MÁXIMA</span>.
+                  <div className="text-cream/80 text-sm">
+                    Devedor na 3ª intimação —{" "}
+                    <span className="text-gold-light font-mono font-bold">
+                      prazo de purgação correndo
+                    </span>
+                    , janela de contato curta.
                   </div>
                 </div>
               </m.div>
@@ -453,7 +456,7 @@ export default function HomeSections() {
       </section>
 
       {/* ORIGEM DO NOME */}
-      <section className="relative overflow-hidden bg-cream px-6 py-32 md:px-10">
+      <section className="bg-cream relative overflow-hidden px-6 py-32 md:px-10">
         {/* Ornamento sutil de fundo */}
         <div
           aria-hidden="true"
@@ -477,7 +480,7 @@ export default function HomeSections() {
           >
             <m.div
               variants={fadeUp}
-              className="mb-4 text-[10px] font-bold tracking-[0.3em] text-navy/60 uppercase"
+              className="text-navy/60 mb-4 text-[10px] font-bold tracking-[0.3em] uppercase"
             >
               05 — Origem
             </m.div>
@@ -495,7 +498,7 @@ export default function HomeSections() {
                 χρέος
               </span>
               <span
-                className="pb-3 text-navy/50 italic"
+                className="text-navy/50 pb-3 italic"
                 style={{
                   fontFamily: "'Newsreader Variable', serif",
                   fontSize: "clamp(1rem, 1.4vw, 1.25rem)",
@@ -515,7 +518,7 @@ export default function HomeSections() {
 
             <m.p
               variants={fadeUp}
-              className="mb-12 max-w-3xl leading-[1.5] text-navy/90"
+              className="text-navy/90 mb-12 max-w-3xl leading-[1.5]"
               style={{
                 fontFamily: "'Newsreader Variable', serif",
                 fontSize: "clamp(1.25rem, 1.8vw, 1.5rem)",
@@ -527,14 +530,14 @@ export default function HomeSections() {
               une credor e devedor até que seja honrado.
             </m.p>
 
-            <m.div variants={fadeUp} className="max-w-3xl border-l-2 border-gold/40 pl-6">
+            <m.div variants={fadeUp} className="border-gold/40 max-w-3xl border-l-2 pl-6">
               <p
-                className="leading-relaxed text-navy/75"
+                className="text-navy/75 leading-relaxed"
                 style={{ fontSize: "clamp(0.95rem, 1.1vw, 1.05rem)" }}
               >
                 É exatamente isso o que fazemos: encontramos, no momento em que surgem, as
                 obrigações que precisam ser resolvidas — e{" "}
-                <span className="font-medium text-navy">
+                <span className="text-navy font-medium">
                   conectamos quem está prestes a perder um imóvel ao advogado certo
                 </span>{" "}
                 para conduzir o caso. Registros públicos viram leads: oportunidades reais de
@@ -555,11 +558,11 @@ export default function HomeSections() {
             variants={stagger}
           >
             <m.div variants={fadeUp} className="mb-14">
-              <div className="mb-3 text-[10px] font-bold tracking-[0.3em] text-cream/55 uppercase">
+              <div className="text-cream/55 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
                 06 — Investimento
               </div>
               <h2
-                className="leading-tight text-cream"
+                className="text-cream leading-tight"
                 style={{
                   fontFamily: "'Newsreader Variable', serif",
                   fontSize: "clamp(2rem, 4.5vw, 3.8rem)",
@@ -576,14 +579,14 @@ export default function HomeSections() {
                 <m.div
                   key={i}
                   variants={fadeUp}
-                  className="group -mx-4 grid gap-4 border-b border-cream/10 px-4 py-8 transition-colors hover:bg-navy-raised md:grid-cols-3 md:gap-8"
+                  className="group border-cream/10 hover:bg-navy-raised -mx-4 grid gap-4 border-b px-4 py-8 transition-colors md:grid-cols-3 md:gap-8"
                 >
                   <div>
-                    <div className="text-base font-semibold text-cream">{item.label}</div>
-                    <div className="mt-1 font-mono text-xs text-gold">{item.detail}</div>
+                    <div className="text-cream text-base font-semibold">{item.label}</div>
+                    <div className="text-gold mt-1 font-mono text-xs">{item.detail}</div>
                   </div>
                   <div className="md:col-span-2">
-                    <p className="text-sm leading-relaxed text-cream/60">{item.desc}</p>
+                    <p className="text-cream/60 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 </m.div>
               ))}
@@ -602,11 +605,11 @@ export default function HomeSections() {
             variants={stagger}
           >
             <m.div variants={fadeUp} className="mb-14">
-              <div className="mb-3 text-[10px] font-bold tracking-[0.3em] text-navy/60 uppercase">
+              <div className="text-navy/60 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
                 07 — Perguntas Frequentes
               </div>
               <h2
-                className="leading-tight text-navy"
+                className="text-navy leading-tight"
                 style={{
                   fontFamily: "'Newsreader Variable', serif",
                   fontSize: "clamp(2rem, 4.5vw, 3.8rem)",
@@ -620,18 +623,18 @@ export default function HomeSections() {
 
             <m.div variants={fadeUp} className="space-y-0">
               {FAQ.map((item, i) => (
-                <details key={i} className="group border-b border-navy/10">
+                <details key={i} className="group border-navy/10 border-b">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 [&::-webkit-details-marker]:hidden">
-                    <span className="text-base font-semibold text-navy md:text-lg">{item.q}</span>
+                    <span className="text-navy text-base font-semibold md:text-lg">{item.q}</span>
                     <span
-                      className="flex-shrink-0 font-serif text-2xl leading-none text-gold transition-transform group-open:rotate-45"
+                      className="text-gold flex-shrink-0 font-serif text-2xl leading-none transition-transform group-open:rotate-45"
                       style={{ fontFamily: "'Newsreader Variable', serif" }}
                       aria-hidden="true"
                     >
                       +
                     </span>
                   </summary>
-                  <p className="max-w-3xl pb-6 text-sm leading-relaxed text-navy/65 md:text-base">
+                  <p className="text-navy/65 max-w-3xl pb-6 text-sm leading-relaxed md:text-base">
                     {item.a}
                   </p>
                 </details>
@@ -644,17 +647,12 @@ export default function HomeSections() {
       {/* CTA */}
       <section id="acesso" className="bg-navy px-6 py-28 md:px-10">
         <div className="mx-auto grid max-w-7xl items-start gap-14 lg:grid-cols-2">
-          <m.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-          >
-            <div className="mb-8 text-[10px] font-bold tracking-[0.3em] text-cream/55 uppercase">
+          <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <div className="text-cream/55 mb-8 text-[10px] font-bold tracking-[0.3em] uppercase">
               08 — Acesso
             </div>
             <h2
-              className="mb-6 leading-tight text-cream"
+              className="text-cream mb-6 leading-tight"
               style={{
                 fontFamily: "'Newsreader Variable', serif",
                 fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
@@ -664,9 +662,10 @@ export default function HomeSections() {
               <br />
               com quem <em>precisa de você.</em>
             </h2>
-            <p className="mb-10 max-w-md text-base leading-relaxed text-cream/55">
-              Preencha o formulário ao lado e agende uma conversa conosco. Vamos mostrar leads reais
-              da sua região e explicar como podemos trabalhar com o seu escritório.
+            <p className="text-cream/55 mb-10 max-w-md text-base leading-relaxed">
+              Preencha o formulário ao lado e agende uma conversa conosco. Vamos mostrar o que o seu
+              perfil pode gerar na sua região e explicar como podemos trabalhar com o seu
+              escritório.
             </p>
             <div className="space-y-5">
               {CTA_BULLETS.map((item, i) => (
@@ -677,20 +676,18 @@ export default function HomeSections() {
                       background: "var(--gold-gradient-h)",
                     }}
                   />
-                  <span className="text-sm tracking-[0.12em] text-cream/65 uppercase">
-                    {item}
-                  </span>
+                  <span className="text-cream/65 text-sm tracking-[0.12em] uppercase">{item}</span>
                 </div>
               ))}
             </div>
+            <p className="text-cream/55 mt-10 max-w-md text-xs leading-relaxed">
+              Operamos em conformidade com a LGPD (Lei 13.709/2018) e com as normas de publicidade
+              da advocacia (Provimento 205/2021 da OAB). Dados de origem pública e oficial; a
+              abordagem é sempre de responsabilidade do advogado.
+            </p>
           </m.div>
 
-          <m.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-          >
+          <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <CTAForm />
           </m.div>
         </div>
@@ -699,32 +696,32 @@ export default function HomeSections() {
       {/* FOOTER */}
       <footer className="bg-navy-deep px-6 py-12 md:px-10">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col items-start justify-between gap-8 border-b border-cream/10 pb-10 md:flex-row md:items-end">
+          <div className="border-cream/10 flex flex-col items-start justify-between gap-8 border-b pb-10 md:flex-row md:items-end">
             <div>
               <div
-                className="mb-1 text-xl font-semibold tracking-tight text-cream"
+                className="text-cream mb-1 text-xl font-semibold tracking-tight"
                 style={{ fontFamily: "'Newsreader Variable', serif" }}
               >
                 Chreos
               </div>
-              <div className="text-xs tracking-widest text-cream/35 uppercase">
+              <div className="text-cream/55 text-xs tracking-widest uppercase">
                 Leads quentes para advogados
               </div>
             </div>
-            <div className="flex gap-8 text-xs tracking-[0.15em] text-cream/35 uppercase">
-              <Link href="/privacidade" className="transition-colors hover:text-cream/70">
+            <div className="text-cream/55 flex gap-8 text-xs tracking-[0.15em] uppercase">
+              <Link href="/privacidade" className="hover:text-cream/70 transition-colors">
                 Privacidade
               </Link>
-              <a href="#acesso" className="transition-colors hover:text-cream/70">
+              <a href="#acesso" className="hover:text-cream/70 transition-colors">
                 Contato
               </a>
             </div>
           </div>
           <div className="flex flex-col gap-2 pt-6 md:flex-row md:items-center md:justify-between">
-            <div className="text-[10px] tracking-[0.2em] text-cream/50 uppercase">
+            <div className="text-cream/50 text-[10px] tracking-[0.2em] uppercase">
               © {YEAR} Chreos. Todos os direitos reservados.
             </div>
-            <div className="text-[10px] tracking-[0.15em] text-cream/35 uppercase">
+            <div className="text-cream/55 text-[10px] tracking-[0.15em] uppercase">
               GLPA Data Services LTDA · CNPJ 55.704.724/0001-08
             </div>
           </div>
