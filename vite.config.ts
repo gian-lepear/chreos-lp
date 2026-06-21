@@ -91,8 +91,26 @@ function seoPlugin(env: Record<string, string>) {
   };
 }
 
+// Single source of truth for indexability: gate <meta name="robots"> on the same
+// ALLOW_INDEXING env that drives robots.txt/sitemap, so staging can never ship a
+// hardcoded "index, follow" (the static index.html default is overridden here at
+// dev+build time).
+function robotsMetaPlugin(allowIndexing: boolean) {
+  const content = allowIndexing ? "index, follow" : "noindex, nofollow";
+  return {
+    name: "robots-meta",
+    transformIndexHtml(html: string) {
+      return html.replace(
+        /<meta name="robots"[^>]*\/?>/,
+        `<meta name="robots" content="${content}" />`,
+      );
+    },
+  };
+}
+
 export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, process.cwd(), "");
+  const allowIndexing = env.ALLOW_INDEXING === "true";
 
   // Fail the production build loudly if the WhatsApp target is missing or
   // malformed — otherwise the contact form ships broken with no error.
@@ -108,7 +126,13 @@ export default defineConfig(({ mode, command }) => {
 
   return {
     base: basePath,
-    plugins: [react(), tailwindcss(), seoPlugin(env), criticalCssPlugin],
+    plugins: [
+      react(),
+      tailwindcss(),
+      robotsMetaPlugin(allowIndexing),
+      seoPlugin(env),
+      criticalCssPlugin,
+    ],
     resolve: {
       alias: {
         "@": path.resolve(import.meta.dirname, "src"),

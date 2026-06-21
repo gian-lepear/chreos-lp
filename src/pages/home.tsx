@@ -24,8 +24,13 @@ function LiveTicker() {
     <div
       className="border-gold bg-navy-deep border-l-4 p-5 font-mono text-xs"
       style={{ borderRadius: 0 }}
+      role="group"
+      aria-label="Exemplo ilustrativo de edital capturado (dados fictícios)"
+      tabIndex={0}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
     >
       <div className="mb-3 flex flex-shrink-0 items-center gap-3">
         <span className="inline-flex items-center gap-1.5">
@@ -36,7 +41,7 @@ function LiveTicker() {
         </span>
         <span className="text-[10px] text-white/55">DIÁRIO REGISTRAL — DADOS ILUSTRATIVOS</span>
       </div>
-      <div className="relative h-[128px] overflow-hidden md:h-[80px]">
+      <div className="relative h-[128px] overflow-hidden md:h-[80px]" aria-hidden="true">
         <AnimatePresence mode="wait">
           <m.div
             key={index}
@@ -128,6 +133,7 @@ export default function Home() {
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:h-24 md:px-10">
           <button
             type="button"
+            aria-label="Chreos — voltar ao topo"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             style={{ fontFamily: "'Newsreader Variable', serif" }}
             className="text-cream cursor-pointer text-4xl font-semibold tracking-tight md:text-5xl"
@@ -233,7 +239,7 @@ export default function Home() {
                   }}
                   data-testid="button-hero-cta"
                 >
-                  Ver Leads da Minha Região <ArrowRight size={14} />
+                  Ver Leads da Minha Região <ArrowRight size={14} aria-hidden />
                 </a>
                 <a
                   href="#mecanismo"
@@ -298,7 +304,7 @@ export default function Home() {
         style={{ background: "var(--gold-gradient)" }}
         data-testid="sticky-cta-mobile"
       >
-        Ver Leads da Minha Região <ArrowRight size={14} />
+        Ver Leads da Minha Região <ArrowRight size={14} aria-hidden />
       </a>
     </div>
   );
