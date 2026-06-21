@@ -31,6 +31,25 @@ const PROVENANCE = [
   },
 ];
 
+const OBJECTIONS = [
+  {
+    q: "Isso é ético perante a OAB?",
+    a: "Sim. Você recebe informação de fonte pública oficial e decide, sozinho, se e como abordar cada caso — dentro do Provimento 205/2021. A Chreos não capta cliente nem promete resultado: entrega o dado, a advocacia é sua.",
+  },
+  {
+    q: "O lead é mesmo exclusivo da minha região?",
+    a: "É. Cada caso vai para um único escritório por região. O mesmo contato nunca cai na mão de um concorrente da sua área.",
+  },
+  {
+    q: "E se vier um lead com problema?",
+    a: "Cada lead é um caso real do registro oficial — nome, matrícula, valor e credor —, exclusivo seu. Teve problema com algum lead? Fala com a gente: resolvemos caso a caso.",
+  },
+  {
+    q: "Por que pagar se eu mesmo posso acompanhar o registro?",
+    a: "Porque o tempo é seu. Monitoramos cartórios do Brasil inteiro, todos os dias, e entregamos só os casos do seu perfil — já organizados e exclusivos. Você gasta seu tempo fechando, não garimpando edital.",
+  },
+];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: {
@@ -729,12 +748,55 @@ export default function HomeSections() {
         </div>
       </section>
 
+      {/* OBJEÇÕES — handle purchase doubts right before the CTA */}
+      <section id="duvidas" className="bg-cream px-6 py-28 md:px-10">
+        <div className="mx-auto max-w-7xl">
+          <m.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={stagger}
+          >
+            <m.div variants={fadeUp} className="mb-14">
+              <div className="text-navy/60 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
+                09 — Antes de decidir
+              </div>
+              <h2
+                className="text-navy leading-tight"
+                style={{
+                  fontFamily: "'Newsreader Variable', serif",
+                  fontSize: "clamp(2rem, 4.5vw, 3.8rem)",
+                }}
+              >
+                As perguntas difíceis,
+                <br />
+                <em>sem rodeio.</em>
+              </h2>
+            </m.div>
+
+            <m.div variants={fadeUp} className="bg-navy/10 grid gap-px md:grid-cols-2">
+              {OBJECTIONS.map((o, i) => (
+                <div key={i} className="bg-cream p-8">
+                  <h3
+                    className="text-navy mb-3 text-lg font-semibold"
+                    style={{ fontFamily: "'Newsreader Variable', serif" }}
+                  >
+                    {o.q}
+                  </h3>
+                  <p className="text-navy/65 text-sm leading-relaxed md:text-base">{o.a}</p>
+                </div>
+              ))}
+            </m.div>
+          </m.div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section id="acesso" className="bg-navy px-6 py-28 md:px-10">
         <div className="mx-auto grid max-w-7xl items-start gap-14 lg:grid-cols-2">
           <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <div className="text-cream/55 mb-8 text-[10px] font-bold tracking-[0.3em] uppercase">
-              09 — Acesso
+              10 — Acesso
             </div>
             <h2
               className="text-cream mb-6 leading-tight"
