@@ -8,7 +8,7 @@ Single-page marketing landing page (Portuguese, pt-BR) for **Chreos** — "hot l
 
 ## Commands
 
-Package manager: **pnpm** (Node 18+, pnpm 10+).
+Package manager: **pnpm** (Node 20.19+, pnpm 10+). CI/prod usa Node 24 LTS.
 
 - `pnpm dev` — dev server, hot reload, `http://localhost:5173`
 - `pnpm build` — production build to `dist/public/`
