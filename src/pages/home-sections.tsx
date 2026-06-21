@@ -12,6 +12,25 @@ import {
   CTA_BULLETS,
 } from "@/data/landing";
 
+const PROVENANCE = [
+  {
+    t: "Diário Registral",
+    d: "A publicação oficial do Registro de Imóveis do Brasil — editais e atos de alienação fiduciária dos cartórios de todo o país.",
+  },
+  {
+    t: "Público por lei",
+    d: "A alienação fiduciária (Lei 9.514/1997) é registrada e publicada por obrigação legal — informação aberta a qualquer interessado.",
+  },
+  {
+    t: "Princípios da LGPD",
+    d: "Seguimos finalidade, minimização e transparência — tratamos só o necessário e respeitamos o titular dos dados.",
+  },
+  {
+    t: "Você decide",
+    d: "Entregamos a informação organizada. Como abordar cada caso é decisão do seu escritório.",
+  },
+];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: {
@@ -112,6 +131,64 @@ export default function HomeSections() {
         </div>
       </section>
 
+      {/* PROCEDÊNCIA — data provenance / trust */}
+      <section id="procedencia" className="bg-navy-deep px-6 py-24 md:px-10">
+        <div className="mx-auto max-w-7xl">
+          <m.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={stagger}
+          >
+            <m.div variants={fadeUp} className="mb-12 max-w-3xl">
+              <div className="text-cream/55 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
+                02 — Fonte de dados oficial
+              </div>
+              <h2
+                className="text-cream leading-tight"
+                style={{
+                  fontFamily: "'Newsreader Variable', serif",
+                  fontSize: "clamp(2rem, 4.5vw, 3.8rem)",
+                }}
+              >
+                Dados públicos, organizados.
+                <br />A <em>decisão é sua.</em>
+              </h2>
+              <p className="text-cream/60 mt-6 text-base leading-relaxed">
+                Tudo vem do Diário Registral — a publicação oficial do Registro de Imóveis do
+                Brasil, onde os cartórios publicam editais e atos de alienação fiduciária.
+                Monitoramos, organizamos e enriquecemos cada caso. O seu escritório decide como agir.
+              </p>
+            </m.div>
+
+            <m.div variants={fadeUp} className="bg-cream/10 grid gap-px md:grid-cols-4">
+              {PROVENANCE.map((p, i) => (
+                <div key={i} className="bg-navy-deep p-6">
+                  <div className="text-gold/70 mb-3 font-mono text-xs">0{i + 1}</div>
+                  <div className="text-cream mb-2 text-sm font-semibold">{p.t}</div>
+                  <div className="text-cream/60 text-sm leading-relaxed">{p.d}</div>
+                </div>
+              ))}
+            </m.div>
+
+            <m.div
+              variants={fadeUp}
+              className="border-cream/10 mt-10 flex flex-col gap-4 border-t pt-6 md:flex-row md:items-center md:justify-between"
+            >
+              <div className="text-cream/55 text-[10px] tracking-[0.15em] uppercase">
+                Fontes públicas oficiais
+              </div>
+              <Link
+                href="/privacidade"
+                className="text-gold-light text-xs tracking-[0.12em] uppercase underline-offset-4 hover:underline"
+              >
+                Política de privacidade →
+              </Link>
+            </m.div>
+          </m.div>
+        </div>
+      </section>
+
       {/* LEAD PREVIEW — the intelligence dossier */}
       <section id="inteligencia" className="bg-navy px-6 py-28 md:px-10">
         <div className="mx-auto max-w-7xl">
@@ -123,7 +200,7 @@ export default function HomeSections() {
           >
             <m.div variants={fadeUp} className="mb-14">
               <div className="text-cream/55 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
-                02 — Seus Leads
+                03 — Seus Leads
               </div>
               <h2
                 className="text-cream leading-tight"
@@ -321,7 +398,7 @@ export default function HomeSections() {
             <m.div variants={fadeUp} className="mb-14 flex items-end justify-between">
               <div>
                 <div className="text-navy/60 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
-                  03 — Personalização
+                  04 — Personalização
                 </div>
                 <h2
                   className="text-navy leading-tight"
@@ -373,7 +450,7 @@ export default function HomeSections() {
           >
             <m.div variants={fadeUp} className="mb-14">
               <div className="text-cream/55 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
-                04 — Diferencial
+                05 — Diferencial
               </div>
               <h2
                 className="text-cream max-w-2xl leading-tight"
@@ -490,7 +567,7 @@ export default function HomeSections() {
               variants={fadeUp}
               className="text-navy/60 mb-4 text-[10px] font-bold tracking-[0.3em] uppercase"
             >
-              05 — Origem
+              06 — Origem
             </m.div>
 
             <m.div variants={fadeUp} className="mb-8 flex items-baseline gap-5">
@@ -567,7 +644,7 @@ export default function HomeSections() {
           >
             <m.div variants={fadeUp} className="mb-14">
               <div className="text-cream/55 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
-                06 — Investimento
+                07 — Investimento
               </div>
               <h2
                 className="text-cream leading-tight"
@@ -614,7 +691,7 @@ export default function HomeSections() {
           >
             <m.div variants={fadeUp} className="mb-14">
               <div className="text-navy/60 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
-                07 — Perguntas Frequentes
+                08 — Perguntas Frequentes
               </div>
               <h2
                 className="text-navy leading-tight"
@@ -657,7 +734,7 @@ export default function HomeSections() {
         <div className="mx-auto grid max-w-7xl items-start gap-14 lg:grid-cols-2">
           <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <div className="text-cream/55 mb-8 text-[10px] font-bold tracking-[0.3em] uppercase">
-              08 — Acesso
+              09 — Acesso
             </div>
             <h2
               className="text-cream mb-6 leading-tight"
@@ -689,9 +766,9 @@ export default function HomeSections() {
               ))}
             </div>
             <p className="text-cream/55 mt-10 max-w-md text-xs leading-relaxed">
-              Operamos em conformidade com a LGPD (Lei 13.709/2018) e com as normas de publicidade
-              da advocacia (Provimento 205/2021 da OAB). Dados de origem pública e oficial; a
-              abordagem é sempre de responsabilidade do advogado.
+              Seguimos os princípios da LGPD (Lei 13.709/2018) e respeitamos as normas de
+              publicidade da advocacia (Provimento 205/2021 da OAB). Dados de origem pública e
+              oficial. A abordagem de cada caso é sempre de responsabilidade do advogado.
             </p>
           </m.div>
 
@@ -742,6 +819,11 @@ export default function HomeSections() {
               GLPA Data Services LTDA · CNPJ 55.704.724/0001-08
             </div>
           </div>
+          <p className="text-cream/40 mt-6 max-w-3xl text-[11px] leading-relaxed">
+            A Chreos é um produto da GLPA Data Services LTDA, empresa de tecnologia da informação. Não
+            é sociedade de advogados e não presta serviços jurídicos — fornece inteligência de dados de
+            fontes públicas para a decisão do escritório.
+          </p>
         </div>
       </footer>
     </>
