@@ -204,15 +204,18 @@ export default function Home() {
 
           <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-36 pb-16 md:px-10">
             <m.div initial="hidden" animate="visible" variants={stagger}>
-              <m.div variants={fadeUp} className="mb-6 flex items-center gap-3">
+              {/* Eyebrow + H1 estáticos (sem fade de entrada): são o conteúdo
+                  acima da dobra / elemento de LCP. Animá-los via JS deixava o
+                  H1 com opacity:0 no HTML prerenderizado até o framer-motion
+                  carregar, atrasando o LCP no mobile. Pintam no 1º paint. */}
+              <div className="mb-6 flex items-center gap-3">
                 <span className="bg-gold h-1.5 w-1.5 flex-shrink-0 rounded-full" />
                 <span className="text-gold text-[10px] font-bold tracking-[0.3em] uppercase">
                   Leads de imóveis em leilão e execução extrajudicial
                 </span>
-              </m.div>
+              </div>
 
-              <m.h1
-                variants={fadeUp}
+              <h1
                 className="text-cream mb-10 leading-[0.95] tracking-[-0.02em]"
                 style={{
                   fontFamily: "'Newsreader Variable', serif",
@@ -226,7 +229,7 @@ export default function Home() {
                 Alcance-os no
                 <br />
                 momento <em style={{ fontStyle: "italic", color: "#e6c364" }}>exato.</em>
-              </m.h1>
+              </h1>
 
               <m.div variants={fadeUp} className="mb-10 grid max-w-3xl gap-6 md:grid-cols-2">
                 <p className="text-cream/60 text-base leading-relaxed">
