@@ -1,5 +1,5 @@
-// Eventos de funil enviados ao gtag já existente (Google Ads hoje, GA4 quando
-// instalado). Sem PII — disparam mesmo sob Consent Mode default-deny (são
+// Eventos de funil enviados ao gtag (Google Ads + GA4, ambos na mesma gtag.js
+// configurada no index.html). Sem PII — disparam mesmo sob Consent Mode default-deny (são
 // eventos/pings sem cookies, não armazenamento). Pré-requisito de qualquer CRO:
 // medir onde o usuário começa, rola e abandona antes do handoff ao WhatsApp.
 

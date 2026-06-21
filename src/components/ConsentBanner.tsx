@@ -26,8 +26,8 @@ export function ConsentBanner() {
     >
       <div className="mx-auto flex max-w-7xl flex-col gap-5 px-6 py-5 md:flex-row md:items-center md:justify-between md:px-10">
         <p className="max-w-2xl text-sm leading-relaxed text-[#fcf9f3]/70">
-          Usamos cookies do Google Ads para medir conversões e melhorar nossas campanhas. Eles só
-          são ativados com o seu consentimento. Saiba mais na nossa{" "}
+          Usamos cookies do Google (Analytics e Ads) para medir o tráfego e as conversões e melhorar
+          a experiência. Eles só são ativados com o seu consentimento. Saiba mais na nossa{" "}
           <Link
             href="/privacidade"
             className="text-[#e6c364] underline underline-offset-2 transition-colors hover:text-[#C9A84C]"
