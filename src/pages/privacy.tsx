@@ -11,6 +11,20 @@ const PAGE_DESCRIPTION =
   "Política de Privacidade da Chreos: como coletamos, usamos e protegemos os dados dos advogados e escritórios que solicitam acesso à plataforma.";
 const CANONICAL = "https://chreos.com.br/privacidade";
 
+const BREADCRUMB = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Início", item: "https://chreos.com.br/" },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Política de Privacidade",
+      item: CANONICAL,
+    },
+  ],
+};
+
 export default function Privacy() {
   // This SPA ships a single static <head> tuned for the home page; patch the
   // title/description/canonical for /privacidade and restore them on unmount.
@@ -38,6 +52,10 @@ export default function Privacy() {
       className="min-h-screen bg-cream text-navy"
       style={{ fontFamily: "'Inter Variable', sans-serif" }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB) }}
+      />
       {/* NAV */}
       <nav
         className="fixed top-0 right-0 left-0 z-50"

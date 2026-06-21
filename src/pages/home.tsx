@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { TICKER_ITEMS, STATS } from "@/data/landing";
-import { initScrollDepth } from "@/lib/analytics";
+import { initScrollDepth, initWebVitals } from "@/lib/analytics";
 import HomeSections from "./home-sections";
 
 function LiveTicker() {
@@ -110,8 +110,11 @@ const stagger = {
 };
 
 export default function Home() {
-  // Funil: marca profundidade de scroll no gtag (form_start vive no CTAForm).
-  useEffect(() => initScrollDepth(), []);
+  // Funil + performance de campo (form_start vive no CTAForm).
+  useEffect(() => {
+    initWebVitals();
+    return initScrollDepth();
+  }, []);
 
   return (
     <div
