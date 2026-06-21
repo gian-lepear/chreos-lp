@@ -126,21 +126,21 @@ export const FILTERS = [
 export const TIMELINE = [
   {
     n: "01",
-    date: "14 Out 2025",
+    date: "11 Jun 2026",
     label: "1ª Intimação",
     note: "Devedor notificado pela primeira vez.",
     cold: true,
   },
   {
     n: "02",
-    date: "02 Fev 2026",
+    date: "12 Jun 2026",
     label: "2ª Intimação",
     note: "Segunda notificação sobre o mesmo imóvel.",
     cold: true,
   },
   {
     n: "03",
-    date: "18 Mai 2026",
+    date: "15 Jun 2026",
     label: "3ª Intimação",
     note: "Situação crítica, prazo de 15 dias para purgar a mora. Lead classificado como Alta Urgência.",
     cold: false,
