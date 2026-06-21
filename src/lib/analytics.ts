@@ -3,6 +3,8 @@
 // eventos/pings sem cookies, não armazenamento). Pré-requisito de qualquer CRO:
 // medir onde o usuário começa, rola e abandona antes do handoff ao WhatsApp.
 
+import type { Metric } from "web-vitals";
+
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
@@ -36,6 +38,29 @@ export function trackFormStart(): void {
 // Marca o envio para que o pagehide não conte como abandono.
 export function markFormSubmitted(): void {
   formSubmitted = true;
+}
+
+// Core Web Vitals de campo (INP, LCP, CLS, FCP, TTFB) → gtag. Import dinâmico
+// (chunk separado, fora do caminho crítico). Sem PII; mede a experiência real.
+export function initWebVitals(): void {
+  if (typeof window === "undefined") return;
+  void import("web-vitals")
+    .then(({ onCLS, onINP, onLCP, onFCP, onTTFB }) => {
+      const send = (m: Metric) =>
+        emit("web_vitals", {
+          metric_name: m.name,
+          // CLS é fração (0–1); manda ×1000 inteiro pra caber bem no gtag.
+          metric_value: Math.round(m.name === "CLS" ? m.value * 1000 : m.value),
+          metric_rating: m.rating,
+          metric_id: m.id,
+        });
+      onCLS(send);
+      onINP(send);
+      onLCP(send);
+      onFCP(send);
+      onTTFB(send);
+    })
+    .catch(() => {});
 }
 
 // Marca 25/50/75/100% de profundidade de scroll, cada um uma vez. Retorna um
