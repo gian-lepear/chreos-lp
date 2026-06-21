@@ -1,0 +1,36 @@
+Campaign,Ad group,Keyword,Match type
+01 Advogado-Leads,Leads para advogado,leads para advogados,Phrase
+01 Advogado-Leads,Leads para advogado,leads jurídicos,Phrase
+01 Advogado-Leads,Leads para advogado,leads qualificados advocacia,Phrase
+01 Advogado-Leads,Leads para advogado,comprar leads advocacia,Phrase
+01 Advogado-Leads,Leads para advogado,plataforma de leads para advogados,Phrase
+01 Advogado-Leads,Leads para advogado,geração de leads para advogados,Phrase
+01 Advogado-Leads,Leads para advogado,leads para advogado imobiliário,Exact
+01 Advogado-Leads,Leads para advogado,leads para escritório de advocacia,Exact
+01 Advogado-Leads,Leads para advogado,fornecedor de leads jurídicos,Exact
+01 Advogado-Leads,Leads para advogado,clientes para advogado,Exact
+01 Advogado-Leads,Captacao de clientes,captação de clientes advocacia,Phrase
+01 Advogado-Leads,Captacao de clientes,como captar clientes advogado,Phrase
+01 Advogado-Leads,Captacao de clientes,prospecção de clientes advocacia,Phrase
+02 Pratica-Qualificador,Leilao imovel,leads de leilão de imóveis,Phrase
+02 Pratica-Qualificador,Leilao imovel,clientes para advogado de leilão,Phrase
+02 Pratica-Qualificador,Leilao imovel,como conseguir clientes de leilão de imóvel,Phrase
+02 Pratica-Qualificador,Execucao extrajudicial,leads execução extrajudicial,Phrase
+02 Pratica-Qualificador,Execucao extrajudicial,leads alienação fiduciária,Phrase
+02 Pratica-Qualificador,Execucao extrajudicial,como conseguir casos de alienação fiduciária,Phrase
+02 Pratica-Qualificador,Execucao extrajudicial,leads defesa do mutuário,Phrase
+02 Pratica-Qualificador,Direito imobiliario,captação de clientes direito imobiliário,Phrase
+02 Pratica-Qualificador,Direito imobiliario,carteira de clientes direito imobiliário,Phrase
+03 Marketing-Juridico,Marketing juridico,marketing jurídico para advogados,Phrase
+03 Marketing-Juridico,Marketing juridico,como conseguir mais clientes advocacia,Phrase
+03 Marketing-Juridico,Marketing juridico,aumentar clientes escritório de advocacia,Phrase
+03 Marketing-Juridico,Marketing juridico,funil de clientes advocacia,Phrase
+03 Marketing-Juridico,Marketing juridico,divulgação de escritório de advocacia,Phrase
+04 Marca-Concorrente,Marca,chreos,Exact
+04 Marca-Concorrente,Marca,chreos leads,Exact
+04 Marca-Concorrente,Concorrente,lead jurídico,Exact
+04 Marca-Concorrente,Concorrente,voga lead jurídico,Exact
+04 Marca-Concorrente,Concorrente,plataforma lead jurídico,Exact
+05 Broad-Discovery,Descoberta,leads para advogado,Broad
+05 Broad-Discovery,Descoberta,captação de clientes advocacia,Broad
+05 Broad-Discovery,Descoberta,marketing jurídico imobiliário,Broad

@@ -22,9 +22,33 @@ const criticalCssPlugin = {
       path: outDir,
       publicPath: basePath,
       pruneSource: false,
+      // Critical CSS is inlined above; rewrite the remaining blocking
+      // <link rel="stylesheet"> into an async preload+swap so it stops
+      // blocking First Contentful Paint.
+      preload: "swap",
     });
     const processed = await beasties.process(html);
-    await fs.writeFile(indexPath, processed);
+
+    // Preload the two above-the-fold fonts (hero Newsreader serif = the LCP
+    // element, and Inter for body text) so they start downloading immediately
+    // instead of waiting for CSS parse → font discovery. Filenames are
+    // content-hashed, so glob the built assets at this point.
+    const assetsDir = path.join(outDir, "assets");
+    const assetFiles = await fs.readdir(assetsDir);
+    const criticalFonts = assetFiles.filter((f) =>
+      /^(newsreader-latin-subset|inter-latin-subset)-.*\.woff2$/.test(f),
+    );
+    const preloadTags = criticalFonts
+      .map(
+        (f) =>
+          `<link rel="preload" href="${basePath}assets/${f}" as="font" type="font/woff2" crossorigin>`,
+      )
+      .join("\n    ");
+
+    const finalHtml = preloadTags
+      ? processed.replace("</head>", `    ${preloadTags}\n  </head>`)
+      : processed;
+    await fs.writeFile(indexPath, finalHtml);
   },
 };
 
@@ -67,8 +91,20 @@ function seoPlugin(env: Record<string, string>) {
   };
 }
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, process.cwd(), "");
+
+  // Fail the production build loudly if the WhatsApp target is missing or
+  // malformed — otherwise the contact form ships broken with no error.
+  if (command === "build") {
+    const whatsapp = env.VITE_CONTACT_FORM_WHATSAPP_NUMBER;
+    if (!/^[0-9]{11,15}$/.test(whatsapp ?? "")) {
+      throw new Error(
+        `VITE_CONTACT_FORM_WHATSAPP_NUMBER must be a digits-only international number ` +
+          `(11-15 digits, e.g. 5511976396660). Got: ${JSON.stringify(whatsapp)}`,
+      );
+    }
+  }
 
   return {
     base: basePath,
@@ -85,6 +121,14 @@ export default defineConfig(({ mode }) => {
       outDir: path.resolve(import.meta.dirname, "dist/public"),
       emptyOutDir: true,
       chunkSizeWarningLimit: 700,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            react: ["react", "react-dom", "wouter"],
+            motion: ["framer-motion"],
+          },
+        },
+      },
     },
     server: {
       port: safePort,

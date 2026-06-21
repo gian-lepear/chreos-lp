@@ -1,6 +1,8 @@
 import { lazy, Suspense } from "react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
-import { LazyMotion, domAnimation } from "framer-motion";
+import { LazyMotion, domAnimation, MotionConfig } from "framer-motion";
+import { ConsentBanner } from "@/components/ConsentBanner";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 import Home from "@/pages/home";
 
 const Privacy = lazy(() => import("@/pages/privacy"));
@@ -20,11 +22,16 @@ function Router() {
 
 function App() {
   return (
-    <LazyMotion features={domAnimation} strict>
-      <WouterRouter base={import.meta.env.BASE_URL?.replace(/\/$/, "") || ""}>
-        <Router />
-      </WouterRouter>
-    </LazyMotion>
+    <ErrorBoundary>
+      <LazyMotion features={domAnimation} strict>
+        <MotionConfig reducedMotion="user">
+          <WouterRouter base={import.meta.env.BASE_URL?.replace(/\/$/, "") || ""}>
+            <Router />
+            <ConsentBanner />
+          </WouterRouter>
+        </MotionConfig>
+      </LazyMotion>
+    </ErrorBoundary>
   );
 }
 
