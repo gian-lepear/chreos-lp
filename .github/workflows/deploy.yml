@@ -39,6 +39,7 @@ jobs:
           SITE_URL: https://chreos.com.br
           ALLOW_INDEXING: "true"
           VITE_CONTACT_FORM_WHATSAPP_NUMBER: ${{ vars.VITE_CONTACT_FORM_WHATSAPP_NUMBER }}
+          VITE_GA4_ID: ${{ vars.VITE_GA4_ID }}
         run: pnpm build && node scripts/verify-build.mjs
 
       - name: SPA fallback
