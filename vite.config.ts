@@ -63,7 +63,14 @@ function seoPlugin(env: Record<string, string>) {
       const outDir = path.resolve(import.meta.dirname, "dist/public");
 
       const robots = allowIndexing
-        ? `User-agent: *\nAllow: /\n${siteUrl ? `Sitemap: ${siteUrl}/sitemap.xml\n` : ""}`
+        ? `User-agent: *\nAllow: /\n\n` +
+          // Crawlers de IA (busca/respostas) liberados explicitamente p/ visibilidade.
+          `User-agent: GPTBot\nAllow: /\n\n` +
+          `User-agent: OAI-SearchBot\nAllow: /\n\n` +
+          `User-agent: ClaudeBot\nAllow: /\n\n` +
+          `User-agent: Claude-SearchBot\nAllow: /\n\n` +
+          `User-agent: PerplexityBot\nAllow: /\n\n` +
+          `${siteUrl ? `Sitemap: ${siteUrl}/sitemap.xml\n` : ""}`
         : `User-agent: *\nDisallow: /\n`;
       await fs.writeFile(path.join(outDir, "robots.txt"), robots);
 
