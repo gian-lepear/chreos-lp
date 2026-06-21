@@ -191,6 +191,10 @@ export const FAQ = [
     a: "O volume depende dos filtros configurados e da sua região — perfis mais amplos geram mais leads. Na demonstração mostramos exatamente quanto o seu perfil pode gerar.",
   },
   {
+    q: "A Chreos atende qual estado ou região?",
+    a: "Monitoramos editais de leilão de cartórios de todas as regiões — você configura no seu perfil os estados e comarcas onde quer receber leads, com exclusividade regional.",
+  },
+  {
     q: "Existe contrato de fidelidade?",
     a: "Não. Você começa quando quiser, pausa quando quiser e ajusta seu perfil a qualquer momento.",
   },
