@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Linkedin } from "lucide-react";
 
 const YEAR = new Date().getFullYear();
-const LAST_UPDATE = "17 de maio de 2026";
+const LAST_UPDATE = "20 de junho de 2026";
 const HOME_ACESSO = `${import.meta.env.BASE_URL}#acesso`;
 
 const PAGE_TITLE = "Política de Privacidade | Chreos";
@@ -97,10 +97,11 @@ export default function Privacy() {
         <div className="mx-auto max-w-4xl space-y-16">
           <Block number="01" title="Quem somos">
             <p>
-              A Chreos é uma plataforma de inteligência jurídica que monitora publicações oficiais
-              (como o Diário Registral) para identificar editais de alienação fiduciária e entregar
-              a escritórios de advocacia leads qualificados de pessoas que estão na iminência de
-              perder um imóvel.
+              A Chreos é um produto da GLPA Data Services LTDA (CNPJ 55.704.724/0001-08), empresa de
+              tecnologia da informação. A plataforma monitora publicações oficiais (como o Diário
+              Registral) para identificar editais de alienação fiduciária e fornecer a escritórios de
+              advocacia inteligência de dados de fontes públicas sobre imóveis em execução
+              extrajudicial. A Chreos não presta serviços jurídicos.
             </p>
             <p>
               Esta Política de Privacidade descreve como tratamos os dados pessoais coletados por
@@ -110,20 +111,24 @@ export default function Privacy() {
 
           <Block number="02" title="Dados que coletamos">
             <p>
-              Quando você preenche o formulário de <em>Solicitar Acesso</em>, coletamos as seguintes
-              informações fornecidas voluntariamente:
+              Quando você preenche o formulário de contato, coletamos as seguintes informações
+              fornecidas voluntariamente:
             </p>
             <ul>
               <li>Nome completo;</li>
-              <li>Endereço de e-mail profissional;</li>
-              <li>Número de WhatsApp;</li>
-              <li>Área de atuação jurídica;</li>
+              <li>Endereço de e-mail profissional (opcional);</li>
               <li>Estado de atuação (UF).</li>
             </ul>
             <p>
-              Adicionalmente, podemos coletar dados técnicos de navegação de forma automática, como
-              endereço IP, tipo de dispositivo, navegador, sistema operacional e páginas visitadas,
-              com a finalidade de melhorar a experiência e a segurança da plataforma.
+              O envio do formulário redireciona você ao WhatsApp para falar com a nossa equipe. Se
+              optar por nos contatar por esse canal, passamos a tratar também o seu número de
+              WhatsApp e o conteúdo das mensagens que você nos enviar.
+            </p>
+            <p>
+              Adicionalmente, dados técnicos podem ser coletados de forma automática — como endereço
+              IP e informações do dispositivo e do navegador — pelo provedor de hospedagem do site e,
+              mediante o seu consentimento, pelas ferramentas de medição de publicidade do Google Ads
+              (ver seção 08), com a finalidade de operar, medir e proteger o site.
             </p>
           </Block>
 
@@ -208,11 +213,11 @@ export default function Privacy() {
             </p>
             <ul>
               <li>
-                <strong>Art. 7º, IX — legítimo interesse</strong> da Chreos e dos escritórios
-                contratantes na identificação, organização e oferta de assistência jurídica
-                qualificada a pessoas envolvidas em procedimentos de execução extrajudicial de
-                garantia imobiliária, mediante balanceamento permanente com os direitos e liberdades
-                fundamentais dos titulares;
+                <strong>Art. 7º, IX — legítimo interesse</strong> da Chreos na identificação e
+                organização de informações de fontes públicas sobre imóveis em procedimentos de
+                execução extrajudicial de garantia imobiliária, e dos escritórios contratantes no
+                exercício regular da advocacia, mediante balanceamento permanente com os direitos e
+                liberdades fundamentais dos titulares;
               </li>
               <li>
                 <strong>Art. 7º, II — cumprimento de obrigação legal ou regulatória</strong> pelo
@@ -235,9 +240,9 @@ export default function Privacy() {
             <p>
               <strong>Papéis e responsabilidades.</strong> A Chreos atua como{" "}
               <strong>controladora</strong> em relação à coleta, organização, enriquecimento e
-              disponibilização dos dados de devedores aos escritórios contratantes. A partir do
-              momento em que esses dados são acessados pelo escritório para fins de prospecção,
-              abordagem ou prestação de serviços jurídicos, o escritório passa a atuar como{" "}
+              disponibilização dos dados aos escritórios contratantes. A partir do momento em que
+              esses dados são acessados pelo escritório no exercício regular e independente da
+              advocacia, o escritório passa a atuar como{" "}
               <strong>controlador independente</strong> daquele tratamento, assumindo, de forma
               autônoma, todas as obrigações decorrentes da LGPD perante os titulares — incluindo,
               sem limitação:
@@ -357,7 +362,7 @@ export default function Privacy() {
             </ul>
           </Block>
 
-          <Block number="10" title="Contato do encarregado">
+          <Block number="10" title="Canal de contato e exercício de direitos">
             <p>
               Para exercer os direitos descritos acima, esclarecer dúvidas ou apresentar reclamações
               sobre o tratamento dos seus dados pessoais, entre em contato conosco por meio do
@@ -394,6 +399,15 @@ export default function Privacy() {
               <div className="text-xs tracking-widest text-cream/35 uppercase">
                 Leads quentes para advogados
               </div>
+              <a
+                href="https://www.linkedin.com/in/giancarlo-lester/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn do fundador (abre em nova aba)"
+                className="mt-2 -ml-2 inline-flex h-9 w-9 items-center justify-center text-cream/40 transition-colors hover:text-cream/70"
+              >
+                <Linkedin size={18} aria-hidden />
+              </a>
             </div>
             <div className="flex gap-8 text-xs tracking-[0.15em] text-cream/35 uppercase">
               <Link href="/privacidade" className="transition-colors hover:text-cream/70">
@@ -404,9 +418,12 @@ export default function Privacy() {
               </a>
             </div>
           </div>
-          <div className="flex items-center justify-between pt-6">
+          <div className="flex flex-col gap-2 pt-6 md:flex-row md:items-center md:justify-between">
             <div className="text-[10px] tracking-[0.2em] text-cream/50 uppercase">
               © {YEAR} Chreos. Todos os direitos reservados.
+            </div>
+            <div className="text-[10px] tracking-[0.15em] text-cream/55 uppercase">
+              GLPA Data Services LTDA · CNPJ 55.704.724/0001-08
             </div>
           </div>
         </div>
