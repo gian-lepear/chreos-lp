@@ -1,5 +1,5 @@
 import { m } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Linkedin } from "lucide-react";
 import { Link } from "wouter";
 import { CTAForm } from "@/components/CTAForm";
 import {
@@ -103,7 +103,7 @@ export default function HomeSections() {
                     </div>
                   </div>
                   <div className="hidden flex-shrink-0 items-center opacity-0 transition-opacity group-hover:opacity-100 md:flex">
-                    <ArrowUpRight size={18} className="text-gold" />
+                    <ArrowUpRight size={18} className="text-gold" aria-hidden />
                   </div>
                 </m.div>
               ))}
@@ -253,7 +253,13 @@ export default function HomeSections() {
                 </div>
 
                 <div className="px-6 pb-6">
+                  {/* Botão ilustrativo do dossiê-exemplo: sem ação real, então
+                      fica fora da ordem de tabulação e oculto do leitor de tela. */}
                   <button
+                    type="button"
+                    disabled
+                    aria-hidden="true"
+                    tabIndex={-1}
                     className="text-navy w-full py-3 text-[10px] font-bold tracking-[0.25em] uppercase transition-opacity hover:opacity-80"
                     style={{
                       background: "var(--gold-gradient)",
@@ -707,6 +713,15 @@ export default function HomeSections() {
               <div className="text-cream/55 text-xs tracking-widest uppercase">
                 Leads quentes para advogados
               </div>
+              <a
+                href="https://www.linkedin.com/in/giancarlo-lester/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn do fundador (abre em nova aba)"
+                className="text-cream/55 hover:text-cream/80 mt-2 -ml-2 inline-flex h-9 w-9 items-center justify-center transition-colors"
+              >
+                <Linkedin size={18} aria-hidden />
+              </a>
             </div>
             <div className="text-cream/55 flex gap-8 text-xs tracking-[0.15em] uppercase">
               <Link href="/privacidade" className="hover:text-cream/70 transition-colors">
