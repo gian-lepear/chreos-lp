@@ -14,9 +14,20 @@ Plano para tirar o foco do termo técnico **"alienação fiduciária"** (que mir
 - **`README.md`** (este) — estrutura, lances, anúncios e cautelas OAB.
 - **`passo-a-passo-editor.md`** — guia de execução: conversões, lista negativa,
   criar campanhas, importar, RSAs, extensões, postar e operar nas 1ªs semanas.
-- **`negativos-compartilhados.txt`** — ~85 termos. Crie uma **Lista de palavras
-  negativas compartilhada** no Google Ads e cole tudo. Aplique a **TODAS** as
-  campanhas. É a correção mais importante.
+- **`negativos-compartilhados.txt`** — **298 termos** (5 clusters: devedor,
+  arrematante, grátis/DIY/jurisprudência, estudante/concurso/emprego, leilão
+  off-niche). Crie uma **Lista de palavras negativas compartilhada** e cole
+  tudo. Aplique a **TODAS** as campanhas. Correção mais importante.
+  - **Tipos de correspondência no arquivo:** linha simples = **amplo**;
+    `[entre colchetes]` = **exato** (50 termos). O Google Ads respeita os
+    colchetes ao colar.
+  - **REGRA DE OURO:** todo negativo que contém o núcleo do nicho (*alienação
+    fiduciária, execução extrajudicial, leilão extrajudicial, consolidação,
+    leilão de imóveis, imóveis em leilão*) entra como **exato `[…]`** — nunca
+    amplo. Em amplo, o miolo é exatamente o que o **comprador** digita ("leads
+    alienação fiduciária") e o negativo bloquearia o próprio anúncio.
+  - **Não negar** monitoramento/editais para advogado nem "lista de devedores"
+    (são queries do comprador). Já removidos da lista.
 - **`keywords.csv`** — importável no **Google Ads Editor** (colunas Campaign /
   Ad group / Keyword / Match type).
 - **`extensoes.md`** — sitelinks, callouts, snippets, logo/imagem (OAB-safe).
