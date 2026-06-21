@@ -19,6 +19,7 @@ import {
   getAttribution,
   getAttributionSummary,
 } from "@/lib/attribution";
+import { trackFormStart, markFormSubmitted } from "@/lib/analytics";
 
 const ESTADOS = [
   { sigla: "AC", nome: "Acre" },
@@ -146,6 +147,8 @@ export function CTAForm() {
     captureLead(data);
     // The submitted lead is the real conversion now that it's captured.
     fireConversion();
+    // Submitted → pagehide must not count this as a form_abandon.
+    markFormSubmitted();
 
     const message = buildWhatsAppMessage(data);
     const encoded = encodeURIComponent(message);
@@ -153,12 +156,16 @@ export function CTAForm() {
     setWhatsappUrl(url);
     const win = window.open(url, "_blank", "noopener");
     setOpened(Boolean(win));
-    // Soft/micro signal: did the WhatsApp tab actually open? (not a conversion)
-    window.gtag?.("event", "whatsapp_open", { opened: Boolean(win) });
+    // Soft/micro signal: did the WhatsApp tab actually open? (not a conversion).
+    // Stamped with UF + gclid so o canal de origem segue o lead até o gtag.
+    const attr = getAttribution();
+    const openParams: Record<string, unknown> = { opened: Boolean(win), estado: data.estado };
+    if (attr.gclid) openParams.gclid = attr.gclid;
+    window.gtag?.("event", "whatsapp_open", openParams);
   }
 
   const fieldClass =
-    "w-full bg-navy-raised text-cream placeholder:text-cream/25 border-0 rounded-none px-4 py-3 text-base font-mono outline-none focus:bg-navy-hover focus:ring-2 focus:ring-inset focus:ring-gold transition-colors";
+    "w-full bg-navy-raised text-cream placeholder:text-cream/45 border-0 rounded-none px-4 py-3 text-base font-mono outline-none focus:bg-navy-hover focus:ring-2 focus:ring-inset focus:ring-gold transition-colors";
   const labelClass = "text-[9px] uppercase tracking-[0.3em] text-cream/40 font-bold mb-1.5 block";
 
   return (
@@ -209,7 +216,11 @@ export function CTAForm() {
           </div>
         ) : (
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              onFocusCapture={trackFormStart}
+              className="space-y-5"
+            >
               <FormField
                 control={form.control}
                 name="name"
@@ -265,7 +276,7 @@ export function CTAForm() {
                           className={cn(
                             fieldClass,
                             "h-[46px] cursor-pointer",
-                            field.value ? "text-cream" : "text-cream/25",
+                            field.value ? "text-cream" : "text-cream/45",
                           )}
                           style={{ borderRadius: 0 }}
                         >

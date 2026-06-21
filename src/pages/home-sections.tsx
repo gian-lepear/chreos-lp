@@ -167,10 +167,12 @@ export default function HomeSections() {
                         Potencial Cliente
                       </div>
                     </div>
-                    {/* <div className="text-right">
-                      <div className="text-[9px] uppercase tracking-widest text-navy/60 font-bold mb-1">Prazo restante</div>
-                      <div className="font-mono text-red-600 font-bold text-lg">15 DIAS</div>
-                    </div> */}
+                    <span
+                      className="bg-navy/10 text-navy/55 px-2.5 py-1 text-[9px] font-bold tracking-[0.25em] uppercase"
+                      style={{ borderRadius: "9999px" }}
+                    >
+                      Exemplo
+                    </span>
                   </div>
                 </div>
 
@@ -235,19 +237,19 @@ export default function HomeSections() {
                       <span className="text-navy/50 text-[10px] tracking-widest uppercase">
                         WhatsApp
                       </span>
-                      <span className="text-navy font-mono text-sm">+55 11 98844-3322</span>
+                      <span className="text-navy font-mono text-sm">+55 11 9••••-••••</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-navy/50 text-[10px] tracking-widest uppercase">
                         Telefone
                       </span>
-                      <span className="text-navy font-mono text-sm">+55 11 3341-8810</span>
+                      <span className="text-navy font-mono text-sm">+55 11 ••••-••••</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-navy/50 text-[10px] tracking-widest uppercase">
                         E-mail
                       </span>
-                      <span className="text-navy font-mono text-sm">c.mendes@gmail.com</span>
+                      <span className="text-navy font-mono text-sm">c•••••@•••••.com</span>
                     </div>
                   </div>
                 </div>
