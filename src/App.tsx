@@ -20,12 +20,15 @@ function Router() {
   );
 }
 
-function App() {
+function App({ ssrPath }: { ssrPath?: string }) {
   return (
     <ErrorBoundary>
       <LazyMotion features={domAnimation} strict>
         <MotionConfig reducedMotion="user">
-          <WouterRouter base={import.meta.env.BASE_URL?.replace(/\/$/, "") || ""}>
+          <WouterRouter
+            base={import.meta.env.BASE_URL?.replace(/\/$/, "") || ""}
+            ssrPath={ssrPath}
+          >
             <Router />
             <ConsentBanner />
           </WouterRouter>
