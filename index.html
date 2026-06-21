@@ -59,6 +59,9 @@
       content="Identificamos quem está prestes a perder o imóvel financiado — antes do leilão — e entregamos o contato direto ao seu escritório."
     />
     <meta property="og:image" content="https://chreos.com.br/opengraph.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="720" />
     <meta
       property="og:image:alt"
       content="Chreos — Leads de imóveis em leilão e execução extrajudicial"
@@ -73,6 +76,10 @@
       content="Identificamos quem está prestes a perder o imóvel financiado — antes do leilão — e entregamos o contato direto ao seu escritório."
     />
     <meta name="twitter:image" content="https://chreos.com.br/opengraph.jpg" />
+    <meta
+      name="twitter:image:alt"
+      content="Chreos — Leads de imóveis em leilão e execução extrajudicial"
+    />
 
     <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -182,10 +189,16 @@
           },
           {
             "@type": "Service",
+            "@id": "https://chreos.com.br/#service",
             "name": "Leads de Imóveis em Leilão e Execução Extrajudicial",
             "provider": { "@id": "https://chreos.com.br/#organization" },
             "areaServed": { "@type": "Country", "name": "Brasil" },
             "serviceType": "Geração de leads para advocacia imobiliária",
+            "audience": {
+              "@type": "Audience",
+              "audienceType": "Escritórios de advocacia imobiliária"
+            },
+            "url": "https://chreos.com.br/",
             "description": "Identificação de pessoas prestes a perder o imóvel financiado — ainda antes do leilão (execução extrajudicial / alienação fiduciária, Lei 9.514/1997) — com nome, WhatsApp e contato entregues a escritórios de advocacia."
           }
         ]
