@@ -159,6 +159,16 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
   }
+
+  /* Foco de teclado visível em qualquer interativo (WCAG 2.4.7/2.4.11). Anel
+     duplo (navy interno + gold externo) garante ≥3:1 tanto sobre seções cream
+     quanto navy. Só aparece via teclado/AT (:focus-visible), não no clique. */
+  :focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--color-navy),
+      0 0 0 4px var(--color-gold-light);
+  }
 }
 
 .gold-gradient {
