@@ -96,7 +96,7 @@ export default function HomeSections() {
                     fontSize: "clamp(2rem, 4.5vw, 3.8rem)",
                   }}
                 >
-                  Seu funil de clientes
+                  Seu funil de casos
                   <br />
                   funcionando <em>sozinho.</em>
                 </h2>
@@ -104,7 +104,7 @@ export default function HomeSections() {
               <div className="hidden max-w-xs text-right md:block">
                 <p className="text-navy/50 text-sm leading-relaxed">
                   Enquanto seu escritório atende os casos de hoje, já estamos montando a fila de
-                  clientes de amanhã — com nome, contato e urgência documentada.
+                  casos de amanhã — com os dados do registro e a urgência documentada.
                 </p>
               </div>
             </m.div>
@@ -260,7 +260,7 @@ export default function HomeSections() {
                         Carlos Eduardo Mendes
                       </h3>
                       <div className="text-navy/50 mt-0.5 text-xs tracking-widest uppercase">
-                        Potencial Cliente
+                        Caso · fonte pública
                       </div>
                     </div>
                     <span
@@ -296,7 +296,8 @@ export default function HomeSections() {
                       <div className="text-navy/60 mb-1 text-[9px] font-bold tracking-[0.2em] uppercase">
                         Reincidências
                       </div>
-                      <div className="mt-0.5 flex gap-1">
+                      <div className="mt-0.5 flex gap-1" role="img" aria-label="3 reincidências">
+
                         {[1, 2, 3].map((n) => (
                           <div
                             key={n}

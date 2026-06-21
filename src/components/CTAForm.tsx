@@ -190,7 +190,7 @@ export function CTAForm() {
           </h3>
         </div>
         {whatsappUrl ? (
-          <div data-testid="cta-success">
+          <div data-testid="cta-success" role="status" aria-live="polite">
             <p className="text-cream mb-2 text-base font-semibold">
               {opened
                 ? "Tudo certo — abrimos o WhatsApp em outra aba."

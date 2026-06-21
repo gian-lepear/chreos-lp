@@ -230,9 +230,9 @@ export default function Home() {
 
               <m.div variants={fadeUp} className="mb-10 grid max-w-3xl gap-6 md:grid-cols-2">
                 <p className="text-cream/60 text-base leading-relaxed">
-                  Identificamos pessoas que estão prestes a perder um imóvel e entregamos ao seu
-                  escritório o nome, telefone e WhatsApp delas em minutos — antes que qualquer
-                  concorrente saiba que esse cliente existe.
+                  Identificamos pessoas prestes a perder o imóvel financiado e entregamos ao seu
+                  escritório os dados do caso — nome, contato e matrícula — em minutos, antes que
+                  qualquer concorrente veja a oportunidade.
                 </p>
                 <LiveTicker />
               </m.div>
@@ -293,10 +293,10 @@ export default function Home() {
               className="text-cream/80 text-lg leading-relaxed md:text-2xl"
               style={{ fontFamily: "'Newsreader Variable', serif" }}
             >
-              Quando o imóvel vai a leilão, já é tarde — e o cliente já é de outro advogado. A
+              Quando o imóvel vai a leilão, já é tarde — e a oportunidade foi de outro escritório. A
               Chreos encontra essa pessoa{" "}
-              <em className="text-gold-light">na intimação, antes de ela pesquisar no Google</em> —
-              e entrega o contato só para o seu escritório.
+              <em className="text-gold-light">na intimação, antes de ela pesquisar no Google</em> — e
+              entrega a informação só para o seu escritório.
             </p>
           </div>
         </section>

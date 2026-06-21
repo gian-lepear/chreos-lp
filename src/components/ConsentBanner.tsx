@@ -20,7 +20,7 @@ export function ConsentBanner() {
 
   return (
     <div
-      role="dialog"
+      role="region"
       aria-label="Aviso de cookies"
       className="fixed right-0 bottom-0 left-0 z-[90] border-t-2 border-[#C9A84C] bg-[#0f1c2c]"
     >
