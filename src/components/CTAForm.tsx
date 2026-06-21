@@ -166,7 +166,7 @@ export function CTAForm() {
 
   const fieldClass =
     "w-full bg-navy-raised text-cream placeholder:text-cream/45 border-0 rounded-none px-4 py-3 text-base font-mono outline-none focus:bg-navy-hover focus:ring-2 focus:ring-inset focus:ring-gold transition-colors";
-  const labelClass = "text-[9px] uppercase tracking-[0.3em] text-cream/40 font-bold mb-1.5 block";
+  const labelClass = "text-[10px] uppercase tracking-[0.25em] text-cream/60 font-bold mb-2 block";
 
   return (
     <div className="bg-navy-raised relative overflow-hidden p-8 lg:p-10">
