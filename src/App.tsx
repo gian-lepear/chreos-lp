@@ -11,16 +11,19 @@ const NotFound = lazy(() => import("@/pages/not-found"));
 // Deep links com hash (ex.: /#acesso, ou o link "Acesso" da página de
 // privacidade) não rolam sozinhos num SPA: o navegador tenta rolar antes do
 // React renderizar a seção. Aqui rolamos para o alvo após o paint, no load e
-// a cada troca de rota.
+// a cada troca de rota. O offset do navbar fixo vem do scroll-padding-top
+// (index.css). Re-rolamos quando as fontes carregam: o serif grande reflui a
+// altura das seções acima e desloca a âncora, deixando aparecer um sliver da
+// seção anterior se rolarmos só no 1º paint.
 function ScrollToHash() {
   const [location] = useLocation();
   useEffect(() => {
     const { hash } = window.location;
     if (!hash) return;
     const id = decodeURIComponent(hash.slice(1));
-    requestAnimationFrame(() => {
-      document.getElementById(id)?.scrollIntoView();
-    });
+    const scrollToTarget = () => document.getElementById(id)?.scrollIntoView();
+    requestAnimationFrame(scrollToTarget);
+    if (document.fonts?.ready) void document.fonts.ready.then(scrollToTarget);
   }, [location]);
   return null;
 }

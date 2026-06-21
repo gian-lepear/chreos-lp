@@ -152,8 +152,17 @@
     @apply border-border;
   }
 
+  /* Offset do navbar fixo ao rolar para âncoras (#acesso etc.). = altura do
+     navbar: 5rem (h-20) no mobile, 6rem (h-24) no desktop. Sem isso, a seção
+     para sob o navbar e/ou mostra um sliver da seção anterior. */
   html {
-    scroll-padding-top: 6rem;
+    scroll-padding-top: 5rem;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      scroll-padding-top: 6rem;
+    }
   }
 
   body {

@@ -1,7 +1,12 @@
+import { lazy, Suspense } from "react";
 import { m } from "framer-motion";
 import { ArrowUpRight, Linkedin } from "lucide-react";
 import { Link } from "wouter";
-import { CTAForm } from "@/components/CTAForm";
+
+// Code-split: o form (zod + react-hook-form + resolver, ~37KB gzip) sai do
+// chunk crítico index.js. Fica no fim da página (abaixo da dobra), então o
+// chunk carrega sob demanda sem competir com o primeiro paint.
+const CTAForm = lazy(() => import("@/components/CTAForm").then((m) => ({ default: m.CTAForm })));
 import {
   STEPS,
   LEAD_FEATURES,
@@ -836,7 +841,9 @@ export default function HomeSections() {
           </m.div>
 
           <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <CTAForm />
+            <Suspense fallback={null}>
+              <CTAForm />
+            </Suspense>
           </m.div>
         </div>
       </section>
