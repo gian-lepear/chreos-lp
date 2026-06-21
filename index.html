@@ -25,13 +25,15 @@
       });
 
       gtag("js", new Date());
+      // GA4 primeiro (id do script externo abaixo) + Google Ads na mesma tag.
+      gtag("config", "G-LKX1KG35JE");
       gtag("config", "AW-18227481490");
 
       window.addEventListener("load", function () {
         setTimeout(function () {
           var s = document.createElement("script");
           s.async = true;
-          s.src = "https://www.googletagmanager.com/gtag/js?id=AW-18227481490";
+          s.src = "https://www.googletagmanager.com/gtag/js?id=G-LKX1KG35JE";
           document.head.appendChild(s);
         }, 2000);
       });
