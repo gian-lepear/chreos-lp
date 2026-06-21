@@ -15,17 +15,10 @@ function emit(name: string, params: Record<string, unknown> = {}): void {
   window.gtag?.("event", name, params);
 }
 
-// Liga o GA4 (além do Google Ads) quando VITE_GA4_ID está setado. O gtag já é
-// carregado pelo index.html; aqui só adicionamos o destino GA4 — os eventos de
-// funil (form_start, scroll_depth, web_vitals, conversão) passam a fluir para o
-// GA4 automaticamente. O Consent Mode v2 (default-deny) cobre o analytics_storage,
-// então o GA4 roda cookieless até o usuário aceitar.
-export function initGA4(): void {
-  if (typeof window === "undefined") return;
-  const id = import.meta.env.VITE_GA4_ID as string | undefined;
-  if (!id) return;
-  window.gtag?.("config", id);
-}
+// GA4 (G-LKX1KG35JE) e Google Ads (AW-18227481490) são configurados inline no
+// index.html, na mesma gtag.js. Os eventos abaixo (form_start, scroll_depth,
+// web_vitals, conversão) fluem para os dois destinos automaticamente. O Consent
+// Mode v2 (default-deny) cobre analytics_storage → GA4 roda cookieless até aceite.
 
 let formStarted = false;
 let formSubmitted = false;
