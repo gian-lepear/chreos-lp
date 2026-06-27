@@ -61,16 +61,3 @@ export function captureAttribution(): void {
 export function getAttribution(): Attribution {
   return read()?.params ?? {};
 }
-
-// Linha curta e legível para anexar à mensagem do WhatsApp (só quando há origem).
-export function getAttributionSummary(): string | null {
-  const params = getAttribution();
-  if (params.gclid) return `gclid:${params.gclid}`;
-  if (params.gbraid) return `gbraid:${params.gbraid}`;
-  if (params.wbraid) return `wbraid:${params.wbraid}`;
-  if (params.fbclid) return `fbclid:${params.fbclid}`;
-  const utm = [params.utm_source, params.utm_medium, params.utm_campaign]
-    .filter(Boolean)
-    .join(" / ");
-  return utm || null;
-}

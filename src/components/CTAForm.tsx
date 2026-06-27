@@ -14,11 +14,7 @@ import { Input } from "@/components/ui/input";
 import { m } from "framer-motion";
 import { Link } from "wouter";
 import { cn } from "@/lib/utils";
-import {
-  captureAttribution,
-  getAttribution,
-  getAttributionSummary,
-} from "@/lib/attribution";
+import { captureAttribution, getAttribution } from "@/lib/attribution";
 import { trackFormStart, markFormSubmitted } from "@/lib/analytics";
 
 const ESTADOS = [
@@ -95,14 +91,14 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 function buildWhatsAppMessage(data: FormValues): string {
-  const ref = getAttributionSummary();
+  // Atribuição (gclid/UTMs) NÃO entra na mensagem — segue só interna via
+  // getAttribution() no payload do Web3Forms, p/ não poluir o texto do prospect.
   return [
     `Olá! Tenho interesse em conhecer a Chreos.`,
     ``,
     `*Nome:* ${data.name}`,
     ...(data.email ? [`*E-mail:* ${data.email}`] : []),
     `*Estado de atuação:* ${data.estado}`,
-    ...(ref ? [`*Ref.:* ${ref}`] : []),
     ``,
     `Gostaria de agendar uma demonstração com leads reais da minha região.`,
   ].join("\n");
