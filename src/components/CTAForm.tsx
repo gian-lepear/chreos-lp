@@ -160,8 +160,11 @@ export function CTAForm() {
     window.gtag?.("event", "whatsapp_open", openParams);
   }
 
+  // focus-visible (não focus): o Input base do shadcn traz focus-visible:ring-1
+  // ring-ring — usar a mesma variante deixa o tailwind-merge resolver o conflito
+  // a favor do anel gold de 2px, em vez de empilhar dois box-shadows.
   const fieldClass =
-    "w-full bg-navy-raised text-cream placeholder:text-cream/60 border-0 rounded-none px-4 py-3 text-base font-mono outline-none focus:bg-navy-hover focus:ring-2 focus:ring-inset focus:ring-gold transition-colors";
+    "w-full bg-navy-raised text-cream placeholder:text-cream/60 border-0 rounded-none px-4 py-3 text-base outline-none focus:bg-navy-hover focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-gold transition-colors";
   const labelClass = "text-[10px] uppercase tracking-[0.25em] text-cream/60 font-bold mb-2 block";
 
   return (
@@ -233,7 +236,7 @@ export function CTAForm() {
                         style={{ borderRadius: 0 }}
                       />
                     </FormControl>
-                    <FormMessage className="text-xs text-red-400" />
+                    <FormMessage className="text-xs" />
                   </FormItem>
                 )}
               />
@@ -255,7 +258,7 @@ export function CTAForm() {
                           style={{ borderRadius: 0 }}
                         />
                       </FormControl>
-                      <FormMessage className="text-xs text-red-400" />
+                      <FormMessage className="text-xs" />
                     </FormItem>
                   )}
                 />
@@ -286,7 +289,7 @@ export function CTAForm() {
                           ))}
                         </select>
                       </FormControl>
-                      <FormMessage className="text-xs text-red-400" />
+                      <FormMessage className="text-xs" />
                     </FormItem>
                   )}
                 />

@@ -36,8 +36,16 @@ const criticalCssPlugin = {
     const assetsDir = path.join(outDir, "assets");
     const assetFiles = await fs.readdir(assetsDir);
     const criticalFonts = assetFiles.filter((f) =>
-      /^(newsreader-latin-subset|inter-latin-subset)-.*\.woff2$/.test(f),
+      // Italic incluso: o H1 (elemento de LCP) termina em <em> — sem preload o
+      // itálico chega depois e o hero repinta.
+      /^(newsreader-latin-subset|newsreader-italic-subset|inter-latin-subset)-.*\.woff2$/.test(f),
     );
+    if (criticalFonts.length === 0) {
+      console.warn(
+        "critical-css: nenhuma fonte crítica encontrada em dist/public/assets — " +
+          "preload de fontes não será emitido (regex desatualizado ou nomes de arquivo mudaram?)",
+      );
+    }
     const preloadTags = criticalFonts
       .map(
         (f) =>
@@ -129,6 +137,11 @@ export default defineConfig(({ mode, command }) => {
           `(11-15 digits, e.g. 5511976396660). Got: ${JSON.stringify(whatsapp)}`,
       );
     }
+    // ALLOW_INDEXING=true sem SITE_URL geraria robots.txt sem Sitemap e nenhum
+    // sitemap.xml — build "válido" mas invisível pro Google. Falha alto.
+    if (allowIndexing && !env.SITE_URL) {
+      throw new Error("SITE_URL is required when ALLOW_INDEXING=true (canonical/sitemap).");
+    }
   }
 
   return {
@@ -154,9 +167,20 @@ export default defineConfig(({ mode, command }) => {
       chunkSizeWarningLimit: 700,
       rollupOptions: {
         output: {
-          manualChunks: {
-            react: ["react", "react-dom", "wouter"],
-            motion: ["framer-motion"],
+          // Forma de função: a forma de objeto só move o entry module do pacote,
+          // e o react-dom inteiro (~130 kB) acabava no chunk index — invalidando
+          // o cache do runtime React a cada deploy. framer-motion fica de fora
+          // de propósito: o rollup separa sozinho o motor de animação carregado
+          // assincronamente pelo LazyMotion (src/lib/motion-features.ts).
+          manualChunks(id: string) {
+            if (
+              id.includes("node_modules/react-dom/") ||
+              id.includes("node_modules/react/") ||
+              id.includes("node_modules/scheduler/") ||
+              id.includes("node_modules/wouter/")
+            ) {
+              return "react";
+            }
           },
         },
       },

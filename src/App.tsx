@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect } from "react";
 import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
-import { LazyMotion, domAnimation, MotionConfig } from "framer-motion";
+import { LazyMotion, MotionConfig } from "framer-motion";
 import { ConsentBanner } from "@/components/ConsentBanner";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import Home from "@/pages/home";
@@ -66,10 +66,13 @@ function Router() {
   );
 }
 
+// Motor de animação fora do bundle inicial (ver src/lib/motion-features.ts).
+const loadMotionFeatures = () => import("@/lib/motion-features").then((mod) => mod.default);
+
 function App({ ssrPath }: { ssrPath?: string }) {
   return (
     <ErrorBoundary>
-      <LazyMotion features={domAnimation} strict>
+      <LazyMotion features={loadMotionFeatures} strict>
         <MotionConfig reducedMotion="user">
           <WouterRouter
             base={import.meta.env.BASE_URL?.replace(/\/$/, "") || ""}

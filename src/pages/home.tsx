@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { TICKER_ITEMS, STATS } from "@/data/landing";
@@ -8,21 +8,35 @@ import HomeSections from "./home-sections";
 function LiveTicker() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [inView, setInView] = useState(true);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  // Pause rotation while offscreen so the interval isn't burning re-renders
+  // (and battery) after the visitor scrolls past the hero.
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting));
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
-    if (paused) return;
+    if (paused || !inView) return;
     // Don't auto-rotate for users who prefer reduced motion.
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const interval = setInterval(() => {
-      setIndex((i) => (i + 1) % TICKER_ITEMS.length);
-    }, 5500);
+    const tick = () => {
+      if (!document.hidden) setIndex((i) => (i + 1) % TICKER_ITEMS.length);
+    };
+    const interval = setInterval(tick, 5500);
     return () => clearInterval(interval);
-  }, [paused]);
+  }, [paused, inView]);
 
   const item = TICKER_ITEMS[index];
 
   return (
     <div
+      ref={rootRef}
       className="border-gold bg-navy-deep border-l-4 p-5 font-mono text-xs"
       style={{ borderRadius: 0 }}
       role="group"
@@ -40,7 +54,7 @@ function LiveTicker() {
             Edital Capturado
           </span>
         </span>
-        <span className="text-[10px] text-white/55">DIÁRIO REGISTRAL — DADOS ILUSTRATIVOS</span>
+        <span className="text-[10px] text-cream/55">DIÁRIO REGISTRAL — DADOS ILUSTRATIVOS</span>
       </div>
       <div className="relative h-[128px] overflow-hidden md:h-[80px]" aria-hidden="true">
         <AnimatePresence mode="wait">
@@ -54,36 +68,36 @@ function LiveTicker() {
             style={{ position: "absolute", inset: 0 }}
           >
             <div className="min-w-0">
-              <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">
+              <div className="mb-0.5 text-[9px] tracking-widest text-cream/55 uppercase">
                 Devedor
               </div>
-              <div className="truncate text-white/90">{item.devedor}</div>
+              <div className="truncate text-cream/90">{item.devedor}</div>
             </div>
             <div className="min-w-0">
-              <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">Valor</div>
+              <div className="mb-0.5 text-[9px] tracking-widest text-cream/55 uppercase">Valor</div>
               <div className="text-gold-light truncate">{item.valor}</div>
             </div>
             <div className="min-w-0">
-              <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">
+              <div className="mb-0.5 text-[9px] tracking-widest text-cream/55 uppercase">
                 Credor
               </div>
-              <div className="truncate text-white/90">{item.credor}</div>
+              <div className="truncate text-cream/90">{item.credor}</div>
             </div>
             <div className="min-w-0">
-              <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">
+              <div className="mb-0.5 text-[9px] tracking-widest text-cream/55 uppercase">
                 Matrícula
               </div>
-              <div className="truncate text-white/70">{item.matricula}</div>
+              <div className="truncate text-cream/70">{item.matricula}</div>
             </div>
             <div className="min-w-0">
-              <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">
+              <div className="mb-0.5 text-[9px] tracking-widest text-cream/55 uppercase">
                 Cartório
               </div>
-              <div className="truncate text-white/70">{item.cartorio}</div>
+              <div className="truncate text-cream/70">{item.cartorio}</div>
             </div>
             <div className="min-w-0">
-              <div className="mb-0.5 text-[9px] tracking-widest text-white/55 uppercase">UF</div>
-              <div className="truncate text-white/70">{item.estado}</div>
+              <div className="mb-0.5 text-[9px] tracking-widest text-cream/55 uppercase">UF</div>
+              <div className="truncate text-cream/70">{item.estado}</div>
             </div>
           </m.div>
         </AnimatePresence>
@@ -91,23 +105,6 @@ function LiveTicker() {
     </div>
   );
 }
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.9,
-      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
-    },
-  },
-};
-
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
-};
 
 export default function Home() {
   // Funil + performance de campo (form_start vive no CTAForm).
@@ -150,19 +147,19 @@ export default function Home() {
           <div className="flex items-center gap-8">
             <a
               href="#mecanismo"
-              className="text-cream/60 hover:text-cream hidden text-xs tracking-[0.15em] uppercase transition-colors md:block"
+              className="text-cream/60 hover:text-cream hidden py-3 text-xs tracking-[0.15em] uppercase transition-colors md:block"
             >
               Como Funciona
             </a>
             <a
               href="#inteligencia"
-              className="text-cream/60 hover:text-cream hidden text-xs tracking-[0.15em] uppercase transition-colors md:block"
+              className="text-cream/60 hover:text-cream hidden py-3 text-xs tracking-[0.15em] uppercase transition-colors md:block"
             >
               Seus Leads
             </a>
             <a
               href="#filtros"
-              className="text-cream/60 hover:text-cream hidden text-xs tracking-[0.15em] uppercase transition-colors md:block"
+              className="text-cream/60 hover:text-cream hidden py-3 text-xs tracking-[0.15em] uppercase transition-colors md:block"
             >
               Personalização
             </a>
@@ -174,7 +171,9 @@ export default function Home() {
               }}
               data-testid="link-nav-acesso"
             >
-              Ver Meus Leads
+              {/* Rótulo completo não cabe ao lado do logo no mobile */}
+              <span className="md:hidden">Ver Leads</span>
+              <span className="hidden md:inline">Ver Leads da Minha Região</span>
             </a>
           </div>
         </div>
@@ -203,11 +202,11 @@ export default function Home() {
           </div>
 
           <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-36 pb-16 md:px-10">
-            <m.div initial="hidden" animate="visible" variants={stagger}>
-              {/* Eyebrow + H1 estáticos (sem fade de entrada): são o conteúdo
-                  acima da dobra / elemento de LCP. Animá-los via JS deixava o
-                  H1 com opacity:0 no HTML prerenderizado até o framer-motion
-                  carregar, atrasando o LCP no mobile. Pintam no 1º paint. */}
+            {/* Hero inteiro estático (sem fade de entrada): tudo aqui é conteúdo
+                acima da dobra. Animar via JS deixava o HTML prerenderizado com
+                opacity:0 até o framer-motion carregar (~140 kB), atrasando LCP
+                e escondendo o CTA principal. Pinta no 1º paint. */}
+            <div>
               <div className="mb-6 flex items-center gap-3">
                 <span className="bg-gold h-1.5 w-1.5 flex-shrink-0 rounded-full" />
                 <span className="text-gold text-[10px] font-bold tracking-[0.3em] uppercase">
@@ -222,25 +221,25 @@ export default function Home() {
                   fontSize: "clamp(3.2rem, 8vw, 7.5rem)",
                 }}
               >
-                Pare de esperar
+                Todo leilão de imóvel
                 <br />
-                por clientes.
+                começa com alguém
                 <br />
-                Alcance-os no
+                prestes a perder tudo.
                 <br />
-                momento <em style={{ fontStyle: "italic", color: "#e6c364" }}>exato.</em>
+                Chegue <em className="text-gold-gradient italic">antes.</em>
               </h1>
 
-              <m.div variants={fadeUp} className="mb-10 grid max-w-3xl gap-6 md:grid-cols-2">
+              <div className="mb-10 grid max-w-3xl gap-6 md:grid-cols-2">
                 <p className="text-cream/60 text-base leading-relaxed">
-                  Identificamos pessoas prestes a perder o imóvel financiado e entregamos ao seu
-                  escritório os dados do caso — nome, contato e matrícula — em minutos, antes que
-                  qualquer concorrente veja a oportunidade.
+                  Identificamos quem está prestes a perder o imóvel em leilão e entregamos ao seu
+                  escritório os dados do caso — nome, contato direto e matrícula — antes do edital
+                  e antes de qualquer concorrente.
                 </p>
                 <LiveTicker />
-              </m.div>
+              </div>
 
-              <m.div variants={fadeUp} className="flex flex-col gap-3 sm:flex-row">
+              <div className="flex flex-col gap-3 sm:flex-row">
                 <a
                   href="#acesso"
                   className="text-navy inline-flex items-center gap-2 px-7 py-4 text-xs font-bold tracking-[0.2em] uppercase transition-opacity hover:opacity-90"
@@ -253,24 +252,25 @@ export default function Home() {
                 </a>
                 <a
                   href="#mecanismo"
-                  className="border-cream/10 text-cream/70 hover:border-cream/30 inline-flex items-center gap-2 border px-7 py-4 text-xs font-bold tracking-[0.2em] uppercase transition-colors"
+                  className="bg-cream/[0.06] text-cream/70 hover:bg-cream/[0.12] hover:text-cream inline-flex items-center gap-2 px-7 py-4 text-xs font-bold tracking-[0.2em] uppercase transition-colors"
                   data-testid="button-hero-secondary"
                 >
-                  Ver Metodologia
+                  Como Funciona
                 </a>
-              </m.div>
+              </div>
 
-              <m.p variants={fadeUp} className="text-cream/55 mt-4 text-xs tracking-[0.05em]">
+              <p className="text-cream/55 mt-4 text-xs tracking-[0.05em]">
                 Lead exclusivo · sem mensalidade, sem fidelidade · demonstração sem compromisso
-              </m.p>
-            </m.div>
+              </p>
+            </div>
           </div>
 
           {/* Stats strip */}
-          <div className="border-cream/10 bg-navy-deep relative z-10 border-t">
-            <div className="md:divide-cream/10 mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 py-6 md:grid-cols-4 md:gap-0 md:divide-x md:px-10">
+          <div className="bg-navy-deep relative z-10">
+            <div className="h-[2px]" style={{ background: "var(--gold-gradient-h)" }} />
+            <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 py-6 md:grid-cols-4 md:gap-10 md:px-10">
               {STATS.map((s, i) => (
-                <div key={i} className="first:pl-0 md:px-8">
+                <div key={i}>
                   <div
                     className="text-gold-light font-semibold"
                     style={{

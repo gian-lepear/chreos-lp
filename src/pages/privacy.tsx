@@ -344,7 +344,7 @@ export default function Privacy() {
               <a
                 href="https://policies.google.com/technologies/cookies"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 className="text-[#0f1c2c] underline underline-offset-2"
               >
                 policies.google.com/technologies/cookies
@@ -420,7 +420,7 @@ export default function Privacy() {
               <a
                 href="https://www.linkedin.com/in/giancarlo-lester/"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 aria-label="LinkedIn do fundador (abre em nova aba)"
                 className="mt-2 -ml-2 inline-flex h-9 w-9 items-center justify-center text-cream/60 transition-colors hover:text-cream/70"
               >

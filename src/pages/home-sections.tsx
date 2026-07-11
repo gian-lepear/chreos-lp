@@ -45,7 +45,7 @@ const OBJECTIONS = [
   },
   {
     q: "E se vier um lead com problema?",
-    a: "Cada lead é um caso real do registro oficial — nome, matrícula, valor e credor —, exclusivo seu. Teve problema com algum lead? Fala com a gente: resolvemos caso a caso.",
+    a: "Cada lead é um caso real do registro oficial — nome, matrícula, valor e credor —, exclusivo seu. Teve problema com algum lead? Fale com a gente: resolvemos caso a caso.",
   },
   {
     q: "Por que pagar se eu mesmo posso acompanhar o registro?",
@@ -86,11 +86,11 @@ export default function HomeSections() {
           >
             <m.div
               variants={fadeUp}
-              className="border-navy/10 mb-16 flex items-end justify-between border-b pb-8"
+              className="border-navy/5 mb-16 flex items-end justify-between border-b-2 pb-8"
             >
               <div>
                 <div className="text-navy/60 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
-                  01 — Como Funciona
+                  <span className="text-gold">01</span> — Como Funciona
                 </div>
                 <h2
                   className="text-navy leading-tight"
@@ -99,7 +99,7 @@ export default function HomeSections() {
                     fontSize: "clamp(2rem, 4.5vw, 3.8rem)",
                   }}
                 >
-                  Seu funil de casos
+                  Seu funil de casos de leilão
                   <br />
                   funcionando <em>sozinho.</em>
                 </h2>
@@ -117,7 +117,7 @@ export default function HomeSections() {
                 <m.div
                   key={i}
                   variants={fadeUp}
-                  className="group border-navy/10 hover:bg-cream-dim -mx-4 flex gap-8 border-b px-4 py-10 transition-colors md:gap-16"
+                  className="group border-navy/5 hover:bg-cream-dim -mx-4 flex gap-8 border-b-2 px-4 py-10 transition-colors md:gap-16"
                 >
                   <div className="w-12 flex-shrink-0 md:w-16">
                     <span
@@ -154,7 +154,7 @@ export default function HomeSections() {
       </section>
 
       {/* PROCEDÊNCIA — data provenance / trust */}
-      <section id="procedencia" className="bg-navy-deep px-6 py-24 md:px-10">
+      <section id="procedencia" className="bg-navy-deep px-6 py-28 md:px-10">
         <div className="mx-auto max-w-7xl">
           <m.div
             initial="hidden"
@@ -164,7 +164,7 @@ export default function HomeSections() {
           >
             <m.div variants={fadeUp} className="mb-12 max-w-3xl">
               <div className="text-cream/55 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
-                02 — Fonte de dados oficial
+                <span className="text-gold">02</span> — Fonte de dados oficial
               </div>
               <h2
                 className="text-cream leading-tight"
@@ -183,7 +183,7 @@ export default function HomeSections() {
               </p>
             </m.div>
 
-            <m.div variants={fadeUp} className="bg-cream/10 grid gap-px md:grid-cols-4">
+            <m.div variants={fadeUp} className="bg-cream/10 grid gap-[2px] md:grid-cols-4">
               {PROVENANCE.map((p, i) => (
                 <div key={i} className="bg-navy-deep p-6">
                   <div className="text-gold/70 mb-3 font-mono text-xs">0{i + 1}</div>
@@ -195,7 +195,7 @@ export default function HomeSections() {
 
             <m.div
               variants={fadeUp}
-              className="border-cream/10 mt-10 flex flex-col gap-4 border-t pt-6 md:flex-row md:items-center md:justify-between"
+              className="border-cream/5 mt-10 flex flex-col gap-4 border-t-2 pt-6 md:flex-row md:items-center md:justify-between"
             >
               <div className="text-cream/55 text-[10px] tracking-[0.15em] uppercase">
                 Fontes públicas oficiais
@@ -222,7 +222,7 @@ export default function HomeSections() {
           >
             <m.div variants={fadeUp} className="mb-14">
               <div className="text-cream/55 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
-                03 — Seus Leads
+                <span className="text-gold">03</span> — Seus Leads
               </div>
               <h2
                 className="text-cream leading-tight"
@@ -233,7 +233,7 @@ export default function HomeSections() {
               >
                 Tudo o que você precisa
                 <br />
-                para <em>fechar o caso.</em>
+                para <em>fechar o contrato.</em>
               </h2>
             </m.div>
 
@@ -362,7 +362,7 @@ export default function HomeSections() {
                     disabled
                     aria-hidden="true"
                     tabIndex={-1}
-                    className="text-navy w-full py-3 text-[10px] font-bold tracking-[0.25em] uppercase transition-opacity hover:opacity-80"
+                    className="text-navy w-full cursor-default py-3 text-[10px] font-bold tracking-[0.25em] uppercase"
                     style={{
                       background: "var(--gold-gradient)",
                     }}
@@ -384,7 +384,7 @@ export default function HomeSections() {
                 </div>
                 <div className="space-y-0">
                   {LEAD_FEATURES.map((item, i) => (
-                    <div key={i} className="border-cream/10 flex items-center gap-4 border-b py-4">
+                    <div key={i} className="border-cream/5 flex items-center gap-4 border-b-2 py-4">
                       <div
                         className="h-4 w-[3px] flex-shrink-0"
                         style={{
@@ -421,7 +421,7 @@ export default function HomeSections() {
             <m.div variants={fadeUp} className="mb-14 flex items-end justify-between">
               <div>
                 <div className="text-navy/60 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
-                  04 — Personalização
+                  <span className="text-gold">04</span> — Personalização
                 </div>
                 <h2
                   className="text-navy leading-tight"
@@ -446,7 +446,7 @@ export default function HomeSections() {
                 <m.div
                   key={i}
                   variants={fadeUp}
-                  className="group border-navy/10 hover:bg-cream-shade -mx-4 grid gap-4 border-b px-4 py-8 transition-colors md:grid-cols-3 md:gap-8"
+                  className="group border-navy/5 hover:bg-cream-shade -mx-4 grid gap-4 border-b-2 px-4 py-8 transition-colors md:grid-cols-3 md:gap-8"
                 >
                   <div>
                     <div className="text-navy text-base font-semibold">{f.label}</div>
@@ -473,7 +473,7 @@ export default function HomeSections() {
           >
             <m.div variants={fadeUp} className="mb-14">
               <div className="text-cream/55 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
-                05 — Diferencial
+                <span className="text-gold">05</span> — Diferencial
               </div>
               <h2
                 className="text-cream max-w-2xl leading-tight"
@@ -525,9 +525,8 @@ export default function HomeSections() {
                       <div
                         className="flex h-7 w-7 flex-shrink-0 items-center justify-center font-mono text-[10px] font-bold"
                         style={{
-                          background: !ev.cold ? "var(--gold-gradient)" : "transparent",
+                          background: !ev.cold ? "var(--gold-gradient)" : "rgba(252,249,243,0.08)",
                           color: !ev.cold ? "#0f1c2c" : "#fcf9f3",
-                          border: ev.cold ? "1px solid rgba(252,249,243,0.2)" : "none",
                         }}
                       >
                         {ev.n}
@@ -590,7 +589,7 @@ export default function HomeSections() {
               variants={fadeUp}
               className="text-navy/60 mb-4 text-[10px] font-bold tracking-[0.3em] uppercase"
             >
-              06 — Origem
+              <span className="text-gold">06</span> — Origem
             </m.div>
 
             <m.div variants={fadeUp} className="mb-8 flex items-baseline gap-5">
@@ -667,7 +666,7 @@ export default function HomeSections() {
           >
             <m.div variants={fadeUp} className="mb-14">
               <div className="text-cream/55 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
-                07 — Investimento
+                <span className="text-gold">07</span> — Investimento
               </div>
               <h2
                 className="text-cream leading-tight"
@@ -687,7 +686,7 @@ export default function HomeSections() {
                 <m.div
                   key={i}
                   variants={fadeUp}
-                  className="group border-cream/10 hover:bg-navy-raised -mx-4 grid gap-4 border-b px-4 py-8 transition-colors md:grid-cols-3 md:gap-8"
+                  className="group border-cream/5 hover:bg-navy-raised -mx-4 grid gap-4 border-b-2 px-4 py-8 transition-colors md:grid-cols-3 md:gap-8"
                 >
                   <div>
                     <div className="text-cream text-base font-semibold">{item.label}</div>
@@ -714,7 +713,7 @@ export default function HomeSections() {
           >
             <m.div variants={fadeUp} className="mb-14">
               <div className="text-navy/60 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
-                08 — Perguntas Frequentes
+                <span className="text-gold">08</span> — Perguntas Frequentes
               </div>
               <h2
                 className="text-navy leading-tight"
@@ -731,7 +730,7 @@ export default function HomeSections() {
 
             <m.div variants={fadeUp} className="space-y-0">
               {FAQ.map((item, i) => (
-                <details key={i} className="group border-navy/10 border-b">
+                <details key={i} className="group border-navy/5 border-b-2">
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 [&::-webkit-details-marker]:hidden">
                     <span className="text-navy text-base font-semibold md:text-lg">{item.q}</span>
                     <span
@@ -752,6 +751,10 @@ export default function HomeSections() {
         </div>
       </section>
 
+      {/* Filete dourado: marca a virada do FAQ para as objeções finais (as duas
+          seções têm fundos claros quase iguais e se fundiam sem este corte). */}
+      <div aria-hidden="true" className="h-[2px]" style={{ background: "var(--gold-gradient-h)" }} />
+
       {/* OBJEÇÕES — handle purchase doubts right before the CTA */}
       <section id="duvidas" className="bg-cream px-6 py-28 md:px-10">
         <div className="mx-auto max-w-7xl">
@@ -763,7 +766,7 @@ export default function HomeSections() {
           >
             <m.div variants={fadeUp} className="mb-14">
               <div className="text-navy/60 mb-3 text-[10px] font-bold tracking-[0.3em] uppercase">
-                09 — Antes de decidir
+                <span className="text-gold">09</span> — Antes de decidir
               </div>
               <h2
                 className="text-navy leading-tight"
@@ -778,7 +781,7 @@ export default function HomeSections() {
               </h2>
             </m.div>
 
-            <m.div variants={fadeUp} className="bg-navy/10 grid gap-px md:grid-cols-2">
+            <m.div variants={fadeUp} className="bg-navy/10 grid gap-[2px] md:grid-cols-2">
               {OBJECTIONS.map((o, i) => (
                 <div key={i} className="bg-cream p-8">
                   <h3
@@ -800,13 +803,13 @@ export default function HomeSections() {
         <div className="mx-auto grid max-w-7xl items-start gap-14 lg:grid-cols-2">
           <m.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <div className="text-cream/55 mb-8 text-[10px] font-bold tracking-[0.3em] uppercase">
-              10 — Acesso
+              <span className="text-gold">10</span> — Acesso
             </div>
             <h2
               className="text-cream mb-6 leading-tight"
               style={{
                 fontFamily: "'Newsreader Variable', serif",
-                fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
+                fontSize: "clamp(2.4rem, 5vw, 4.5rem)",
               }}
             >
               Encha sua agenda
@@ -814,9 +817,10 @@ export default function HomeSections() {
               com quem <em>precisa de você.</em>
             </h2>
             <p className="text-cream/55 mb-10 max-w-md text-base leading-relaxed">
-              Preencha o formulário ao lado e agende uma conversa conosco. Vamos mostrar o que o seu
-              perfil pode gerar na sua região e explicar como podemos trabalhar com o seu
-              escritório.
+              Preencha o formulário e veja, em uma conversa rápida no WhatsApp, exemplos
+              reais do que o seu perfil geraria na sua região — sem compromisso. Quem responde é o
+              fundador, sem SDR e sem fila de atendimento. Você decide antes de pagar qualquer
+              coisa.
             </p>
             <div className="space-y-5">
               {CTA_BULLETS.map((item, i) => (
@@ -847,7 +851,7 @@ export default function HomeSections() {
       {/* FOOTER */}
       <footer className="bg-navy-deep px-6 pt-12 pb-24 md:px-10 md:py-12">
         <div className="mx-auto max-w-7xl">
-          <div className="border-cream/10 flex flex-col items-start justify-between gap-8 border-b pb-10 md:flex-row md:items-end">
+          <div className="border-cream/5 flex flex-col items-start justify-between gap-8 border-b-2 pb-10 md:flex-row md:items-end">
             <div>
               <div
                 className="text-cream mb-1 text-xl font-semibold tracking-tight"
@@ -861,7 +865,7 @@ export default function HomeSections() {
               <a
                 href="https://www.linkedin.com/in/giancarlo-lester/"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 aria-label="LinkedIn do fundador (abre em nova aba)"
                 className="text-cream/55 hover:text-cream/80 mt-2 -ml-2 inline-flex h-9 w-9 items-center justify-center transition-colors"
               >

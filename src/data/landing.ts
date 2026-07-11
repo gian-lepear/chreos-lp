@@ -50,10 +50,10 @@ export const TICKER_ITEMS = [
 ];
 
 export const STATS = [
-  { v: "Brasil inteiro", label: "Fontes públicas em todos os estados" },
-  { v: "Fontes oficiais", label: "Diários registrais e editais" },
+  { v: "27 estados", label: "Fontes públicas em todo o Brasil" },
+  { v: "100% oficiais", label: "Diários registrais e editais" },
   { v: "Pay-per-lead", label: "Sem mensalidade, sem fidelidade" },
-  { v: "Contato direto", label: "WhatsApp, telefone e e-mail" },
+  { v: "1 escritório", label: "Cada lead vendido uma única vez" },
 ];
 
 export const STEPS = [
@@ -119,7 +119,7 @@ export const FILTERS = [
   {
     label: "Quantas vezes já foi notificado",
     detail: "1ª · 2ª · 3ª vez em diante",
-    desc: "Quanto mais vezes uma pessoa foi notificada sobre o mesmo imóvel, maior a chance de fechar. Filtre pelos casos mais quentes para maximizar sua conversão.",
+    desc: "Quanto mais vezes uma pessoa foi notificada sobre o mesmo imóvel, maior a chance de fechar. Filtre pelos casos mais quentes e feche mais contratos.",
   },
 ];
 
@@ -165,6 +165,8 @@ export const INVESTMENT = [
   },
 ];
 
+// ATENÇÃO: o FAQ abaixo é espelhado no JSON-LD (FAQPage) hardcoded em
+// index.html. Ao editar pergunta/resposta aqui, atualize lá também.
 export const FAQ = [
   {
     q: "Receber esses leads é compatível com as regras da OAB?",
@@ -184,7 +186,7 @@ export const FAQ = [
   },
   {
     q: "Como funciona o pagamento?",
-    a: "Modelo pay-per-lead: você paga apenas pelos leads que recebe. O valor é definido de acordo com os filtros do seu perfil — não existe mensalidade nem taxa de adesão.",
+    a: "Modelo pay-per-lead: você paga apenas pelos leads que recebe. O valor é definido de acordo com os filtros do seu perfil, e você vê a tabela exata na demonstração, antes de qualquer compromisso — não existe mensalidade nem taxa de adesão.",
   },
   {
     q: "Quantos leads posso receber?",
@@ -205,6 +207,7 @@ export const FAQ = [
 ];
 
 export const CTA_BULLETS = [
+  "Conversa direta com o fundador — resposta em até 30 minutos",
   "Demonstração do que o seu perfil pode gerar na sua região",
   "Configuração do seu perfil de cliente ideal",
   "Cada lead vendido uma única vez, só para o seu escritório",

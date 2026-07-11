@@ -41,7 +41,6 @@ fetch_greek() { # <css-url> <outname>
     --flavor=woff2 --output-file="$OUT/$2-greek-subset.woff2"
 }
 fetch_greek "https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400..700&display=swap" literata
-fetch_greek "https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400..700&display=swap" ebgaramond
 
 echo "Done. Subset fonts written to $OUT/"
 ls -la "$OUT"/*.woff2
