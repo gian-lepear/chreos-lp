@@ -5,6 +5,7 @@ import { Link } from "wouter";
 // crawlers/bots de IA sem JS. renderToString não suporta Suspense — com lazy, o
 // form some do HTML estático e injeta um erro do React no lugar.
 import { CTAForm } from "@/components/CTAForm";
+import { Logo } from "@/components/Logo";
 import {
   STEPS,
   LEAD_FEATURES,
@@ -853,11 +854,8 @@ export default function HomeSections() {
         <div className="mx-auto max-w-7xl">
           <div className="border-cream/5 flex flex-col items-start justify-between gap-8 border-b-2 pb-10 md:flex-row md:items-end">
             <div>
-              <div
-                className="text-cream mb-1 text-xl font-semibold tracking-tight"
-                style={{ fontFamily: "'Newsreader Variable', serif" }}
-              >
-                Chreos
+              <div className="mb-2">
+                <Logo className="h-7 w-auto" />
               </div>
               <div className="text-cream/55 text-xs tracking-widest uppercase">
                 Leads quentes para advogados

@@ -3,6 +3,7 @@ import { m, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { TICKER_ITEMS, STATS } from "@/data/landing";
 import { initScrollDepth, initWebVitals } from "@/lib/analytics";
+import { Logo } from "@/components/Logo";
 import HomeSections from "./home-sections";
 
 function LiveTicker() {
@@ -139,10 +140,9 @@ export default function Home() {
             type="button"
             aria-label="Chreos — voltar ao topo"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            style={{ fontFamily: "'Newsreader Variable', serif" }}
-            className="text-cream cursor-pointer text-4xl font-semibold tracking-tight md:text-5xl"
+            className="cursor-pointer"
           >
-            Chreos
+            <Logo className="h-9 w-auto md:h-11" />
           </button>
           <div className="flex items-center gap-8">
             <a
