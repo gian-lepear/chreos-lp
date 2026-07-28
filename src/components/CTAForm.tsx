@@ -67,12 +67,13 @@ function captureLead(data: FormValues): void {
     subject: `Novo lead Chreos — ${data.name}`,
     from_name: "Chreos — Landing",
     nome: data.name,
+    // "email" is the Web3Forms reply-to.
+    email: data.email,
+    telefone: data.telefone,
     estado: data.estado,
     // Atribuição (gclid/UTMs) para ligar o lead ao clique pago de origem.
     ...getAttribution(),
   };
-  // "email" is the Web3Forms reply-to; only send it when it's a real address.
-  if (data.email) payload.email = data.email;
   // Fire-and-forget: a capture failure must never block the WhatsApp handoff.
   // Web3Forms requires a browser-origin call (free tier blocks server-side).
   void fetch("https://api.web3forms.com/submit", {
@@ -82,9 +83,27 @@ function captureLead(data: FormValues): void {
   }).catch(() => {});
 }
 
+// Máscara de celular BR: (11) 98765-4321 (11 dígitos) ou (11) 3456-7890 (10).
+function maskPhone(value: string): string {
+  const d = value.replace(/\D/g, "").slice(0, 11);
+  if (d.length === 0) return "";
+  if (d.length <= 2) return `(${d}`;
+  if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
+  if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;
+  return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
+}
+
 const formSchema = z.object({
   name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres."),
-  email: z.string().email("E-mail inválido.").optional().or(z.literal("")),
+  email: z.string().min(1, "E-mail é obrigatório.").email("E-mail inválido."),
+  telefone: z
+    .string()
+    .min(1, "Celular é obrigatório.")
+    .refine((v) => {
+      const d = v.replace(/\D/g, "");
+      // 10 (fixo) ou 11 (celular) dígitos, DDD válido começa em 11.
+      return (d.length === 10 || d.length === 11) && Number(d.slice(0, 2)) >= 11;
+    }, "Celular inválido. Use DDD + número."),
   estado: z.string().min(2, "Estado é obrigatório."),
 });
 
@@ -97,7 +116,8 @@ function buildWhatsAppMessage(data: FormValues): string {
     `Olá! Tenho interesse em conhecer a Chreos.`,
     ``,
     `*Nome:* ${data.name}`,
-    ...(data.email ? [`*E-mail:* ${data.email}`] : []),
+    `*E-mail:* ${data.email}`,
+    `*Celular:* ${data.telefone}`,
     `*Estado de atuação:* ${data.estado}`,
     ``,
     `Gostaria de agendar uma demonstração com leads reais da minha região.`,
@@ -118,7 +138,7 @@ export function CTAForm() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: { name: "", email: "", estado: "" },
+    defaultValues: { name: "", email: "", telefone: "", estado: "" },
   });
 
   // PRIMARY conversion = a valid lead was submitted (and captured server-side),
@@ -237,21 +257,45 @@ export function CTAForm() {
                   </FormItem>
                 )}
               />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className={labelClass}>E-mail</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="joao@silvaadv.com.br"
+                        type="email"
+                        autoComplete="email"
+                        {...field}
+                        className={fieldClass}
+                        data-testid="input-email"
+                        style={{ borderRadius: 0 }}
+                      />
+                    </FormControl>
+                    <FormMessage className="text-xs text-red-400" />
+                  </FormItem>
+                )}
+              />
               <div className="grid grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
-                  name="email"
+                  name="telefone"
                   render={({ field }) => (
                     <FormItem className="col-span-2 md:col-span-1">
-                      <FormLabel className={labelClass}>E-mail (opcional)</FormLabel>
+                      <FormLabel className={labelClass}>Celular</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="joao@silvaadv.com.br"
-                          type="email"
-                          autoComplete="email"
+                          placeholder="(11) 98765-4321"
+                          type="tel"
+                          inputMode="numeric"
+                          autoComplete="tel-national"
+                          maxLength={15}
                           {...field}
+                          onChange={(e) => field.onChange(maskPhone(e.target.value))}
                           className={fieldClass}
-                          data-testid="input-email"
+                          data-testid="input-telefone"
                           style={{ borderRadius: 0 }}
                         />
                       </FormControl>
