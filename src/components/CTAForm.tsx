@@ -110,17 +110,14 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 function buildWhatsAppMessage(data: FormValues): string {
-  // Atribuição (gclid/UTMs) NÃO entra na mensagem — segue só interna via
-  // getAttribution() no payload do Web3Forms, p/ não poluir o texto do prospect.
+  // Só nome e UF no texto. E-mail, celular e atribuição (gclid/UTMs) seguem
+  // apenas internos, no payload do Web3Forms — o prospect não precisa ver os
+  // próprios dados de contato repetidos na conversa.
   return [
-    `Olá! Tenho interesse em conhecer a Chreos.`,
+    `Olá! Gostaria de saber mais sobre a Chreos.`,
     ``,
     `*Nome:* ${data.name}`,
-    `*E-mail:* ${data.email}`,
-    `*Celular:* ${data.telefone}`,
     `*Estado de atuação:* ${data.estado}`,
-    ``,
-    `Gostaria de agendar uma demonstração com leads reais da minha região.`,
   ].join("\n");
 }
 
