@@ -1,0 +1,51 @@
+Row Type,Action,Campaign ID,Campaign,Ad group,Ad group status,Keyword status,Keyword,Type
+Ad group,Add,23930800003,Chreos-Google,Leads para advogado,Enabled,,,
+Ad group,Add,23930800003,Chreos-Google,Captacao de clientes,Enabled,,,
+Ad group,Add,23930800003,Chreos-Google,Leilao imovel,Enabled,,,
+Ad group,Add,23930800003,Chreos-Google,Execucao extrajudicial,Enabled,,,
+Ad group,Add,23930800003,Chreos-Google,Alienacao fiduciaria imovel,Enabled,,,
+Ad group,Add,23930800003,Chreos-Google,Direito imobiliario,Enabled,,,
+Ad group,Add,23930800003,Chreos-Google,Financiamento imobiliario,Enabled,,,
+Ad group,Add,23930800003,Chreos-Google,Marketing juridico,Enabled,,,
+Ad group,Add,23930800003,Chreos-Google,Marca,Enabled,,,
+Ad group,Add,23930800003,Chreos-Google,Concorrente,Enabled,,,
+Ad group,Add,23930800003,Chreos-Google,Descoberta,Enabled,,,
+Keyword,Add,23930800003,Chreos-Google,Leads para advogado,,Enabled,leads para advogados,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Leads para advogado,,Enabled,leads jurídicos,Exact match
+Keyword,Add,23930800003,Chreos-Google,Leads para advogado,,Enabled,leads qualificados advocacia,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Leads para advogado,,Enabled,comprar leads advocacia,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Leads para advogado,,Enabled,plataforma de leads para advogados,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Leads para advogado,,Enabled,geração de leads para advogados,Exact match
+Keyword,Add,23930800003,Chreos-Google,Leads para advogado,,Enabled,leads para advogado imobiliário,Exact match
+Keyword,Add,23930800003,Chreos-Google,Leads para advogado,,Enabled,leads para escritório de advocacia,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Leads para advogado,,Enabled,fornecedor de leads jurídicos,Exact match
+Keyword,Add,23930800003,Chreos-Google,Captacao de clientes,,Enabled,captação de clientes advocacia,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Captacao de clientes,,Enabled,prospecção de clientes advocacia,Exact match
+Keyword,Add,23930800003,Chreos-Google,Leilao imovel,,Enabled,leads de leilão de imóveis,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Leilao imovel,,Enabled,clientes para advogado de leilão,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Leilao imovel,,Enabled,como conseguir clientes de leilão de imóvel,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Leilao imovel,,Enabled,captação de clientes leilão de imóveis,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Leilao imovel,,Enabled,casos de leilão de imóveis,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Leilao imovel,,Enabled,como conseguir casos de leilão de imóveis,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Execucao extrajudicial,,Enabled,leads execução extrajudicial,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Execucao extrajudicial,,Enabled,leads alienação fiduciária,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Execucao extrajudicial,,Enabled,como conseguir casos de alienação fiduciária,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Execucao extrajudicial,,Enabled,leads defesa do mutuário,Exact match
+Keyword,Add,23930800003,Chreos-Google,Execucao extrajudicial,,Enabled,captação de clientes alienação fiduciária,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Execucao extrajudicial,,Enabled,clientes para advogado de execução extrajudicial,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Execucao extrajudicial,,Enabled,leads consolidação da propriedade fiduciária,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Execucao extrajudicial,,Enabled,leads devedor fiduciante inadimplente,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Alienacao fiduciaria imovel,,Enabled,leads imóvel em alienação fiduciária,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Alienacao fiduciaria imovel,,Enabled,como conseguir clientes de alienação fiduciária,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Direito imobiliario,,Enabled,captação de clientes direito imobiliário,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Direito imobiliario,,Enabled,carteira de clientes direito imobiliário,Exact match
+Keyword,Add,23930800003,Chreos-Google,Direito imobiliario,,Enabled,leads direito imobiliário,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Financiamento imobiliario,,Enabled,leads de financiamento imobiliário inadimplente,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Financiamento imobiliario,,Enabled,leads de busca e apreensão imóvel,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Marketing juridico,,Enabled,marketing jurídico para advogados,Exact match
+Keyword,Add,23930800003,Chreos-Google,Marketing juridico,,Enabled,plataforma lead jurídico,Phrase match
+Keyword,Add,23930800003,Chreos-Google,Marca,,Enabled,chreos,Exact match
+Keyword,Add,23930800003,Chreos-Google,Marca,,Enabled,chreos leads,Exact match
+Keyword,Add,23930800003,Chreos-Google,Concorrente,,Enabled,voga lead jurídico,Exact match
+Keyword,Add,23930800003,Chreos-Google,Descoberta,,Enabled,marketing jurídico imobiliário,Broad match
+Keyword,Add,23930800003,Chreos-Google,Descoberta,,Enabled,leads de leilão de imóveis,Broad match
